@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ci0xa0ikajs68"]
+
+[ext_resource type="Texture2D" uid="uid://bfsu4tvclh3sc" path="res://Bathroom/Props/ToiletPapers/Textures/ToiletPapers_ToiletPaper_albedo.png" id="1_xvioh"]
+
+[resource]
+resource_name = "ToiletPaper"
+cull_mode = 2
+albedo_texture = ExtResource("1_xvioh")
+roughness = 0.95

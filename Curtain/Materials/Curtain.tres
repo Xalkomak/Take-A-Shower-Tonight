@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://crfls0cotgepx"]
+
+[resource]
+resource_name = "Curtain"
+cull_mode = 2
+albedo_color = Color(0.222677, 0.276692, 0.906557, 1)
+roughness = 0.5

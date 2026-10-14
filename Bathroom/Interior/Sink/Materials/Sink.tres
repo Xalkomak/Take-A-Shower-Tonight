@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://by10bjt0kxfov"]
+
+[resource]
+resource_name = "Sink"
+cull_mode = 2
+albedo_color = Color(0.88401, 0.88401, 0.88401, 1)
+roughness = 0.2

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://h1v2gjktisw5"]
+
+[resource]
+resource_name = "SinkFaucet"
+cull_mode = 2
+albedo_color = Color(0.665185, 0.665185, 0.665185, 1)
+metallic = 1.0
+roughness = 0.25

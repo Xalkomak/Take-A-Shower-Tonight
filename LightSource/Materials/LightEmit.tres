@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c0mmnesjw8hpf"]
+
+[resource]
+resource_name = "LightEmit"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0

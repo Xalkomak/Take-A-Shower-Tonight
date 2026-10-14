@@ -1,0 +1,99 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Take A Shower Tonight"
+config/description="A mundane task of taking a shower at night turns into a life and death situation, as various monsters try to attack you at your most vulnerable."
+run/main_scene="res://Scenes/Game.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="TAST"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalScript="*res://GlobalScript.gd"
+EventBus="*res://EventBus.gd"
+
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/warnings/unused_variable=0
+
+[editor]
+
+naming/scene_name_casing=1
+
+[file_customization]
+
+folder_colors={
+"res://Bathroom/": "yellow",
+"res://Bathroom/Interior/Shower/": "pink",
+"res://Bathroom/Props/Soap/": "pink",
+"res://Curtain/": "pink",
+"res://LightSource/": "pink",
+"res://Monsters/": "red",
+"res://Player/": "green",
+"res://Scenes/": "blue",
+"res://SnowDawg/": "gray",
+"res://Window/": "pink"
+}
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
+[input]
+
+pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(162, 13),"global_position":Vector2(166, 54),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
+]
+}
+debug_screensize={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+debug_panel={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_render/layer_1="Environment"
+3d_render/layer_2="Prop"
+3d_render/layer_3="Player"
+3d_render/layer_4="Monster"
+3d_physics/layer_1="Environment"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Interactable"
+3d_physics/layer_4="Monster"
+3d_physics/layer_5="Watcher"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/msaa_3d=2
+occlusion_culling/use_occlusion_culling=true

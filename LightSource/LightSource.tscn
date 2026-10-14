@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy2fui0uj02vk"]
+
+[ext_resource type="PackedScene" uid="uid://c4p6ig3im0b70" path="res://LightSource/LightSource.glb" id="1_ovc24"]
+[ext_resource type="Script" path="res://Interaction/interactable.gd" id="2_fgu76"]
+[ext_resource type="Script" path="res://LightSource/Scripts/LightSource.gd" id="2_uaqvd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qt0i"]
+size = Vector3(1, 0.2, 1)
+
+[node name="LightSource" groups=["Light"] instance=ExtResource("1_ovc24")]
+script = ExtResource("2_uaqvd")
+
+[node name="Light" parent="." index="0"]
+extra_cull_margin = 20.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2.5)
+shape = SubResource("BoxShape3D_7qt0i")
+
+[node name="Interactable" type="Node" parent="." index="2"]
+script = ExtResource("2_fgu76")
+interaction_mode = 1
+interact_prompt = "Turn off"
+interact_prompt_toggle = "Turn on"
+call_method = &"toggle_light"
+
+[node name="GuidingLight" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, -2.5)
+light_color = Color(0.175948, 0.445691, 0.268728, 1)
+light_energy = 0.0
+light_cull_mask = 4294967283
+omni_range = 1.0
+omni_attenuation = 2.0

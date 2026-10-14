@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bwj3vkylydnnd"]
+
+[resource]
+resource_name = "Glass_material"
+transparency = 4
+blend_mode = 3
+cull_mode = 2
+depth_draw_mode = 2

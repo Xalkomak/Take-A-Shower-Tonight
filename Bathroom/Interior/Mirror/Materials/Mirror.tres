@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cndisq6rwuh36"]
+
+[ext_resource type="Texture2D" uid="uid://cyq0jebx8roff" path="res://Bathroom/Interior/Mirror/Textures/Mirror_Mirror_Albedo.png" id="1_d2c7w"]
+[ext_resource type="Texture2D" uid="uid://bemy2wegrfkj3" path="res://Bathroom/Interior/Mirror/Textures/Mirror_Mirror_Metallic-Mirror_Roughness.png" id="2_etvxu"]
+
+[resource]
+resource_name = "Mirror"
+albedo_texture = ExtResource("1_d2c7w")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_etvxu")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_etvxu")
+roughness_texture_channel = 1

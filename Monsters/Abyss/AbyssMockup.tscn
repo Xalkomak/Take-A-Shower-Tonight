@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://cew0632kyrkcg"]
+
+[ext_resource type="Script" path="res://Monsters/Abyss/Scripts/Abyss.gd" id="1_7ydpn"]
+[ext_resource type="Texture2D" uid="uid://dwawuj5jxbqj4" path="res://icon.svg" id="2_frmo0"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_exgw1"]
+resource_name = "Incoming Abyss"
+mix_rate = 22050.0
+buffer_length = 10.0
+
+[sub_resource type="Animation" id="Animation_dcmfi"]
+resource_name = "Jumpscare"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JumpscareFace:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JumpscareFace:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 0.568627), Color(0.5, 0.5, 0.5, 0.568627), Color(1, 1, 1, 0.568627), Color(1, 1, 1, 0.568627), Color(0.5, 0.5, 0.5, 0.568627)]
+}
+
+[sub_resource type="Animation" id="Animation_63511"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JumpscareFace:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JumpscareFace:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 0.568627)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7f7lv"]
+_data = {
+"Jumpscare": SubResource("Animation_dcmfi"),
+"RESET": SubResource("Animation_63511")
+}
+
+[node name="AbyssMockup" type="CanvasLayer"]
+script = ExtResource("1_7ydpn")
+
+[node name="AbyssAudioCue" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_exgw1")
+volume_db = -80.0
+pitch_scale = 0.25
+mix_target = 1
+max_polyphony = 2
+bus = &"Abyss"
+
+[node name="JumpscareFace" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(0.5, 0.5, 0.5, 0.568627)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_frmo0")
+
+[node name="AbyssAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7f7lv")
+}
+autoplay = "RESET"
+
+[connection signal="finished" from="AbyssAudioCue" to="." method="_on_abyss_audio_cue_finished"]

@@ -1,0 +1,63 @@
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://dwaem8l8ikyfk"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_j4mty"]
+resource_name = "Phaser"
+range_max_hz = 1222.99
+feedback = 0.5
+depth = 0.7
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_yphwx"]
+resource_name = "Distortion"
+mode = 4
+pre_gain = -2.0
+drive = 0.08
+post_gain = -2.94
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_p65qr"]
+resource_name = "Chorus"
+voice_count = 3
+wet = 0.4
+voice/1/delay_ms = 13.3
+voice/1/rate_hz = 2.2
+voice/1/depth_ms = 2.23
+voice/1/level_db = -3.8
+voice/3/delay_ms = 12.0
+voice/3/rate_hz = 1.0
+voice/3/depth_ms = 0.0
+voice/3/level_db = 0.0
+voice/3/cutoff_hz = 16000.0
+voice/3/pan = 0.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_k5bat"]
+resource_name = "Limiter"
+ceiling_db = -2.0
+threshold_db = -15.0
+soft_clip_db = 0.8
+
+[resource]
+bus/1/name = &"BGM"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"Abyss"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -1.51925
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = SubResource("AudioEffectPhaser_j4mty")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectDistortion_yphwx")
+bus/3/effect/1/enabled = false
+bus/3/effect/2/effect = SubResource("AudioEffectChorus_p65qr")
+bus/3/effect/2/enabled = true
+bus/3/effect/3/effect = SubResource("AudioEffectLimiter_k5bat")
+bus/3/effect/3/enabled = true

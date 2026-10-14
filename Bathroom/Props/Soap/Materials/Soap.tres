@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bmm1tpmatvx0w"]
+
+[ext_resource type="Texture2D" uid="uid://cfay7o2n8og0h" path="res://Bathroom/Props/Soap/Textures/Soap_Soap_normal.png" id="1_nli5r"]
+
+[resource]
+resource_name = "Soap"
+cull_mode = 2
+albedo_color = Color(0.905946, 0.906687, 0.61816, 1)
+roughness = 0.452174
+normal_enabled = true
+normal_texture = ExtResource("1_nli5r")

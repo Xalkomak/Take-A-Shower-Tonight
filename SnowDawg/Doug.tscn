@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct4r0u0rt2pon"]
+
+[ext_resource type="PackedScene" uid="uid://bwp6mdygv6864" path="res://SnowDawg/SnowDawg.glb" id="1_1o60s"]
+[ext_resource type="Script" path="res://Bathroom/Props/Displaceable.gd" id="2_1bpf2"]
+
+[node name="Doug" instance=ExtResource("1_1o60s")]
+script = ExtResource("2_1bpf2")
+
+[node name="SnowDawg" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

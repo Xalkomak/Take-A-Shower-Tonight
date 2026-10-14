@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://6rwnrod65e4d"]
+
+[resource]
+resource_name = "LightBase"
+albedo_color = Color(0.484529, 0.484529, 0.484529, 1)
+roughness = 0.5

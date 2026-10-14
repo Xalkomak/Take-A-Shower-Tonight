@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://k57yk8t85p8m"]
+
+[resource]
+resource_name = "GlassShelf"
+transparency = 2
+alpha_scissor_threshold = 0.6
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 1.0
+cull_mode = 2
+depth_draw_mode = 2
+diffuse_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+disable_receive_shadows = true

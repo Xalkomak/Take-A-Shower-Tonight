@@ -1,0 +1,124 @@
+[gd_scene load_steps=16 format=3 uid="uid://bcwey6fe7pb8i"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/Game.gd" id="1_h3lae"]
+[ext_resource type="PackedScene" uid="uid://01r7u8ga5raf" path="res://Bathroom/Bathroom.tscn" id="2_po6qj"]
+[ext_resource type="PackedScene" uid="uid://lstsmhc54ifw" path="res://Player/player.tscn" id="3_u437r"]
+[ext_resource type="Script" path="res://FPSCount.gd" id="4_3b5nw"]
+[ext_resource type="PackedScene" uid="uid://7fwvm8nnekdw" path="res://Monsters/Windowsill/Windowsill.tscn" id="5_pqkg5"]
+[ext_resource type="PackedScene" uid="uid://dyx361mt1s8yn" path="res://Monsters/Peeping Tom/PeepingTomMockup.tscn" id="6_dfut2"]
+[ext_resource type="PackedScene" uid="uid://djtdd3obrhql0" path="res://Monsters/Burglar/BurglarMockup.tscn" id="6_pfxyy"]
+[ext_resource type="PackedScene" uid="uid://vy0k3gvm1c0u" path="res://Monsters/Vapor/VaporMockup.tscn" id="7_ult5a"]
+[ext_resource type="PackedScene" uid="uid://cew0632kyrkcg" path="res://Monsters/Abyss/AbyssMockup.tscn" id="7_w22cl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6eo4"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_pjjjg"]
+sky_material = SubResource("ProceduralSkyMaterial_a6eo4")
+
+[sub_resource type="Environment" id="Environment_raswh"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_pjjjg")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+sdfgi_cascades = 1
+sdfgi_y_scale = 0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_upng8"]
+density = -1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypmj7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ula4m"]
+bg_color = Color(0.103091, 0.479634, 0.0631751, 1)
+skew = Vector2(0.21, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 10.0
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[node name="Game" type="Node3D"]
+editor_description = "The main game scene."
+script = ExtResource("1_h3lae")
+steam_buildup_rate = 0.4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_raswh")
+
+[node name="Bathroom" parent="." instance=ExtResource("2_po6qj")]
+
+[node name="ShowerSteam" type="Node3D" parent="."]
+
+[node name="Steam" type="FogVolume" parent="ShowerSteam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
+size = Vector3(2.4, 3, 4.46231)
+material = SubResource("FogMaterial_upng8")
+
+[node name="Player" parent="." instance=ExtResource("3_u437r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.377842, 0.9, -0.65401)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.607)
+size = Vector3(2.5, 0.02, 1.2)
+
+[node name="PeepingTomMockup" parent="." instance=ExtResource("6_dfut2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Windowsill" parent="." instance=ExtResource("5_pqkg5")]
+
+[node name="BurglarMockup" parent="." instance=ExtResource("6_pfxyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="AbyssMockup" parent="." instance=ExtResource("7_w22cl")]
+
+[node name="VaporMockup" parent="." instance=ExtResource("7_ult5a")]
+offset = Vector2(0, 1.7)
+transform = Transform2D(1, 0, 0, 1, 0, 1.7)
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="FPSLabel" type="Label" parent="GameUI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 33.0
+text = "FPS: 0"
+script = ExtResource("4_3b5nw")
+
+[node name="ShowerProgress" type="ProgressBar" parent="GameUI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(576, 8)
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_ypmj7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ula4m")
+max_value = 200.0
+show_percentage = false
+
+[connection signal="state_changed" from="Windowsill" to="." method="_on_windowsill_state_changed"]
+[connection signal="jumpscared" from="AbyssMockup" to="." method="_on_abyss_vapor_jumpscared"]
+[connection signal="jumpscared" from="VaporMockup" to="." method="_on_abyss_vapor_jumpscared"]

@@ -1,0 +1,85 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bbc3mt8kgo8k4"
+path="res://.godot/imported/Window.glb-3e731f1d1d8d3907dc21ad889d639598.scn"
+
+[deps]
+
+source_file="res://Window/Window.glb"
+dest_files=["res://.godot/imported/Window.glb-3e731f1d1d8d3907dc21ad889d639598.scn"]
+
+[params]
+
+nodes/root_type="AnimatableBody3D"
+nodes/root_name="Window"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"Glass_material": {
+"use_external/enabled": true,
+"use_external/path": "res://Window/Materials/Glass_material.tres"
+},
+"Handle_material": {
+"use_external/enabled": true,
+"use_external/path": "res://Window/Materials/Handle_material.tres"
+},
+"WindowFrame": {
+"use_external/enabled": true,
+"use_external/path": "res://Window/Materials/WindowFrame.tres"
+},
+"Window_material": {
+"use_external/enabled": true,
+"use_external/path": "res://Window/Materials/Window_material.tres"
+}
+},
+"meshes": {
+"Window_Handle": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Window/Meshes/Window_Handle.res"
+},
+"Window_WindowFrane": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Window/Meshes/Window_WindowFrane.res"
+},
+"Window_Window_R": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Window/Meshes/Window_Window_R.res"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

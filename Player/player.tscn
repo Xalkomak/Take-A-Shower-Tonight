@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://lstsmhc54ifw"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_wpqhj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_to88l"]
+radius = 0.2
+height = 1.8
+radial_segments = 4
+rings = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6g8lt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ej0l8"]
+radius = 0.1
+
+[node name="Player" type="MeshInstance3D" groups=["Player"]]
+layers = 4
+transparency = 1.0
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CapsuleMesh_to88l")
+script = ExtResource("1_wpqhj")
+
+[node name="PlayerUI" type="CanvasLayer" parent="." groups=["player_ui"]]
+
+[node name="PromptText" type="RichTextLabel" parent="PlayerUI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_top = 0.694
+anchor_right = 1.0
+anchor_bottom = 0.738
+offset_top = 0.287994
+offset_bottom = -0.223999
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 14)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6g8lt")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6g8lt")
+bbcode_enabled = true
+text = "[center]Player prompts here[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Crosshair" type="ColorRect" parent="PlayerUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="PlayerCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+current = true
+fov = 60.0
+near = 0.001
+far = 10.0
+
+[node name="InteractionRay" type="RayCast3D" parent="PlayerCam"]
+target_position = Vector3(0, 0, -5)
+collision_mask = 13
+collide_with_areas = true
+
+[node name="Pointer" type="Area3D" parent="PlayerCam/InteractionRay"]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCam/InteractionRay/Pointer"]
+shape = SubResource("SphereShape3D_ej0l8")

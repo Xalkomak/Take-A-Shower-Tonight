@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b56o5vuxjlp87"]
+
+[resource]
+resource_name = "ToiletSeat"
+cull_mode = 2
+albedo_color = Color(0.954687, 0.954687, 0.954687, 1)

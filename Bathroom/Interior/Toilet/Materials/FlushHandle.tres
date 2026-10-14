@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bd8ulq2qtm6l2"]
+
+[resource]
+resource_name = "FlushHandle"
+cull_mode = 2
+albedo_color = Color(0.0998528, 0.0998528, 0.0998528, 1)
+roughness = 0.8

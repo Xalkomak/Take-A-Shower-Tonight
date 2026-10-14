@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfaimkbeqiy5r"]
+
+[resource]
+resource_name = "TP_Wrap"
+transparency = 2
+alpha_scissor_threshold = 0.723
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.52
+cull_mode = 2
+depth_draw_mode = 1
+albedo_color = Color(0.07, 0.07, 0.07, 1)
+metallic_specular = 0.0
+roughness = 0.15

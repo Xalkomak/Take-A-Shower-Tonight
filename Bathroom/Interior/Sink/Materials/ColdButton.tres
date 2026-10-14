@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dlqb8ushol54m"]
+
+[resource]
+resource_name = "ColdButton"
+cull_mode = 2
+albedo_color = Color(0, 0, 1, 1)
+metallic = 0.7
+roughness = 0.3

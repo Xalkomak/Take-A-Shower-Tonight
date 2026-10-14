@@ -1,0 +1,183 @@
+[gd_scene load_steps=31 format=3 uid="uid://01r7u8ga5raf"]
+
+[ext_resource type="PackedScene" uid="uid://btylsm60ras2m" path="res://Bathroom/Bathroom.glb" id="1_yythx"]
+[ext_resource type="PackedScene" uid="uid://d26pp0y17crh0" path="res://Bathroom/Interior/Sink/Sink.tscn" id="3_lxy4t"]
+[ext_resource type="PackedScene" uid="uid://cmv0yapnjk6ak" path="res://Bathroom/Interior/Door/Door.tscn" id="4_rsi1p"]
+[ext_resource type="PackedScene" uid="uid://ds5wermgvyg3s" path="res://Bathroom/Interior/Shower/Shower.tscn" id="5_cbrts"]
+[ext_resource type="PackedScene" uid="uid://cqadi0wcx3dy2" path="res://Curtain/Curtain.tscn" id="6_u6ptp"]
+[ext_resource type="PackedScene" uid="uid://cwymx6riqqj6l" path="res://Window/Window.tscn" id="7_h3ymr"]
+[ext_resource type="PackedScene" uid="uid://dy2fui0uj02vk" path="res://LightSource/LightSource.tscn" id="7_pjy6t"]
+[ext_resource type="PackedScene" uid="uid://80x1rwsuff8f" path="res://Bathroom/Interior/Toilet/Toilet.tscn" id="8_dq4tq"]
+[ext_resource type="PackedScene" uid="uid://cgoa0sk3hsgf6" path="res://Bathroom/Interior/ToiletPaperRolled/ToiletPaperRolled.glb" id="9_4ldck"]
+[ext_resource type="ArrayMesh" uid="uid://cyljljv50gtg4" path="res://Bathroom/Interior/GlassShelves/Meshes/GlassShelves_glassShelf_001.res" id="10_cj5hp"]
+[ext_resource type="ArrayMesh" uid="uid://cxdr3qlvxcart" path="res://Bathroom/Interior/GlassShelves/Meshes/GlassShelves_glassShelf.res" id="11_cvre3"]
+[ext_resource type="PackedScene" uid="uid://nxb8khsdibkn" path="res://Bathroom/Interior/SoapDish/SoapDish.glb" id="11_ftdbe"]
+[ext_resource type="PackedScene" uid="uid://b5eb33tjo7dn0" path="res://Bathroom/Interior/Mirror/Mirror.glb" id="12_u32f0"]
+[ext_resource type="PackedScene" uid="uid://bwp6mdygv6864" path="res://SnowDawg/SnowDawg.glb" id="14_7x7am"]
+[ext_resource type="ArrayMesh" uid="uid://ol05iwu2ewsy" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t4Mesh.res" id="14_ydego"]
+[ext_resource type="PackedScene" uid="uid://c81jy5iubugjl" path="res://Bathroom/Props/ToiletPapers/ToiletPapers.glb" id="15_5gkqe"]
+[ext_resource type="ArrayMesh" uid="uid://db4uaeikva1wg" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t3Mesh.res" id="15_vv4sk"]
+[ext_resource type="ArrayMesh" uid="uid://buk230tw0oyqr" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t1Mesh.res" id="16_kqu0r"]
+[ext_resource type="Script" path="res://Bathroom/Props/Displaceable.gd" id="17_1i3o2"]
+[ext_resource type="PackedScene" uid="uid://ehylsceoglr1" path="res://Bathroom/Props/GodotPlush/GodotPlush.glb" id="17_imor0"]
+[ext_resource type="ArrayMesh" uid="uid://cin6t0o62cdgl" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t2Mesh.res" id="17_rdqrt"]
+[ext_resource type="PackedScene" uid="uid://cwhsud5yemhqr" path="res://Monsters/LightsOut/LightsOutMockup.tscn" id="18_2xylu"]
+[ext_resource type="ArrayMesh" uid="uid://daxg7lwtsvrqp" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t5Mesh.res" id="18_stkum"]
+[ext_resource type="PackedScene" uid="uid://butapvxsnrcs" path="res://Bathroom/Props/Soap/Soap.tscn" id="21_2ckuq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ritky"]
+size = Vector3(2.4, 0.001, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m5m80"]
+size = Vector3(2.4, 0.001, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxfiq"]
+size = Vector3(2.4, 3, 0.001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd74b"]
+size = Vector3(2.4, 3, 0.001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67c7j"]
+size = Vector3(0.001, 3, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w63wq"]
+size = Vector3(0.001, 3, 5)
+
+[node name="Bathroom" instance=ExtResource("1_yythx")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000499964, -2.5)
+shape = SubResource("BoxShape3D_ritky")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9995, -2.5)
+shape = SubResource("BoxShape3D_m5m80")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.000499964)
+shape = SubResource("BoxShape3D_yxfiq")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.9995)
+shape = SubResource("BoxShape3D_bd74b")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1995, 1.5, -2.5)
+shape = SubResource("BoxShape3D_67c7j")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1995, 1.5, -2.5)
+shape = SubResource("BoxShape3D_w63wq")
+
+[node name="Sink" parent="." index="6" instance=ExtResource("3_lxy4t")]
+
+[node name="Door" parent="." index="7" instance=ExtResource("4_rsi1p")]
+
+[node name="Shower" parent="." index="8" instance=ExtResource("5_cbrts")]
+
+[node name="Curtain" parent="." index="9" instance=ExtResource("6_u6ptp")]
+
+[node name="LightSource" parent="." index="10" instance=ExtResource("7_pjy6t")]
+
+[node name="Window" parent="." index="11" instance=ExtResource("7_h3ymr")]
+
+[node name="Toilet" parent="." index="12" instance=ExtResource("8_dq4tq")]
+
+[node name="ToiletPaperRolled2" parent="." index="13" instance=ExtResource("9_4ldck")]
+
+[node name="GlassShelves" type="Node3D" parent="." index="14"]
+
+[node name="GlassShelf" type="MeshInstance3D" parent="GlassShelves" index="0"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.06, 1.825, -3.41)
+mesh = ExtResource("10_cj5hp")
+skeleton = NodePath("")
+
+[node name="GlassShelf_001" type="MeshInstance3D" parent="GlassShelves" index="1"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.06, 1.625, -2.08)
+mesh = ExtResource("11_cvre3")
+skeleton = NodePath("")
+
+[node name="SoapDish" parent="." index="15" instance=ExtResource("11_ftdbe")]
+
+[node name="Mirror" parent="." index="16" instance=ExtResource("12_u32f0")]
+
+[node name="Toiletries" type="Node3D" parent="." index="17"]
+
+[node name="Toiletry1" type="MeshInstance3D" parent="Toiletries" index="0"]
+transform = Transform3D(-0.0840451, 0, 0.0541888, 0, 0.1, 0, -0.0541888, 0, -0.0840451, 1.09273, 1.83995, -3.77784)
+mesh = ExtResource("16_kqu0r")
+skeleton = NodePath("")
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(0.9, 0, -3.446), Vector3(0.387462, 0, -4.83895), Vector3(-1.03339, 1.23628, -2.66951)])
+
+[node name="Toiletry2" type="MeshInstance3D" parent="Toiletries" index="1"]
+transform = Transform3D(-0.0998692, 0, -0.00511346, 0, 0.1, 0, 0.00511346, 0, -0.0998692, 1.00228, 1.83995, -3.66247)
+mesh = ExtResource("17_rdqrt")
+skeleton = NodePath("")
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(-0.691916, 0.502899, -2.6179), Vector3(0.951605, 1.91904, -2.93367), Vector3(1.09725, 0, -0.0728731)])
+
+[node name="Toiletry3" type="MeshInstance3D" parent="Toiletries" index="2"]
+transform = Transform3D(0.0501556, 0, -0.0865125, 0, 0.130758, 0, 0.0865125, 0, 0.0501556, 1.05775, 1.84, -3.5661)
+mesh = ExtResource("15_vv4sk")
+skeleton = NodePath("")
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(1.09725, 0, -1.115), Vector3(0.262523, 0, -4.875), Vector3(0.949525, 1.91969, -3.88897)])
+
+[node name="Toiletry4" type="MeshInstance3D" parent="Toiletries" index="3"]
+transform = Transform3D(0.0788845, 0, -0.0614592, 0, 0.1, 0, 0.0614592, 0, 0.0788845, 1.04898, 1.84, -3.45731)
+mesh = ExtResource("14_ydego")
+skeleton = NodePath("")
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(-0.657515, 0.50268, -3.03339), Vector3(-1.1038, 0, -2.84309), Vector3(0.945559, 2.98023e-08, -1.8126)])
+
+[node name="Toiletry5" type="MeshInstance3D" parent="Toiletries" index="4"]
+transform = Transform3D(-0.173396, 0, -0.122317, 0, 0.134452, 0, 0.122317, 0, -0.173396, 1.13064, 1.83995, -3.30495)
+mesh = ExtResource("18_stkum")
+skeleton = NodePath("")
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(1.05898, 1.83995, -3.04112), Vector3(1.14183, 2.50009, -4.70331), Vector3(-1.03339, 1.23628, -2.9542)])
+
+[node name="ToiletPapers" parent="." index="18" instance=ExtResource("15_5gkqe")]
+
+[node name="ToiletPaper" parent="ToiletPapers" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, -1.08373, 1.74, -1.95148)
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(-1.084, 0, -1.951), Vector3(0.905917, 1.05251, -4.39173)])
+
+[node name="TP_Wrap" parent="ToiletPapers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06846, 1.84, -2.34342)
+script = ExtResource("17_1i3o2")
+random_points = Array[Vector3]([Vector3(0.434644, 0, -3.3418), Vector3(0.518175, 0, -0.638255)])
+
+[node name="Soap" parent="." index="19" instance=ExtResource("21_2ckuq")]
+
+[node name="GodotPlush" parent="." index="21" instance=ExtResource("17_imor0")]
+transform = Transform3D(-0.504528, 0, -0.863396, 0, 1, 0, 0.863396, 0, -0.504528, -1.102, 1.63999, -1.72338)
+
+[node name="Doug" parent="." index="22" instance=ExtResource("14_7x7am")]
+
+[node name="Marker3D" type="Marker3D" parent="." index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="LightsOutMockup" parent="." index="24" node_paths=PackedStringArray("props") groups=["Monster_LO"] instance=ExtResource("18_2xylu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+props = [NodePath("../Toiletries/Toiletry1"), NodePath("../Toiletries/Toiletry2"), NodePath("../Toiletries/Toiletry3"), NodePath("../Toiletries/Toiletry4"), NodePath("../Toiletries/Toiletry5"), NodePath("../ToiletPapers/ToiletPaper"), NodePath("../ToiletPapers/TP_Wrap")]
+
+[node name="SpawnPoints" type="Node" parent="." index="25"]
+
+[node name="SpawnPointer0" type="Marker3D" parent="SpawnPoints" index="0" groups=["SpawnPoints"]]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.19606, 1.39584, -4.12667)
+
+[node name="SpawnPointer1" type="Marker3D" parent="SpawnPoints" index="1" groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.600617, 2.49074, -4.99638)
+
+[node name="SpawnPointer2" type="Marker3D" parent="SpawnPoints" index="2" groups=["SpawnPoints"]]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 1.19527, 1.82581, -2.19439)
+
+[node name="SpawnPointer3" type="Marker3D" parent="SpawnPoints" index="3" groups=["SpawnPoints"]]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 1.19527, 2.43291, -0.601245)
+
+[editable path="Sink"]
+[editable path="Mirror"]
+[editable path="ToiletPapers"]

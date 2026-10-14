@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqadi0wcx3dy2"]
+
+[ext_resource type="PackedScene" uid="uid://lttpdk48277f" path="res://Curtain/Curtain.glb" id="1_pdymx"]
+[ext_resource type="Script" path="res://Curtain/Scripts/Curtain.gd" id="2_odn4h"]
+[ext_resource type="Script" path="res://Interaction/interactable.gd" id="3_btv1y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7t7n"]
+size = Vector3(2.03119, 2.03561, 0.0657349)
+
+[node name="Curtain" groups=["curtain"] instance=ExtResource("1_pdymx")]
+script = ExtResource("2_odn4h")
+
+[node name="CurtainCol" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118103, 1.09636, -1.23686)
+shape = SubResource("BoxShape3D_m7t7n")
+
+[node name="CurtainControl" parent="CurtainBar" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0199996, 1, 0)
+
+[node name="CurtainSimulated" parent="CurtainBar/CurtainControl" index="0"]
+ignore_occlusion_culling = true
+
+[node name="AnimationPlayer" parent="." index="2"]
+speed_scale = 2.0
+
+[node name="Interactable" type="Node" parent="." index="3"]
+script = ExtResource("3_btv1y")
+interaction_mode = 1
+interact_prompt = "Open"
+interact_prompt_toggle = "Close"
+call_method = &"toggle_curtain"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://2g7xsfafqk2m"]
+
+[ext_resource type="Texture2D" uid="uid://dq752vj2vegvj" path="res://Monsters/Windowsill/Textures/Windowsill_Windowsill_Albedo.png" id="1_8sf0a"]
+
+[resource]
+resource_name = "Windowsill"
+cull_mode = 2
+albedo_texture = ExtResource("1_8sf0a")
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("1_8sf0a")

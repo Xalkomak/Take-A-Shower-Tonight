@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bj2tq20v4y2t4"]
+
+[ext_resource type="Texture2D" uid="uid://d2vaxg5vv1myc" path="res://Bathroom/Props/Toiletries/Textures/Toiletries_T4_Albedo.png" id="1_5sx2y"]
+
+[resource]
+resource_name = "Toiletry04"
+cull_mode = 2
+albedo_texture = ExtResource("1_5sx2y")
+roughness = 0.5

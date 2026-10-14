@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwymx6riqqj6l"]
+
+[ext_resource type="PackedScene" uid="uid://bbc3mt8kgo8k4" path="res://Window/Window.glb" id="1_2aeru"]
+[ext_resource type="Script" path="res://Window/Scripts/Window.gd" id="2_nj65e"]
+[ext_resource type="Script" path="res://Interaction/interactable.gd" id="2_ypboq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk6lo"]
+size = Vector3(0.767639, 0.749451, 0.117371)
+
+[sub_resource type="Animation" id="Animation_ux0ll"]
+resource_name = "Jumpscare"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window_Group/WindowFrame/Window_R:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.59698, 0), Vector3(0, 1.59698, 0), Vector3(0, 1.74882, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w0rrq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window_Group/WindowFrame/Window_R:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.589921, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_emeoq"]
+resource_name = "Window_Shut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window_Group/WindowFrame/Window_R:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.589921, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahyc4"]
+_data = {
+"Jumpscare": SubResource("Animation_ux0ll"),
+"RESET": SubResource("Animation_w0rrq"),
+"Window_Shut": SubResource("Animation_emeoq")
+}
+
+[node name="Window" groups=["window"] instance=ExtResource("1_2aeru")]
+script = ExtResource("2_nj65e")
+
+[node name="Window_R" parent="Window_Group/WindowFrame" index="0"]
+transform = Transform3D(0.830985, 0, 0.556295, 0, 1, 0, -0.556295, 0, 0.830985, 0.324, 0.052, 0.1)
+
+[node name="Handle" parent="Window_Group/WindowFrame/Window_R" index="0"]
+transform = Transform3D(1, -3.55271e-15, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.623, 0.323, -0.0492816)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106812, 1.67125, -0.00918823)
+shape = SubResource("BoxShape3D_gk6lo")
+
+[node name="Interactable" type="Node" parent="." index="2"]
+script = ExtResource("2_ypboq")
+interaction_mode = 1
+interact_prompt = "Close"
+interact_prompt_toggle = "Open"
+call_method = &"toggle_window"
+
+[node name="WindowAnim" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_ahyc4")
+}
+speed_scale = 1.2
+
+[connection signal="animation_finished" from="WindowAnim" to="." method="_on_window_anim_animation_finished"]

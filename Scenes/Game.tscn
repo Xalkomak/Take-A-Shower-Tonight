@@ -26,13 +26,14 @@ background_energy_multiplier = 0.0
 sky = SubResource("Sky_pjjjg")
 ambient_light_source = 3
 reflected_light_source = 2
-tonemap_mode = 2
 ssao_enabled = true
 sdfgi_enabled = true
 sdfgi_read_sky_light = false
 sdfgi_cascades = 1
 sdfgi_y_scale = 0
 glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 4
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
@@ -116,7 +117,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_ypmj7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ula4m")
-max_value = 200.0
+max_value = 500.0
 show_percentage = false
 
 [connection signal="state_changed" from="Windowsill" to="." method="_on_windowsill_state_changed"]

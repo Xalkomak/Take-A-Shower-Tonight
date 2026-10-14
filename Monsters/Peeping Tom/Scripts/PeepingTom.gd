@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 signal phase_changed(new_phase: Phases) ## Emitted when a new phase is entered.
 
-# NOTE: Set the inital wait time to 21 for release
+# NOTE: Set the inital Wait Time to 21 and Autostart to "True" for release
 
 const bathroom_area: Vector2 = Vector2(1.9, 3.4)
 const bathroom_area_center: Vector3 = Vector3(0, 0, -3.3)
@@ -22,14 +22,15 @@ enum Phases {
 @export var jump_speed: float = 0.2
 @export var observe_time_threshold: float = 0.9
 
+var can_be_observed: bool
 var current_phase: Phases = Phases.INACTIVE:
 	set(new_phase):
 		if current_phase != new_phase:
 			current_phase = new_phase
 			phase_changed.emit(new_phase)
 			jumpscare_cam.current = current_phase == Phases.JUMPSCARE
+		can_be_observed = current_phase == Phases.PEEPING or current_phase == Phases.RESISTING
 var rng: VectorRNG = VectorRNG.new()
-var can_be_observed: bool
 var is_observed: bool
 var observe_time_elapsed: float
 var max_jumps: int = 5
@@ -78,7 +79,7 @@ func _on_ptom_timer_timeout() -> void:
 				current_phase = Phases.JUMPSCARE
 
 func handle_being_observed(delta: float) -> void:
-	can_be_observed = current_phase == Phases.PEEPING or current_phase == Phases.RESISTING
+	#can_be_observed = current_phase == Phases.PEEPING or current_phase == Phases.RESISTING
 	
 	if not can_be_observed:
 		observe_time_elapsed = 0

@@ -103,40 +103,45 @@ states/Stall/node = SubResource("AnimationNodeAnimation_gve41")
 states/Stall/position = Vector2(488, 169)
 states/Start/position = Vector2(178, 100)
 transitions = ["Start", "Emerge", SubResource("AnimationNodeStateMachineTransition_wgn5n"), "Emerge", "KnockState", SubResource("AnimationNodeStateMachineTransition_so8tw"), "Emerge", "Stall", SubResource("AnimationNodeStateMachineTransition_its52"), "Stall", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_5ww7x"), "KnockState", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_emwp3"), "KnockState", "Emerge", SubResource("AnimationNodeStateMachineTransition_ws7fb"), "KnockState", "Default", SubResource("AnimationNodeStateMachineTransition_btj75"), "Default", "Emerge", SubResource("AnimationNodeStateMachineTransition_30mon")]
-graph_offset = Vector2(53, -21)
+graph_offset = Vector2(-1, -66)
 
 [node name="Windowsill" instance=ExtResource("1_by364")]
 script = ExtResource("2_apbue")
 
 [node name="Skeleton3D" parent="Windowsill_Rig" index="0"]
-bones/0/position = Vector3(0.169145, -0.0192085, 0.232488)
-bones/0/rotation = Quaternion(-0.00856197, 0.975532, -0.0386205, -0.216271)
+bones/0/position = Vector3(1.34849e-08, 1.39392, 1.2007)
+bones/0/rotation = Quaternion(1.87891e-07, 0.793889, -0.608063, -2.66493e-07)
 bones/0/scale = Vector3(1, 0.999999, 1)
-bones/3/rotation = Quaternion(-0.402218, -0.359964, 0.140334, 0.830032)
+bones/2/rotation = Quaternion(-0.43885, -0.571026, -0.371429, 0.585987)
+bones/3/rotation = Quaternion(0.296889, -0.474789, -0.511201, 0.652001)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.00066453, -1.99333e-07, 0.000738513, 1)
+bones/4/rotation = Quaternion(0.000989677, -1.98008e-07, -0.00315739, 0.999995)
+bones/5/rotation = Quaternion(5.70335e-07, -0.817372, 1.34298e-06, 0.57611)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.236166, -0.0228279, -0.0565931, 0.969795)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/scale = Vector3(1, 1, 1)
 bones/11/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(-0.531225, 0.500357, 0.462248, 0.503756)
+bones/12/rotation = Quaternion(-0.0966524, -1.37279e-07, -3.10025e-08, 0.995318)
+bones/13/rotation = Quaternion(-0.0438265, 1.05485e-08, -2.73753e-08, 0.999039)
+bones/14/rotation = Quaternion(-0.380838, -3.40835e-09, -1.5162e-07, 0.924642)
+bones/15/rotation = Quaternion(-0.43885, 0.571026, 0.371429, 0.585987)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(-0.402218, 0.359964, -0.140335, 0.830032)
+bones/16/rotation = Quaternion(0.296889, 0.474789, 0.511202, 0.652001)
 bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-0.000664502, -9.68134e-08, -0.000738548, 1)
+bones/17/rotation = Quaternion(0.000989688, -9.16486e-08, 0.00315741, 0.999995)
+bones/18/rotation = Quaternion(5.91195e-07, 0.817372, -1.36217e-06, 0.57611)
 bones/19/rotation = Quaternion(0.191176, 0.0924228, -0.296337, 0.931179)
 bones/20/rotation = Quaternion(-0.236166, 0.022828, 0.0565932, 0.969795)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.357274, 0.191211, 0.0642406, 0.911957)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/rotation = Quaternion(-0.0290658, 0.0504358, -0.0416941, 0.997433)
-bones/25/position = Vector3(0.637481, 0.168281, -0.0315643)
-bones/25/rotation = Quaternion(0.515173, 0.0528812, 0.778646, -0.354274)
+bones/25/position = Vector3(0.142581, 1.47466, -1.22727)
+bones/25/rotation = Quaternion(0.334431, 0.128307, 0.871693, -0.334431)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/position = Vector3(-0.334171, 0.168281, 0.421524)
-bones/26/rotation = Quaternion(-0.137835, 0.197649, 0.923415, 0.298733)
+bones/26/position = Vector3(-0.142581, 1.47466, -1.22727)
 bones/26/scale = Vector3(1, 1, 1)
 
 [node name="Windowsill" parent="Windowsill_Rig/Skeleton3D" index="0"]
@@ -156,6 +161,7 @@ autostart = true
 [node name="JumpscareCam" type="Camera3D" parent="." index="4"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.7, -0.654)
 cull_mask = 1048571
+current = true
 fov = 60.0
 near = 0.001
 far = 15.0

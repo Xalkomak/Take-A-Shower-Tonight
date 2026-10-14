@@ -11,6 +11,8 @@ enum Stages {
 	JUMPSCARE
 }
 
+## NOTE: Set initial wait time to 69 for release.
+
 @onready var lo_timer: Timer = $LOTimer
 
 @export var props: Array[Displaceable]

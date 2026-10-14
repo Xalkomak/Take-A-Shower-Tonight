@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://7fwvm8nnekdw"]
+[gd_scene format=3 uid="uid://7fwvm8nnekdw"]
 
 [ext_resource type="PackedScene" uid="uid://mrrrdpxfj2aa" path="res://Monsters/Windowsill/Windowsill.glb" id="1_by364"]
-[ext_resource type="Script" path="res://Monsters/Windowsill/Scripts/Windowsill.gd" id="2_apbue"]
+[ext_resource type="Script" uid="uid://b8hxwmppidoaj" path="res://Monsters/Windowsill/Scripts/Windowsill.gd" id="2_apbue"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_magyo"]
 animation = &"Default"
@@ -105,67 +105,59 @@ states/Start/position = Vector2(178, 100)
 transitions = ["Start", "Emerge", SubResource("AnimationNodeStateMachineTransition_wgn5n"), "Emerge", "KnockState", SubResource("AnimationNodeStateMachineTransition_so8tw"), "Emerge", "Stall", SubResource("AnimationNodeStateMachineTransition_its52"), "Stall", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_5ww7x"), "KnockState", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_emwp3"), "KnockState", "Emerge", SubResource("AnimationNodeStateMachineTransition_ws7fb"), "KnockState", "Default", SubResource("AnimationNodeStateMachineTransition_btj75"), "Default", "Emerge", SubResource("AnimationNodeStateMachineTransition_30mon")]
 graph_offset = Vector2(-1, -66)
 
-[node name="Windowsill" instance=ExtResource("1_by364")]
+[node name="Windowsill" unique_id=686102245 instance=ExtResource("1_by364")]
 script = ExtResource("2_apbue")
 
-[node name="Skeleton3D" parent="Windowsill_Rig" index="0"]
-bones/0/position = Vector3(1.34849e-08, 1.39392, 1.2007)
-bones/0/rotation = Quaternion(1.87891e-07, 0.793889, -0.608063, -2.66493e-07)
-bones/0/scale = Vector3(1, 0.999999, 1)
-bones/2/rotation = Quaternion(-0.43885, -0.571026, -0.371429, 0.585987)
-bones/3/rotation = Quaternion(0.296889, -0.474789, -0.511201, 0.652001)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.000989677, -1.98008e-07, -0.00315739, 0.999995)
-bones/5/rotation = Quaternion(5.70335e-07, -0.817372, 1.34298e-06, 0.57611)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.236166, -0.0228279, -0.0565931, 0.969795)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/scale = Vector3(1, 1, 1)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(-0.0966524, -1.37279e-07, -3.10025e-08, 0.995318)
-bones/13/rotation = Quaternion(-0.0438265, 1.05485e-08, -2.73753e-08, 0.999039)
-bones/14/rotation = Quaternion(-0.380838, -3.40835e-09, -1.5162e-07, 0.924642)
-bones/15/rotation = Quaternion(-0.43885, 0.571026, 0.371429, 0.585987)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(0.296889, 0.474789, 0.511202, 0.652001)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(0.000989688, -9.16486e-08, 0.00315741, 0.999995)
-bones/18/rotation = Quaternion(5.91195e-07, 0.817372, -1.36217e-06, 0.57611)
-bones/19/rotation = Quaternion(0.191176, 0.0924228, -0.296337, 0.931179)
-bones/20/rotation = Quaternion(-0.236166, 0.022828, 0.0565932, 0.969795)
-bones/20/scale = Vector3(1, 1, 1)
-bones/21/rotation = Quaternion(-0.357274, 0.191211, 0.0642406, 0.911957)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.0290658, 0.0504358, -0.0416941, 0.997433)
-bones/25/position = Vector3(0.142581, 1.47466, -1.22727)
-bones/25/rotation = Quaternion(0.334431, 0.128307, 0.871693, -0.334431)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/position = Vector3(-0.142581, 1.47466, -1.22727)
-bones/26/scale = Vector3(1, 1, 1)
+[node name="Skeleton3D" parent="Windowsill_Rig" parent_id_path=PackedInt32Array(1452495822) index="0" unique_id=1524506076]
+bones/0/position = Vector3(1.3484964e-08, -0.01920849, 0.001385059)
+bones/0/rotation = Quaternion(1.912946e-11, 0.9992173, -0.0395582, -3.260696e-07)
+bones/2/rotation = Quaternion(-0.5312249, -0.50035685, -0.46224824, 0.50375557)
+bones/3/rotation = Quaternion(-0.40221798, -0.35996428, 0.14033432, 0.83003175)
+bones/4/rotation = Quaternion(-0.00066449324, -1.788436e-07, 0.00073855894, 0.9999995)
+bones/5/rotation = Quaternion(-4.6777225e-07, -7.82311e-07, 4.6861723e-07, 1)
+bones/6/rotation = Quaternion(0.19117588, -0.092423014, 0.29633683, 0.931179)
+bones/7/rotation = Quaternion(-0.23616602, -0.022827873, -0.056593157, 0.9697947)
+bones/8/rotation = Quaternion(-0.3572744, -0.19121133, -0.06424051, 0.91195744)
+bones/9/rotation = Quaternion(0.21698673, -0.071245335, 0.13622236, 0.96399397)
+bones/10/rotation = Quaternion(-0.029065786, -0.050435822, 0.041694205, 0.99743325)
+bones/11/rotation = Quaternion(-0.040895652, -0.070611484, 0.05822457, 0.99496305)
+bones/12/rotation = Quaternion(-0.05771521, -1.374222e-07, -1.09172404e-08, 0.9983331)
+bones/13/rotation = Quaternion(0.031908415, 1.0443595e-08, 1.976866e-09, 0.9994908)
+bones/14/rotation = Quaternion(1.4901161e-08, 7.872175e-15, 1.2212453e-15, 1)
+bones/15/rotation = Quaternion(-0.5312251, 0.5003568, 0.4622481, 0.5037557)
+bones/16/rotation = Quaternion(-0.40221772, 0.3599643, -0.14033458, 0.83003175)
+bones/17/rotation = Quaternion(-0.00066451036, -5.58351e-08, -0.0007385936, 0.9999996)
+bones/18/rotation = Quaternion(-4.9303196e-07, 7.5250864e-07, -5.0921017e-07, 1)
+bones/19/rotation = Quaternion(0.19117577, 0.09242285, -0.29633692, 0.931179)
+bones/20/rotation = Quaternion(-0.23616599, 0.022827996, 0.056593213, 0.96979475)
+bones/21/rotation = Quaternion(-0.35727444, 0.19121149, 0.06424066, 0.91195744)
+bones/22/rotation = Quaternion(0.21698682, 0.071245305, -0.1362225, 0.9639939)
+bones/23/rotation = Quaternion(-0.029065775, 0.050435834, -0.041694112, 0.99743325)
+bones/24/rotation = Quaternion(-0.040895637, 0.07061153, -0.058224622, 0.99496305)
+bones/25/position = Vector3(0.5360492, 0.16828108, -0.040000133)
+bones/26/position = Vector3(-0.5360492, 0.16828108, -0.040000133)
 
-[node name="Windowsill" parent="Windowsill_Rig/Skeleton3D" index="0"]
+[node name="Windowsill" parent="Windowsill_Rig/Skeleton3D" index="0" unique_id=1173562201]
 layers = 8
 
-[node name="WindowsillAnimTree" type="AnimationTree" parent="." index="2"]
+[node name="WindowsillAnimTree" type="AnimationTree" parent="." index="2" unique_id=1783571482]
 active = false
 tree_root = SubResource("AnimationNodeStateMachine_w41ao")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/player_takes_bait = false
 
-[node name="WindowsillTimer" type="Timer" parent="." index="3"]
-wait_time = 47.0
+[node name="WindowsillTimer" type="Timer" parent="." index="3" unique_id=186186309]
+wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="JumpscareCam" type="Camera3D" parent="." index="4"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.7, -0.654)
+[node name="JumpscareCam" type="Camera3D" parent="." index="4" unique_id=781481799]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.7, -0.654)
 cull_mask = 1048571
 current = true
 fov = 60.0
 near = 0.001
 far = 15.0
 
-[connection signal="animation_finished" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_finished"]
 [connection signal="animation_started" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_started"]
 [connection signal="timeout" from="WindowsillTimer" to="." method="_on_windowsill_timer_timeout"]

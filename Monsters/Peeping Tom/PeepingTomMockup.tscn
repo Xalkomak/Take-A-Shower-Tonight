@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyx361mt1s8yn"]
+[gd_scene format=3 uid="uid://dyx361mt1s8yn"]
 
-[ext_resource type="Script" path="res://Monsters/Peeping Tom/Scripts/PeepingTom.gd" id="1_bcyqb"]
+[ext_resource type="Script" uid="uid://c7yeobugn3res" path="res://Monsters/Peeping Tom/Scripts/PeepingTom.gd" id="1_bcyqb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xx25p"]
 
@@ -16,37 +16,37 @@ size = Vector3(0.608, 0.338, 0.481)
 [sub_resource type="BoxMesh" id="BoxMesh_xwb1b"]
 size = Vector3(0.608, 0.338, 0.481)
 
-[node name="PeepingTomMockup" type="CharacterBody3D"]
+[node name="PeepingTomMockup" type="CharacterBody3D" unique_id=1255303090]
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_bcyqb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1587866847]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_xx25p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2003344999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 layers = 8
 mesh = SubResource("CapsuleMesh_xjy6q")
 
-[node name="PTomTimer" type="Timer" parent="."]
-wait_time = 21.0
+[node name="PTomTimer" type="Timer" parent="." unique_id=1949820943]
+wait_time = 5.0
 one_shot = true
 
-[node name="FaceTarget" type="Area3D" parent="."]
+[node name="FaceTarget" type="Area3D" parent="." unique_id=756565295]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51056, 0.314403)
 collision_layer = 8
 collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceTarget"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceTarget" unique_id=2030206955]
 shape = SubResource("BoxShape3D_yytib")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceTarget"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceTarget" unique_id=1855728690]
 layers = 8
 mesh = SubResource("BoxMesh_xwb1b")
 
-[node name="JumpscareCam" type="Camera3D" parent="."]
+[node name="JumpscareCam" type="Camera3D" parent="." unique_id=654237273]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 1.51772, 1.06639)
 fov = 60.0
 size = 1.465

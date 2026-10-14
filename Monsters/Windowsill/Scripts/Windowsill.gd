@@ -32,8 +32,8 @@ func _ready() -> void:
 	$JumpscareCam.current = false
 
 func _process(delta: float) -> void:
-	windowsill_anim_tree.set("parameters/conditions/player_takes_bait", max_knocks < 3 \
-	and not GlobalScript.game_window_closed)
+	windowsill_anim_tree.set("parameters/conditions/player_takes_bait",
+	max_knocks < 3 and not GlobalScript.game_window_closed)
 
 func set_knock_count() -> void:
 	max_knocks = knock_weights.pick_random()
@@ -42,18 +42,19 @@ func set_knock_count() -> void:
 func begin_wait() -> void:
 	match  current_state:
 		States.INACTIVE:
-			windowsill_timer.wait_time = rng.randf_range(20.0, 48.0)
+			windowsill_timer.wait_time = rng.randf_range(14.0, 18.0)
 		States.EMERGING:
 			windowsill_timer.wait_time = rng.randf_range(10.0, 16.0)
 		States.KNOCKING: #In case of Windowsill baiting the player
 			windowsill_timer.wait_time = rng.randf_range(2.0, 4.5)
 		States.STALLING:
-			windowsill_timer.wait_time = rng.randf_range(13.0, 20.0)
+			windowsill_timer.wait_time = rng.randf_range(23.0, 47.0)
 	
 	windowsill_timer.start()
 
 func increment_knock_count() -> void:
 	knock_count += 1
+	print("Knocked ", knock_count, " times")
 
 func check_bait() -> void:
 	if max_knocks == 3:
@@ -83,7 +84,3 @@ func _on_windowsill_anim_tree_animation_started(anim_name: StringName) -> void:
 		current_state = States.JUMPSCARE
 	if anim_name == "Knock_End":
 		state_changed.emit(States.INACTIVE)
-
-func _on_windowsill_anim_tree_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Emerge":
-		begin_wait()

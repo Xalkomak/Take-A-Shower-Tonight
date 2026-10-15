@@ -2100,7 +2100,7 @@ _subresources={
 "Emerge": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Monsters/Windowsill/Animations/Emerge.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://d370vbj03nuaa",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -4156,7 +4156,7 @@ _subresources={
 "Jumpscare": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Monsters/Windowsill/Animations/Jumpscare.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://c2apr6gixwjy6",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -8268,7 +8268,7 @@ _subresources={
 "Knock_Begin": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Monsters/Windowsill/Animations/Knock_Begin.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://bjoe7fhsuopf8",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -10324,7 +10324,7 @@ _subresources={
 "Knock_End": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Monsters/Windowsill/Animations/Knock_End.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://dxab0evdl11m6",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -12380,7 +12380,7 @@ _subresources={
 "Stall": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Monsters/Windowsill/Animations/Stall.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://ctlpuwevisiik",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,

@@ -4,6 +4,129 @@
 [ext_resource type="Script" uid="uid://rrbxsh4b1tmj" path="res://Monsters/LightsOut/Scripts/LightsOut.gd" id="2_8txsq"]
 [ext_resource type="Texture2D" uid="uid://delnpx36e0nll" path="res://Monsters/LightsOut/Assets/LightOut_normal.png" id="2_g6bft"]
 
+[sub_resource type="Animation" id="Animation_5atvf"]
+resource_name = "Jumpscare"
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightsOutJumpscare:offset_transform_scale")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.17, 0.2, 0.23, 0.5, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"jumpscare"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LightsOutJumpscare:position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(384, 104), Vector2(384, 104), Vector2(347, 77), Vector2(391, 116), Vector2(423, 73), Vector2(365, 114), Vector2(409, 95), Vector2(398, 134), Vector2(375, 99), Vector2(444, 92), Vector2(371, 136), Vector2(359, 99), Vector2(359, 140), Vector2(387, 115), Vector2(385, 94), Vector2(387, 131), Vector2(357, 101), Vector2(391, 99), Vector2(343, 113), Vector2(375, 125), Vector2(402, 82), Vector2(375, 110)]
+}
+
+[sub_resource type="Animation" id="Animation_6qlha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightsOutJumpscare:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LightsOutJumpscare:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 104)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwo7s"]
+_data = {
+&"Jumpscare": SubResource("Animation_5atvf"),
+&"RESET": SubResource("Animation_6qlha")
+}
+
 [node name="LightsOut" type="Decal" unique_id=1426443199]
 layers = 8
 size = Vector3(1, 1, 1)
@@ -20,6 +143,7 @@ autostart = true
 [node name="LOCanvasLayer" type="CanvasLayer" parent="." unique_id=440092248]
 
 [node name="Control" type="Control" parent="LOCanvasLayer" unique_id=775157264]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,8 +175,12 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 256)
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_o3mag")
 
 [node name="LOAnimPlayer" type="AnimationPlayer" parent="LOCanvasLayer/Control" unique_id=1419703498]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_fwo7s")
 
 [connection signal="timeout" from="LOTimer" to="." method="_on_lo_timer_timeout"]

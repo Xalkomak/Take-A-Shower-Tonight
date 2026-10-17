@@ -1,5 +1,13 @@
 extends Node
 
+enum MONSTERS {
+	PEEPING_TOM,
+	WINDOWSILL,
+	LIGHTS_OUT,
+	BURGLAR
+}
+var monster_name: MONSTERS
+
 var is_fullscreen: bool
 
 var game_window_closed: bool

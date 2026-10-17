@@ -14,6 +14,7 @@ enum Stages {
 ## NOTE: Set initial wait time to 69 for release.
 
 @onready var lo_timer: Timer = $LOTimer
+@onready var lo_anim_player: AnimationPlayer = %LOAnimPlayer
 
 @export var props: Array[Displaceable]
 
@@ -74,7 +75,7 @@ func _on_lo_timer_timeout() -> void:
 			global_transform = selected_point.global_transform
 		Stages.ASSAULT:
 			current_stage = Stages.JUMPSCARE
-			return
+			lo_anim_player.play("Jumpscare")
 	
 	lo_timer.start()
 
@@ -90,3 +91,6 @@ func displace_prop() -> void:
 		Stages.ANNOUNCEMENT, Stages.ASSAULT:
 			GlobalScript.lights_out_is_ready = true
 			prop.random_transform()
+
+func jumpscare() -> void:
+	EventBus.player_killed.emit(GlobalScript.MONSTERS.LIGHTS_OUT)

@@ -44,6 +44,7 @@ func _ready() -> void:
 	light.light_toggled.connect(on_light_toggled)
 	lights_out_monster.stage_changed.connect(on_lo_stage_changed)
 	EventBus.game_soap_used.connect(on_soap_used)
+	EventBus.player_killed.connect(on_player_killed)
 #endregion
 	
 	shower_progress.value = 0
@@ -122,17 +123,6 @@ func on_lo_stage_changed(new_stage: LightsOut.Stages) -> void:
 		new_stage == LightsOut.Stages.ANNOUNCEMENT or
 		new_stage == LightsOut.Stages.ASSAULT
 	)
-	#match new_stage:
-		#LightsOut.Stages.INACTIVE:
-			#GlobalScript.lights_out_is_ready = false
-		#LightsOut.Stages.SUBTLE:
-			#GlobalScript.lights_out_is_ready = false
-		#LightsOut.Stages.ANNOUNCEMENT:
-			#GlobalScript.lights_out_is_ready = true
-		#LightsOut.Stages.ASSAULT:
-			#GlobalScript.lights_out_is_ready = true
-		#LightsOut.Stages.JUMPSCARE:
-			#GlobalScript.lights_out_is_ready = false
 
 func sdfgi_flickering() -> void:
 	world_environment.environment.sdfgi_energy = randf_range(0.0, 1.0) if GlobalScript.game_light_on else 0.0
@@ -140,5 +130,9 @@ func sdfgi_flickering() -> void:
 func _on_abyss_vapor_jumpscared() -> void:
 	shower_progress.value -= randf_range(20, 60)
 
-func on_soap_used():
+func on_soap_used() -> void:
 	soap_bonus = 2.5
+
+func on_player_killed(killed_by: GlobalScript.MONSTERS) -> void:
+	GlobalScript.monster_name = killed_by
+	get_tree().change_scene_to_packed(END_SCREEN)

@@ -1,17 +1,58 @@
 [gd_scene format=3 uid="uid://cwhsud5yemhqr"]
 
-[ext_resource type="Texture2D" uid="uid://dwawuj5jxbqj4" path="res://icon.svg" id="1_ce47p"]
+[ext_resource type="Texture2D" uid="uid://b73s6d4w6lhn5" path="res://Monsters/LightsOut/Assets/LightOut_base.png" id="1_o3mag"]
 [ext_resource type="Script" uid="uid://rrbxsh4b1tmj" path="res://Monsters/LightsOut/Scripts/LightsOut.gd" id="2_8txsq"]
+[ext_resource type="Texture2D" uid="uid://delnpx36e0nll" path="res://Monsters/LightsOut/Assets/LightOut_normal.png" id="2_g6bft"]
 
-[node name="LightsOutMockup" type="Decal" unique_id=1426443199]
+[node name="LightsOut" type="Decal" unique_id=1426443199]
 layers = 8
 size = Vector3(1, 1, 1)
-texture_albedo = ExtResource("1_ce47p")
+texture_albedo = ExtResource("1_o3mag")
+texture_normal = ExtResource("2_g6bft")
 cull_mask = 1048561
 script = ExtResource("2_8txsq")
 
 [node name="LOTimer" type="Timer" parent="." unique_id=755479199]
-wait_time = 15.0
+wait_time = 5.0
 one_shot = true
+autostart = true
+
+[node name="LOCanvasLayer" type="CanvasLayer" parent="." unique_id=440092248]
+
+[node name="Control" type="Control" parent="LOCanvasLayer" unique_id=775157264]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BG" type="ColorRect" parent="LOCanvasLayer/Control" unique_id=1107335911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LightsOutJumpscare" type="TextureRect" parent="LOCanvasLayer/Control" unique_id=1981813177]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(256, 256)
+texture = ExtResource("1_o3mag")
+
+[node name="LOAnimPlayer" type="AnimationPlayer" parent="LOCanvasLayer/Control" unique_id=1419703498]
 
 [connection signal="timeout" from="LOTimer" to="." method="_on_lo_timer_timeout"]

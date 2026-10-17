@@ -3,7 +3,7 @@ extends CanvasLayer
 
 signal jumpscared ## Emitted when Abyss jumpscares the player.
 
-@onready var fade_shader: ShaderMaterial = $VaporTexture.material as ShaderMaterial
+@onready var fade_shader: ShaderMaterial = $VaporNormal.material as ShaderMaterial
 @onready var vapor_anim: AnimationPlayer = $VaporAnim
 
 @export var fade_speed: float = 0.2

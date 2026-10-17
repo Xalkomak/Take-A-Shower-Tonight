@@ -108,36 +108,36 @@ graph_offset = Vector2(-1, -66)
 [node name="Windowsill" unique_id=686102245 instance=ExtResource("1_by364")]
 script = ExtResource("2_apbue")
 
-[node name="Skeleton3D" parent="Windowsill_Rig" parent_id_path=PackedInt32Array(1312040423) index="0" unique_id=856810886]
-bones/0/position = Vector3(1.3484963e-08, 0.68079156, -0.01810747)
+[node name="Skeleton3D" parent="Windowsill_Rig" parent_id_path=PackedInt32Array(1806141102) index="0" unique_id=1531403625]
+bones/0/position = Vector3(1.3484964e-08, -0.01920849, 0.001385059)
 bones/0/rotation = Quaternion(1.912946e-11, 0.9992173, -0.0395582, -3.260696e-07)
-bones/2/rotation = Quaternion(-0.5998956, -0.41361958, -0.38405412, 0.5670508)
-bones/3/rotation = Quaternion(0.021886578, -0.34145278, -0.620363, 0.7057484)
-bones/4/rotation = Quaternion(0.9018133, -5.5767e-08, 0.11367061, 0.41690737)
-bones/5/rotation = Quaternion(0.028966296, -0.68799937, 0.04234841, 0.7238954)
-bones/6/rotation = Quaternion(0.041527838, -0.17267895, 0.6020953, 0.7784206)
-bones/7/rotation = Quaternion(-0.18932712, 0.14300719, 0.6145956, 0.7523141)
-bones/8/rotation = Quaternion(-0.4018151, -0.0385582, 0.3368694, 0.8506333)
-bones/9/rotation = Quaternion(0.09728928, -0.20662487, 0.79410154, 0.563244)
-bones/10/rotation = Quaternion(-0.16037418, -0.0876088, 0.40347472, 0.8965562)
-bones/11/rotation = Quaternion(-0.1514764, -0.048056178, 0.6259969, 0.76346153)
+bones/2/rotation = Quaternion(-0.5312249, -0.50035685, -0.46224824, 0.50375557)
+bones/3/rotation = Quaternion(-0.40221798, -0.35996428, 0.14033432, 0.83003175)
+bones/4/rotation = Quaternion(-0.00066449324, -1.788436e-07, 0.00073855894, 0.9999995)
+bones/5/rotation = Quaternion(-4.6777225e-07, -7.82311e-07, 4.6861723e-07, 1)
+bones/6/rotation = Quaternion(0.19117588, -0.092423014, 0.29633683, 0.931179)
+bones/7/rotation = Quaternion(-0.23616602, -0.022827873, -0.056593157, 0.9697947)
+bones/8/rotation = Quaternion(-0.3572744, -0.19121133, -0.06424051, 0.91195744)
+bones/9/rotation = Quaternion(0.21698673, -0.071245335, 0.13622236, 0.96399397)
+bones/10/rotation = Quaternion(-0.029065786, -0.050435822, 0.041694205, 0.99743325)
+bones/11/rotation = Quaternion(-0.040895652, -0.070611484, 0.05822457, 0.99496305)
 bones/12/rotation = Quaternion(-0.05771521, -1.374222e-07, -1.09172404e-08, 0.9983331)
 bones/13/rotation = Quaternion(0.031908415, 1.0443595e-08, 1.976866e-09, 0.9994908)
 bones/14/rotation = Quaternion(1.4901161e-08, 7.872175e-15, 1.2212453e-15, 1)
 bones/15/rotation = Quaternion(-0.5312251, 0.5003568, 0.4622481, 0.5037557)
-bones/16/rotation = Quaternion(-0.513448, 0.70151246, -0.018908186, 0.49385616)
-bones/17/rotation = Quaternion(-0.66661197, 0, 0.57202595, 0.47792763)
-bones/18/rotation = Quaternion(0.043558355, -0.44008988, -0.12511493, 0.88812715)
-bones/19/rotation = Quaternion(0.23145722, 0.013673719, -0.16750666, 0.9582183)
-bones/20/rotation = Quaternion(-0.10138479, 0.090169184, 0.098193064, 0.9858747)
-bones/21/rotation = Quaternion(-0.26227415, 0.07125352, 0.16910307, 0.9473856)
-bones/22/rotation = Quaternion(0.22172087, 0.05476328, -0.06350715, 0.9714977)
-bones/23/rotation = Quaternion(0.0068750614, 0.048238534, 0.008537006, 0.9987758)
-bones/24/rotation = Quaternion(0.039519586, 0.06360117, 0.04981308, 0.99594766)
-bones/25/position = Vector3(0.21908024, 1.4282361, -0.22454996)
-bones/26/position = Vector3(-0.21611392, 1.4830067, 0.031712055)
+bones/16/rotation = Quaternion(-0.40221772, 0.3599643, -0.14033458, 0.83003175)
+bones/17/rotation = Quaternion(-0.00066451036, -5.58351e-08, -0.0007385936, 0.9999996)
+bones/18/rotation = Quaternion(-4.9303196e-07, 7.5250864e-07, -5.0921017e-07, 1)
+bones/19/rotation = Quaternion(0.19117577, 0.09242285, -0.29633692, 0.931179)
+bones/20/rotation = Quaternion(-0.23616599, 0.022827996, 0.056593213, 0.96979475)
+bones/21/rotation = Quaternion(-0.35727444, 0.19121149, 0.06424066, 0.91195744)
+bones/22/rotation = Quaternion(0.21698682, 0.071245305, -0.1362225, 0.9639939)
+bones/23/rotation = Quaternion(-0.029065775, 0.050435834, -0.041694112, 0.99743325)
+bones/24/rotation = Quaternion(-0.040895637, 0.07061153, -0.058224622, 0.99496305)
+bones/25/position = Vector3(0.5360492, 0.16828108, -0.040000133)
+bones/26/position = Vector3(-0.5360492, 0.16828108, -0.040000133)
 
-[node name="Windowsill" parent="Windowsill_Rig/Skeleton3D" index="0" unique_id=1853880396]
+[node name="Windowsill" parent="Windowsill_Rig/Skeleton3D" index="0" unique_id=66698322]
 layers = 8
 
 [node name="WindowsillAnimTree" type="AnimationTree" parent="." index="2" unique_id=1783571482]
@@ -149,7 +149,6 @@ parameters/conditions/player_takes_bait = false
 [node name="WindowsillTimer" type="Timer" parent="." index="3" unique_id=186186309]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="4" unique_id=781481799]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.7, -0.654)

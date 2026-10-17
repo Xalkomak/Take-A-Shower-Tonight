@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://01r7u8ga5raf"]
+[gd_scene format=3 uid="uid://01r7u8ga5raf"]
 
 [ext_resource type="PackedScene" uid="uid://btylsm60ras2m" path="res://Bathroom/Bathroom.glb" id="1_yythx"]
 [ext_resource type="PackedScene" uid="uid://d26pp0y17crh0" path="res://Bathroom/Interior/Sink/Sink.tscn" id="3_lxy4t"]
@@ -18,10 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://c81jy5iubugjl" path="res://Bathroom/Props/ToiletPapers/ToiletPapers.glb" id="15_5gkqe"]
 [ext_resource type="ArrayMesh" uid="uid://db4uaeikva1wg" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t3Mesh.res" id="15_vv4sk"]
 [ext_resource type="ArrayMesh" uid="uid://buk230tw0oyqr" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t1Mesh.res" id="16_kqu0r"]
-[ext_resource type="Script" path="res://Bathroom/Props/Displaceable.gd" id="17_1i3o2"]
+[ext_resource type="Script" uid="uid://dwispijr1s8g3" path="res://Bathroom/Props/Displaceable.gd" id="17_1i3o2"]
 [ext_resource type="PackedScene" uid="uid://ehylsceoglr1" path="res://Bathroom/Props/GodotPlush/GodotPlush.glb" id="17_imor0"]
 [ext_resource type="ArrayMesh" uid="uid://cin6t0o62cdgl" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t2Mesh.res" id="17_rdqrt"]
-[ext_resource type="PackedScene" uid="uid://cwhsud5yemhqr" path="res://Monsters/LightsOut/LightsOutMockup.tscn" id="18_2xylu"]
+[ext_resource type="PackedScene" uid="uid://cwhsud5yemhqr" path="res://Monsters/LightsOut/LightsOut.tscn" id="18_2xylu"]
 [ext_resource type="ArrayMesh" uid="uid://daxg7lwtsvrqp" path="res://Bathroom/Props/Toiletries/Meshes/Toiletries_t5Mesh.res" id="18_stkum"]
 [ext_resource type="PackedScene" uid="uid://butapvxsnrcs" path="res://Bathroom/Props/Soap/Soap.tscn" id="21_2ckuq"]
 

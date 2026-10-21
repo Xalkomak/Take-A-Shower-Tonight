@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	pointer.global_position = interaction_ray.global_position
 	if interaction_ray.is_colliding() and allow_interact:
 		var collider = interaction_ray.get_collider()
-		if collider.has_meta(Interactable.META_NAME): # The object can be interacted with
+		if collider.has_meta(Interactable.META_IS_INTERACTABLE): # The object can be interacted with
 			handle_interactable(collider)
 		
 		if collider is Area3D:

@@ -133,6 +133,6 @@ func _on_abyss_vapor_jumpscared() -> void:
 func on_soap_used() -> void:
 	soap_bonus = 2.5
 
-func on_player_killed(killed_by: GlobalScript.MONSTERS) -> void:
+func on_player_killed(killed_by: GlobalScript.KILLED_BY) -> void:
 	GlobalScript.monster_name = killed_by
 	get_tree().change_scene_to_packed(END_SCREEN)

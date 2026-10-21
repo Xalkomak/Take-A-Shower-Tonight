@@ -155,7 +155,7 @@ _data = {
 &"RESET": SubResource("Animation_or70h")
 }
 
-[node name="VaporMockup" type="CanvasLayer" unique_id=749329262]
+[node name="Vapor" type="CanvasLayer" unique_id=749329262]
 layer = -1
 script = ExtResource("1_j6cv5")
 

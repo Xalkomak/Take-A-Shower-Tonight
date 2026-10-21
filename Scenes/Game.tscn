@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dyx361mt1s8yn" path="res://Monsters/Peeping Tom/PeepingTomMockup.tscn" id="6_dfut2"]
 [ext_resource type="PackedScene" uid="uid://djtdd3obrhql0" path="res://Monsters/Burglar/BurglarMockup.tscn" id="6_pfxyy"]
 [ext_resource type="PackedScene" uid="uid://vy0k3gvm1c0u" path="res://Monsters/Vapor/Vapor.tscn" id="7_ult5a"]
-[ext_resource type="PackedScene" uid="uid://cew0632kyrkcg" path="res://Monsters/Abyss/AbyssMockup.tscn" id="7_w22cl"]
+[ext_resource type="PackedScene" uid="uid://cew0632kyrkcg" path="res://Monsters/Abyss/Abyss.tscn" id="7_w22cl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6eo4"]
 sky_top_color = Color(0, 0, 0, 1)

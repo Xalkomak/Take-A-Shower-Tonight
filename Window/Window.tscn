@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwymx6riqqj6l"]
+[gd_scene format=3 uid="uid://cwymx6riqqj6l"]
 
 [ext_resource type="PackedScene" uid="uid://bbc3mt8kgo8k4" path="res://Window/Window.glb" id="1_2aeru"]
-[ext_resource type="Script" path="res://Window/Scripts/Window.gd" id="2_nj65e"]
-[ext_resource type="Script" path="res://Interaction/interactable.gd" id="2_ypboq"]
+[ext_resource type="Script" uid="uid://b0b3mqfoom7am" path="res://Window/Scripts/Window.gd" id="2_nj65e"]
+[ext_resource type="Script" uid="uid://sf54pkika7ml" path="res://Interaction/interactable.gd" id="2_ypboq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gk6lo"]
 size = Vector3(0.767639, 0.749451, 0.117371)
@@ -56,35 +56,33 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ahyc4"]
 _data = {
-"Jumpscare": SubResource("Animation_ux0ll"),
-"RESET": SubResource("Animation_w0rrq"),
-"Window_Shut": SubResource("Animation_emeoq")
+&"Jumpscare": SubResource("Animation_ux0ll"),
+&"RESET": SubResource("Animation_w0rrq"),
+&"Window_Shut": SubResource("Animation_emeoq")
 }
 
-[node name="Window" groups=["window"] instance=ExtResource("1_2aeru")]
+[node name="Window" unique_id=1329652201 groups=["window"] instance=ExtResource("1_2aeru")]
 script = ExtResource("2_nj65e")
 
 [node name="Window_R" parent="Window_Group/WindowFrame" index="0"]
-transform = Transform3D(0.830985, 0, 0.556295, 0, 1, 0, -0.556295, 0, 0.830985, 0.324, 0.052, 0.1)
+transform = Transform3D(0.8309848, 0, 0.55629545, 0, 1, 0, -0.55629545, 0, 0.8309848, 0.324, 0.052, 0.1)
 
 [node name="Handle" parent="Window_Group/WindowFrame/Window_R" index="0"]
 transform = Transform3D(1, -3.55271e-15, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.623, 0.323, -0.0492816)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1047925938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106812, 1.67125, -0.00918823)
 shape = SubResource("BoxShape3D_gk6lo")
 
-[node name="Interactable" type="Node" parent="." index="2"]
+[node name="Interactable" type="Node" parent="." index="2" unique_id=325509071]
 script = ExtResource("2_ypboq")
-interaction_mode = 1
+interaction_mode = 2
 interact_prompt = "Close"
 interact_prompt_toggle = "Open"
 call_method = &"toggle_window"
 
-[node name="WindowAnim" type="AnimationPlayer" parent="." index="3"]
-libraries = {
-"": SubResource("AnimationLibrary_ahyc4")
-}
+[node name="WindowAnim" type="AnimationPlayer" parent="." index="3" unique_id=47856335]
+libraries/ = SubResource("AnimationLibrary_ahyc4")
 speed_scale = 1.2
 
 [connection signal="animation_finished" from="WindowAnim" to="." method="_on_window_anim_animation_finished"]

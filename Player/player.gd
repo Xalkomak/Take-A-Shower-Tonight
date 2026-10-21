@@ -35,7 +35,7 @@ func handle_interactable(collider: Object) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if collider.has_meta(Interactable.META_HOLD): #Special case for Hold type interaction
 			interactable.process_interaction_event(true)
-			allow_rotate = false # Set to true or remove this line if you want the player to rotate
+			allow_rotate = false # Set to true or remove this line if you want the player to rotate, but this is prone to breaking the interaction system
 		else:
 			interactable.process_interaction_event()
 		

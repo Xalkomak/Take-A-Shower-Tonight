@@ -6,7 +6,6 @@ const META_NAME := "Interactable"
 const META_COMPONENT_NAME := "InteractableNodeName"
 const META_SWITCH := "Switch"
 const META_HOLD := "Hold"
-const META_ONESHOT := "Oneshot"
 #endregion
 
 enum InteractionMode {
@@ -23,10 +22,8 @@ enum InteractionMode {
 @export var call_method: StringName ## The method to call. If not found, it will print an error message.
 @export var delta_threshold: float = 0.2 ## How long before the component refuses to process interaction.
 
-var is_toggled: bool = false
-var is_held: bool
+var interaction_state: bool = false
 var parent_node: Node
-var component_name: String
 var elapsed: float = 0
 var receiving_input: bool
 
@@ -55,14 +52,12 @@ func register_meta() -> void:
 func get_prompt() -> String:
 	if allow_interact:
 		match interaction_mode:
-			InteractionMode.ONE_SHOT:
+			InteractionMode.ONE_SHOT, InteractionMode.ALWAYS:
 				return interact_prompt
 			InteractionMode.TOGGLE:
-				return interact_prompt if not is_toggled else interact_prompt_toggle
+				return interact_prompt if not interaction_state else interact_prompt_toggle
 			InteractionMode.HOLD:
-				return interact_prompt if not is_held else ""
-			InteractionMode.ALWAYS:
-				return interact_prompt
+				return interact_prompt if not interaction_state else ""
 	return ""
 
 func process_interaction_event(toggle: bool = false) -> void:
@@ -73,19 +68,15 @@ func process_interaction_event(toggle: bool = false) -> void:
 		InteractionMode.ONE_SHOT:
 			allow_interact = toggle
 		InteractionMode.TOGGLE:
-			is_toggled = not is_toggled
-			parent_node.set_meta(META_SWITCH, is_toggled)
+			interaction_state = not interaction_state
+			parent_node.set_meta(META_SWITCH, interaction_state)
 		InteractionMode.HOLD:
-			is_held = toggle
-			receiving_input = is_held
-			parent_node.set_meta(META_HOLD, is_held)
+			interaction_state = toggle
+			receiving_input = interaction_state
+			parent_node.set_meta(META_HOLD, interaction_state)
 		InteractionMode.ALWAYS:
 			pass
 		_:
 			printerr("Interaction mode not recognized or not listed above.")
 	
-	if parent_node.has_method(call_method):
-		var method = parent_node.call(call_method)
-	else:
-		printerr("Warning! Method name '", call_method, "' was not found!")
-		return 
+	parent_node.call(call_method) if parent_node.has_method(call_method) else printerr("Warning! Method name '", call_method, "' was not found!")

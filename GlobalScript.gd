@@ -1,12 +1,13 @@
 extends Node
 
-enum MONSTERS {
+enum KILLED_BY {
+	NONE,
 	PEEPING_TOM,
 	WINDOWSILL,
 	LIGHTS_OUT,
 	BURGLAR
 }
-var monster_name: MONSTERS
+var monster_name: KILLED_BY = KILLED_BY.NONE
 
 var is_fullscreen: bool
 

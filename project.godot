@@ -35,12 +35,13 @@ EventBus="*res://EventBus.gd"
 
 gdscript/warnings/unused_variable=0
 gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+gdscript/warnings/standalone_ternary=0
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/warnings/unused_variable=0
 

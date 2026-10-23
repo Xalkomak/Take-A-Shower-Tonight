@@ -38,7 +38,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_upng8"]
-density = -1.0
+density = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypmj7"]
 
@@ -67,8 +67,8 @@ environment = SubResource("Environment_raswh")
 
 [node name="Steam" type="FogVolume" parent="ShowerSteam" unique_id=27366492]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
-size = Vector3(2.4, 3, 4.46231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031543016, 1.5, -2.0983586)
+size = Vector3(3.3373046, 3, 8.210276)
 material = SubResource("FogMaterial_upng8")
 
 [node name="Player" parent="." unique_id=2134517391 instance=ExtResource("3_u437r")]
@@ -86,9 +86,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 [node name="BurglarMockup" parent="." unique_id=1888160662 instance=ExtResource("6_pfxyy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
 
-[node name="AbyssMockup" parent="." unique_id=1599138900 instance=ExtResource("7_w22cl")]
+[node name="Abyss" parent="." unique_id=1599138900 instance=ExtResource("7_w22cl")]
 
-[node name="VaporMockup" parent="." unique_id=888561946 instance=ExtResource("7_ult5a")]
+[node name="Vapor" parent="." unique_id=888561946 instance=ExtResource("7_ult5a")]
 offset = Vector2(0, 1.7)
 transform = Transform2D(1, 0, 0, 1, 0, 1.7)
 
@@ -121,5 +121,5 @@ max_value = 500.0
 show_percentage = false
 
 [connection signal="state_changed" from="Windowsill" to="." method="_on_windowsill_state_changed"]
-[connection signal="jumpscared" from="AbyssMockup" to="." method="_on_abyss_vapor_jumpscared"]
-[connection signal="jumpscared" from="VaporMockup" to="." method="_on_abyss_vapor_jumpscared"]
+[connection signal="jumpscared" from="Abyss" to="." method="_on_abyss_vapor_jumpscared"]
+[connection signal="jumpscared" from="Vapor" to="." method="_on_abyss_vapor_jumpscared"]

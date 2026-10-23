@@ -76,7 +76,7 @@ shape = SubResource("BoxShape3D_gk6lo")
 
 [node name="Interactable" type="Node" parent="." index="2" unique_id=325509071]
 script = ExtResource("2_ypboq")
-interaction_mode = 2
+interaction_mode = 1
 interact_prompt = "Close"
 interact_prompt_toggle = "Open"
 call_method = &"toggle_window"

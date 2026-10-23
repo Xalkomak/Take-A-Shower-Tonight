@@ -5,11 +5,24 @@ extends MeshInstance3D
 @onready var player_cam: Camera3D = $PlayerCam
 @onready var prompt_text: RichTextLabel = %PromptText
 @onready var pointer: Area3D = %Pointer
+@onready var crosshair: ColorRect = $PlayerUI/Crosshair
+@onready var soap_blindness_shader: ShaderMaterial = $PlayerUI/SoapBlindness.material as ShaderMaterial
 
 @export var sensitivity: float = 4.0
 @export var allow_interact: bool = true
 
 var allow_rotate: bool = true
+var soap_effect: float = 0.0
+
+func _ready() -> void:
+	EventBus.game_soap_used.connect(on_soap_used)
+
+func _process(delta: float) -> void:
+	soap_blindness_shader.set_shader_parameter("soap_amount", clamp(GlobalScript.soap_bonus / 2.5, 0.0, 1.0))
+	
+	allow_interact = GlobalScript.soap_bonus < 0.2
+	crosshair.visible = GlobalScript.soap_bonus < 0.2
+	prompt_text.visible = GlobalScript.soap_bonus < 0.2
 
 func _physics_process(delta: float) -> void:
 	prompt_text.text = ""
@@ -43,3 +56,10 @@ func handle_interactable(collider: Object) -> void:
 		allow_rotate = true
 		if collider.has_meta(Interactable.META_HOLD):
 			interactable.process_interaction_event(false)
+
+func on_soap_used() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_soap_amount, 0.0, 1.0, 0.2)
+
+func set_soap_amount(value: float) -> void:
+	soap_blindness_shader.set_shader_parameter("soap_amount", value)

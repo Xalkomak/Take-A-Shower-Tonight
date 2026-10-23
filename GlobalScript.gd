@@ -15,6 +15,7 @@ var game_window_closed: bool
 var game_shower_on: bool
 var game_curtain_open: bool
 var game_light_on: bool = true
+var soap_bonus: float = 0.0
 
 var lights_out_is_ready: bool
 

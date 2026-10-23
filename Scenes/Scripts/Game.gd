@@ -8,7 +8,7 @@ static var steam_density: float
 @onready var shower_progress: ProgressBar = %ShowerProgress
 @onready var steam: FogVolume = %Steam
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
-@onready var abyss: Abyss = $AbyssMockup
+@onready var abyss: Abyss = $Abyss
 @onready var player: Player = $Player
 
 @export var steam_buildup_rate: float = 1.0
@@ -18,7 +18,6 @@ var shower: Shower
 var window: WindowProp
 var light: LightMechanic
 var shower_multiplier: float = 1.0
-var soap_bonus: float = 0.0
 var shower_on: bool
 var curtain_open: bool
 var window_closed: bool
@@ -50,15 +49,15 @@ func _ready() -> void:
 	shower_progress.value = 0
 
 func _process(delta: float) -> void:
-	shower_multiplier = (1.0 if shower_on else 0.0) + (soap_bonus if shower_on else 0.0)
+	shower_multiplier = (1.0 if shower_on else 0.0) + GlobalScript.soap_bonus
 	if shower_on:
 		shower_multiplier += 0.75 if not curtain_open else 0.0
 	
 	shower_progress.value += delta * shower_multiplier
 	
-	soap_bonus -= delta * 0.5 # Adjust this magic number to determine how long the soap penalty lasts
-	soap_bonus = clamp(soap_bonus, 0.0, 2.5)
-	player.allow_interact = soap_bonus < 0.5
+	GlobalScript.soap_bonus -= delta * 0.5 # Adjust this magic number to determine how long the soap penalty lasts
+	GlobalScript.soap_bonus = clamp(GlobalScript.soap_bonus, 0.0, 2.5)
+	player.allow_interact = GlobalScript.soap_bonus < 0.5
 	
 	if shower_on and window_closed:
 		steam_density += delta * steam_buildup_rate
@@ -93,13 +92,9 @@ func on_shower_toggled(toggled: bool) -> void:
 
 func _on_windowsill_state_changed(new_state: Windowsill.States) -> void:
 	match new_state:
-		Windowsill.States.INACTIVE:
+		Windowsill.States.INACTIVE, Windowsill.States.EMERGING:
 			window.interactable.allow_interact = true
-		Windowsill.States.EMERGING:
-			window.interactable.allow_interact = true
-		Windowsill.States.KNOCKING:
-			window.interactable.allow_interact = false
-		Windowsill.States.STALLING:
+		Windowsill.States.KNOCKING, Windowsill.States.STALLING:
 			window.interactable.allow_interact = false
 		Windowsill.States.JUMPSCARE:
 			player.allow_interact = false
@@ -131,7 +126,7 @@ func _on_abyss_vapor_jumpscared() -> void:
 	shower_progress.value -= randf_range(20, 60)
 
 func on_soap_used() -> void:
-	soap_bonus = 2.5
+	GlobalScript.soap_bonus = 2.5 if shower_on else 0.0
 
 func on_player_killed(killed_by: GlobalScript.KILLED_BY) -> void:
 	GlobalScript.monster_name = killed_by

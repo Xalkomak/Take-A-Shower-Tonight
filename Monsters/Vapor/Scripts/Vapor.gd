@@ -1,7 +1,7 @@
 class_name Vapor
 extends CanvasLayer
 
-signal jumpscared ## Emitted when Abyss jumpscares the player.
+signal jumpscared ## Emitted when Vapor jumpscares the player.
 
 @onready var fade_shader: ShaderMaterial = $VaporNormal.material as ShaderMaterial
 @onready var vapor_anim: AnimationPlayer = $VaporAnim

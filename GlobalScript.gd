@@ -8,7 +8,7 @@ enum KILLED_BY {
 	LIGHTS_OUT,
 	BURGLAR
 }
-var monster_name: KILLED_BY = KILLED_BY.NONE
+var killed_by: KILLED_BY = KILLED_BY.NONE
 
 var is_fullscreen: bool
 

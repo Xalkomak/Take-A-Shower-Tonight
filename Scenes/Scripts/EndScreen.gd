@@ -34,8 +34,9 @@ const BURGLAR_DEATH_TIPS: Array[String] = [
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	temp_label.text = get_death_tip(GlobalScript.killed_by)
 
-func was_player_killed(killed_by: GlobalScript.KILLED_BY) -> String:
+func get_death_tip(killed_by: GlobalScript.KILLED_BY) -> String:
 	match killed_by:
 		GlobalScript.KILLED_BY.PEEPING_TOM:
 			return PEEPING_TOM_DEATH_TIPS.pick_random()

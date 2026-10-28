@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://ct3eu813dx6du"]
+
+[ext_resource type="PackedScene" uid="uid://b47mx1bkjsch4" path="res://Monsters/Burglar/Assets/Burglar.glb" id="1_o0kn1"]
+[ext_resource type="Script" uid="uid://bluya0d3m7qch" path="res://Monsters/Burglar/Scripts/Burglar.gd" id="2_87nbl"]
+
+[node name="Burglar" unique_id=1391874749 instance=ExtResource("1_o0kn1")]
+script = ExtResource("2_87nbl")
+
+[node name="Skeleton3D" parent="Burglar Rig" parent_id_path=PackedInt32Array(900437570) index="0" unique_id=833818500]
+bones/0/position = Vector3(-0.45151782, 7.450581e-09, -5.333027)
+bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/1/position = Vector3(0.14358355, 0.035840392, 0.10136578)
+bones/2/position = Vector3(0.0017569284, -0.36047035, 0.43290776)
+bones/2/rotation = Quaternion(0.99986875, 0, 0.016200023, 0)
+bones/3/position = Vector3(-0.14165325, 0.078777194, 0.10128631)
+bones/4/position = Vector3(-0.0017568674, -0.35561234, 0.43290767)
+bones/5/position = Vector3(0, 0.000399083, 0.96495146)
+bones/5/rotation = Quaternion(0.7378254, 2.3742246e-09, -2.5375302e-09, 0.6749916)
+bones/6/rotation = Quaternion(-0.027711295, -2.324865e-10, -1.3584379e-09, 0.99961597)
+bones/7/rotation = Quaternion(0.06083549, 1.19093784e-07, -8.065095e-10, 0.99814785)
+bones/8/rotation = Quaternion(-0.05103176, -1.4067684e-09, -1.640832e-08, 0.99869704)
+bones/9/rotation = Quaternion(0.1462227, -1.26885356e-08, -2.1560824e-07, 0.9892517)
+bones/10/rotation = Quaternion(-0.115829244, -0.002888169, -0.0011068917, 0.9932643)
+bones/11/rotation = Quaternion(-0.49715754, -0.36652693, -0.5703644, 0.54145813)
+bones/12/rotation = Quaternion(-0.50653267, -0.0061053904, -0.09704314, 0.85672045)
+bones/13/rotation = Quaternion(-0.12795895, -0.7171192, -0.1423567, 0.67015016)
+bones/14/rotation = Quaternion(-0.0006873873, 0.69156545, 0.005151595, 0.7222951)
+bones/15/rotation = Quaternion(-0.19789127, 0.016302526, -0.04648245, 0.97898555)
+bones/16/rotation = Quaternion(-0.2123907, -0.0071796807, 0.032994576, 0.97660124)
+bones/17/rotation = Quaternion(-0.21256681, 9.091548e-06, -1.8708504e-05, 0.97714657)
+bones/18/rotation = Quaternion(-0.30405077, -0.017440166, -0.012750126, 0.9524109)
+bones/19/rotation = Quaternion(-0.29222712, 0.01574351, -0.0042146053, 0.95621014)
+bones/20/rotation = Quaternion(-0.30512765, 1.0189293e-06, 3.3411692e-07, 0.95231146)
+bones/21/rotation = Quaternion(-0.5474078, -0.019802198, 0.007969663, 0.83659375)
+bones/22/rotation = Quaternion(-0.5611489, 0.018572224, -0.027450316, 0.8270511)
+bones/23/rotation = Quaternion(-0.5604666, -2.1604277e-05, 3.6804697e-05, 0.82817703)
+bones/24/rotation = Quaternion(-0.30702057, -0.016532488, -0.02047972, 0.9513389)
+bones/25/rotation = Quaternion(-0.5465168, 0.01449038, 0.008355614, 0.8372811)
+bones/26/rotation = Quaternion(-0.56046623, 3.6467616e-06, 2.640249e-06, 0.8281773)
+bones/27/rotation = Quaternion(-0.28040782, 0.19487795, -0.24789146, 0.90661126)
+bones/29/rotation = Quaternion(-0.49008313, 0.37593374, 0.5805783, 0.5304915)
+bones/30/rotation = Quaternion(-0.55913645, 0.041818354, 0.120897606, 0.81914675)
+bones/31/rotation = Quaternion(-0.1609568, 0.67813206, 0.15919317, 0.69920486)
+bones/32/rotation = Quaternion(0.0022417745, -0.69130915, -0.004126196, 0.72254395)
+bones/33/rotation = Quaternion(-0.19789124, -0.016302519, 0.046482395, 0.97898555)
+bones/34/rotation = Quaternion(-0.21239072, 0.0071796826, -0.032994512, 0.97660124)
+bones/35/rotation = Quaternion(-0.2125668, -9.083546e-06, 1.869943e-05, 0.97714657)
+bones/36/rotation = Quaternion(-0.30405077, 0.017440155, 0.012750141, 0.9524109)
+bones/37/rotation = Quaternion(-0.29222715, -0.015743515, 0.0042145792, 0.95621014)
+bones/38/rotation = Quaternion(-0.30512765, -1.0246265e-06, -3.2794244e-07, 0.95231146)
+bones/39/rotation = Quaternion(-0.5474078, 0.019802164, -0.0079695955, 0.83659375)
+bones/40/rotation = Quaternion(-0.561149, -0.018572167, 0.027450241, 0.8270511)
+bones/41/rotation = Quaternion(-0.5604666, 2.1593785e-05, -3.6789417e-05, 0.82817703)
+bones/42/rotation = Quaternion(-0.30702066, 0.016532477, 0.02047972, 0.9513388)
+bones/43/rotation = Quaternion(-0.54651684, -0.0144903865, -0.008355619, 0.837281)
+bones/44/rotation = Quaternion(-0.5604664, -3.6562465e-06, -2.6617656e-06, 0.82817715)
+bones/45/rotation = Quaternion(-0.31182292, -0.09865423, 0.26578873, 0.9068573)
+bones/47/rotation = Quaternion(0.99600947, 0.057886425, -0.019008823, 0.06521469)
+bones/47/scale = Vector3(1.0000414, 0.99999976, 1.0000339)
+bones/48/rotation = Quaternion(0.09805626, 0.00011407268, 0.056922633, 0.9935516)
+bones/48/scale = Vector3(1.0000007, 0.9999999, 0.99999875)
+bones/50/rotation = Quaternion(0.99800855, -0.05053969, 0.019492364, 0.03232344)
+bones/50/scale = Vector3(1.0000414, 0.9999998, 1.000034)
+bones/51/rotation = Quaternion(0.07269391, -0.00011442088, -0.042199522, 0.99646115)
+bones/51/scale = Vector3(1.0000005, 1.0000002, 0.99999917)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Burglar Rig/Skeleton3D" index="1" unique_id=1905715686]
+transform = Transform3D(-0.07667321, 0.30347556, 0.94974965, 0.21765941, -0.9244845, 0.31297395, 0.9730084, 0.23071879, 0.004828993, -0.09282592, 1.1116035, -5.2945356)
+bone_name = "Hand.L"
+bone_idx = 14
+
+[node name="JumpscareCam" type="Camera3D" parent="Burglar Rig/Skeleton3D/BoneAttachment3D" index="0" unique_id=364997143]
+unique_name_in_owner = true
+transform = Transform3D(-0.039039064, 0.9405229, -0.33747995, -0.29443848, 0.31191477, 0.9033355, 0.95487237, 0.13463253, 0.26474947, 0.094350934, 0.15775532, -0.05592358)
+cull_mask = 1048571
+fov = 60.0
+near = 0.01
+far = 10.0
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1206632198]
+autoplay = &"Burglar_Idle"
+
+[node name="BurglarTimer" type="Timer" parent="." index="2" unique_id=2004648011]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="BurglarTimer" to="." method="_on_burglar_timer_timeout"]

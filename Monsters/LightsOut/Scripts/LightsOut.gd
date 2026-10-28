@@ -93,4 +93,5 @@ func displace_prop() -> void:
 			prop.random_transform()
 
 func jumpscare() -> void:
-	EventBus.player_killed.emit(GlobalScript.KILLED_BY.LIGHTS_OUT)
+	GlobalScript.killed_by = GlobalScript.KILLED_BY.LIGHTS_OUT
+	EventBus.player_killed.emit(GlobalScript.killed_by)

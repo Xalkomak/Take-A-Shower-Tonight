@@ -44,6 +44,7 @@ func _ready() -> void:
 	lights_out_monster.stage_changed.connect(on_lo_stage_changed)
 	EventBus.game_soap_used.connect(on_soap_used)
 	EventBus.player_killed.connect(on_player_killed)
+	EventBus.burglar_stage_changed.connect(on_burglar_stage_changed)
 #endregion
 	
 	shower_progress.value = 0
@@ -97,10 +98,13 @@ func _on_windowsill_state_changed(new_state: Windowsill.States) -> void:
 		Windowsill.States.KNOCKING, Windowsill.States.STALLING:
 			window.interactable.allow_interact = false
 		Windowsill.States.JUMPSCARE:
-			player.allow_interact = false
-			var player_ui = get_tree().get_first_node_in_group("player_ui") as CanvasLayer
-			player_ui.hide()
+			disable_player_input()
 			window.window_anim.play("Jumpscare")
+
+func disable_player_input() -> void:
+	player.allow_interact = false
+	var player_ui = get_tree().get_first_node_in_group("player_ui") as CanvasLayer
+	player_ui.hide()
 
 func on_window_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Jumpscare":
@@ -129,5 +133,9 @@ func on_soap_used() -> void:
 	GlobalScript.soap_bonus = 2.5 if shower_on else 0.0
 
 func on_player_killed(killed_by: GlobalScript.KILLED_BY) -> void:
-	GlobalScript.monster_name = killed_by
+	GlobalScript.killed_by = killed_by
 	get_tree().change_scene_to_packed(END_SCREEN)
+
+func on_burglar_stage_changed(burglar_stage: Burglar.Stages) -> void:
+	if burglar_stage == Burglar.Stages.JUMPSCARE:
+		disable_player_input()

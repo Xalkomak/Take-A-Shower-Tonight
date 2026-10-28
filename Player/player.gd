@@ -16,6 +16,7 @@ var soap_effect: float = 0.0
 
 func _ready() -> void:
 	EventBus.game_soap_used.connect(on_soap_used)
+	player_cam.current = true
 
 func _process(delta: float) -> void:
 	soap_blindness_shader.set_shader_parameter("soap_amount", clamp(GlobalScript.soap_bonus / 2.5, 0.0, 1.0))

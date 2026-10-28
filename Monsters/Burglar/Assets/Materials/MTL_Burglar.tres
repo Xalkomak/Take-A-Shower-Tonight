@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://daisk3wgph0uv"]
+
+[ext_resource type="Texture2D" uid="uid://b4sqjquctj3u" path="res://Monsters/Burglar/Assets/Textures/Burglar_base.png" id="1_3ojtn"]
+
+[resource]
+resource_name = "MTL_Burglar"
+shading_mode = 0
+albedo_texture = ExtResource("1_3ojtn")

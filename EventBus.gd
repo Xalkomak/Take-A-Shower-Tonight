@@ -6,3 +6,4 @@ signal game_window_toggled
 signal game_curtain_toggled
 signal game_soap_used
 signal player_killed(by: GlobalScript.KILLED_BY)
+signal burglar_stage_changed(new_stage: Burglar.Stages)

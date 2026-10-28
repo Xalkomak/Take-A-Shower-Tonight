@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dry1kpkmmcxch" path="res://FPSCount.gd" id="4_3b5nw"]
 [ext_resource type="PackedScene" uid="uid://7fwvm8nnekdw" path="res://Monsters/Windowsill/Windowsill.tscn" id="5_pqkg5"]
 [ext_resource type="PackedScene" uid="uid://dyx361mt1s8yn" path="res://Monsters/Peeping Tom/PeepingTomMockup.tscn" id="6_dfut2"]
-[ext_resource type="PackedScene" uid="uid://djtdd3obrhql0" path="res://Monsters/Burglar/BurglarMockup.tscn" id="6_pfxyy"]
 [ext_resource type="PackedScene" uid="uid://vy0k3gvm1c0u" path="res://Monsters/Vapor/Vapor.tscn" id="7_ult5a"]
 [ext_resource type="PackedScene" uid="uid://cew0632kyrkcg" path="res://Monsters/Abyss/Abyss.tscn" id="7_w22cl"]
 
@@ -82,9 +81,6 @@ size = Vector3(2.5, 0.02, 1.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
 [node name="Windowsill" parent="." unique_id=409834343 instance=ExtResource("5_pqkg5")]
-
-[node name="BurglarMockup" parent="." unique_id=1888160662 instance=ExtResource("6_pfxyy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
 
 [node name="Abyss" parent="." unique_id=1599138900 instance=ExtResource("7_w22cl")]
 

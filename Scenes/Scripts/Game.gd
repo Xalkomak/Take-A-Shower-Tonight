@@ -23,6 +23,7 @@ var curtain_open: bool
 var window_closed: bool
 var lights_out_monster: LightsOut
 var flicker_sdfgi: bool
+var got_baited_by_windowsill: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -108,7 +109,7 @@ func disable_player_input() -> void:
 
 func on_window_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Jumpscare":
-		get_tree().change_scene_to_packed(END_SCREEN)
+		EventBus.player_killed.emit(GlobalScript.KILLED_BY.WINDOWSILL_BAIT if got_baited_by_windowsill else GlobalScript.KILLED_BY.WINDOWSILL)
 
 func on_light_toggled(toggle: bool):
 	GlobalScript.game_light_on = toggle
@@ -139,3 +140,6 @@ func on_player_killed(killed_by: GlobalScript.KILLED_BY) -> void:
 func on_burglar_stage_changed(burglar_stage: Burglar.Stages) -> void:
 	if burglar_stage == Burglar.Stages.JUMPSCARE:
 		disable_player_input()
+
+func _on_windowsill_bait_successful() -> void:
+	got_baited_by_windowsill = true

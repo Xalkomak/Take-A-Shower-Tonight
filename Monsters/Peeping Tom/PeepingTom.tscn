@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cg87qy502oyo0"]
+
+[ext_resource type="PackedScene" uid="uid://c34h762s45eyj" path="res://Monsters/Peeping Tom/PeepingTom.glb" id="1_hw263"]
+[ext_resource type="Script" uid="uid://dosb3rlff5r7f" path="res://Monsters/Peeping Tom/Scripts/PeepingTom.gd" id="2_phj43"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvdui"]
+size = Vector3(0.26757813, 0.24414063, 0.55618286)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_phj43"]
+animation = &"PT_Inactive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbtxi"]
+animation = &"PT_Jumpscare"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_phj43"]
+filter_enabled = true
+filters = ["Peeping Tom Rig/Skeleton3D:Head", "Peeping Tom Rig/Skeleton3D:Jaw", "Peeping Tom Rig/Skeleton3D:Neck"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t2eas"]
+animation = &"PT_Leave"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aafic"]
+animation = &"PT_Pos1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dn3ev"]
+animation = &"PT_Pos2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6cm5a"]
+animation = &"PT_Pos3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wjjjs"]
+animation = &"PT_Pos4"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t2eas"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_aafic")
+blend_point_0/pos = Vector2(1, 0)
+blend_point_0/name = &"PT_Pos1"
+blend_point_1/node = SubResource("AnimationNodeAnimation_dn3ev")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_1/name = &"PT_Pos2"
+blend_point_2/node = SubResource("AnimationNodeAnimation_6cm5a")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"PT_Pos3"
+blend_point_3/node = SubResource("AnimationNodeAnimation_wjjjs")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_3/name = &"PT_Pos4"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wbtxi"]
+graph_offset = Vector2(-235, 51)
+nodes/output/position = Vector2(260, 100)
+nodes/Leave/node = SubResource("AnimationNodeAnimation_t2eas")
+nodes/Leave/position = Vector2(-120, 320)
+nodes/Positions/node = SubResource("AnimationNodeBlendSpace2D_t2eas")
+nodes/Positions/position = Vector2(-120, 100)
+nodes/Exit/node = SubResource("AnimationNodeOneShot_phj43")
+nodes/Exit/position = Vector2(80, 100)
+node_connections = [&"output", 0, &"Exit", &"Exit", 0, &"Positions", &"Exit", 1, &"Leave"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wbtxi"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ang42"]
+break_loop_at_end = true
+advance_mode = 2
+advance_expression = "owner.current_stage == owner.STAGES.PEEPING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_phj43"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.current_stage == owner.STAGES.INACTIVE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8v5wi"]
+advance_mode = 2
+advance_expression = "owner.current_stage == owner.STAGES.JUMPSCARE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxri4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xvdui"]
+states/Inactive/node = SubResource("AnimationNodeAnimation_phj43")
+states/Inactive/position = Vector2(370, 100)
+states/Jumpscare/node = SubResource("AnimationNodeAnimation_wbtxi")
+states/Jumpscare/position = Vector2(740, 100)
+states/Peeping/node = SubResource("AnimationNodeBlendTree_wbtxi")
+states/Peeping/position = Vector2(568, 100)
+transitions = ["Start", "Inactive", SubResource("AnimationNodeStateMachineTransition_wbtxi"), "Inactive", "Peeping", SubResource("AnimationNodeStateMachineTransition_ang42"), "Peeping", "Inactive", SubResource("AnimationNodeStateMachineTransition_phj43"), "Peeping", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_8v5wi"), "Jumpscare", "End", SubResource("AnimationNodeStateMachineTransition_kxri4")]
+
+[node name="Peeping Tom" unique_id=1193186437 instance=ExtResource("1_hw263")]
+script = ExtResource("2_phj43")
+staredown_threshold = 3.0
+
+[node name="Head" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1754450542) index="0" unique_id=1955844951]
+transform = Transform3D(0.9999998, -9.721352e-07, 1.6415283e-06, 1.6415952e-06, 0.87689424, -0.480703, -9.720964e-07, 0.48070082, 0.87688506, 3.7033487e-11, 0.83307016, 0.5319469)
+
+[node name="StareZone" parent="Peeping Tom Rig/Skeleton3D/Head" index="0" unique_id=1474186469]
+collision_layer = 8
+collision_mask = 16
+
+[node name="Peeping Tom Rig_Skeleton3D_Head_StareZone#CollisionShape3D2" type="CollisionShape3D" parent="Peeping Tom Rig/Skeleton3D/Head/StareZone" index="0" unique_id=2101149673]
+transform = Transform3D(1, 0, 0, 0, 1.0000014, 0, 0, 0, 0.9999975, 0, 0, 0)
+shape = SubResource("BoxShape3D_xvdui")
+
+[node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
+cull_mask = 1048571
+
+[node name="PT_AnimTree" type="AnimationTree" parent="." index="3" unique_id=663831932]
+tree_root = SubResource("AnimationNodeStateMachine_xvdui")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Peeping/Positions/blend_position = Vector2(0, -1)
+parameters/Peeping/Exit/active = false
+parameters/Peeping/Exit/internal_active = false
+parameters/Peeping/Exit/request = 0
+
+[node name="AnimationPlayer" parent="." index="4" unique_id=1427228393]
+autoplay = &"PT_Inactive"
+playback_default_blend_time = 0.1
+
+[connection signal="area_entered" from="Peeping Tom Rig/Skeleton3D/Head/StareZone" to="." method="_on_stare_zone_area_entered"]
+[connection signal="area_exited" from="Peeping Tom Rig/Skeleton3D/Head/StareZone" to="." method="_on_stare_zone_area_exited"]
+[connection signal="timeout" from="PT_Timer" to="." method="_on_pt_timer_timeout"]

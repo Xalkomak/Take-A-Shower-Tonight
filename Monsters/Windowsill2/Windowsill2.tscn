@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dex6ocx7sei7b"]
+
+[ext_resource type="PackedScene" uid="uid://p6o6n4igjmox" path="res://Monsters/Windowsill2/Windowsill2.glb" id="1_8ucdv"]
+[ext_resource type="Script" uid="uid://b8hxwmppidoaj" path="res://Monsters/Windowsill/Scripts/Windowsill.gd" id="2_ki66u"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ucdv"]
+animation = &"Windowsill_Emerge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ki66u"]
+animation = &"Windowsill_Inactive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6avb7"]
+animation = &"Windowsill_Jumpscare"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bhuuo"]
+animation = &"Windowsill_KnockBegin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m1mxn"]
+animation = &"Windowsill_KnockEnd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_705io"]
+animation = &"Windowsill_Knock"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_quonl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p3lud"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k4dof"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.knock_count >= owner.max_knocks"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b7kw2"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kuger"]
+states/Knock/node = SubResource("AnimationNodeAnimation_705io")
+states/Knock/position = Vector2(554, 100)
+"states/Knock Begin/node" = SubResource("AnimationNodeAnimation_bhuuo")
+"states/Knock Begin/position" = Vector2(357, 100)
+"states/Knock End/node" = SubResource("AnimationNodeAnimation_m1mxn")
+"states/Knock End/position" = Vector2(744, 100)
+transitions = ["Start", "Knock Begin", SubResource("AnimationNodeStateMachineTransition_quonl"), "Knock Begin", "Knock", SubResource("AnimationNodeStateMachineTransition_p3lud"), "Knock", "Knock End", SubResource("AnimationNodeStateMachineTransition_k4dof"), "Knock End", "End", SubResource("AnimationNodeStateMachineTransition_b7kw2")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6n44"]
+animation = &"Windowsill_Stall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_34dxa"]
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.EMERGING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uucp4"]
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.EMERGING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x63gg"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.KNOCKING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3xilk"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.EMERGING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fsuxp"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.INACTIVE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sm8wd"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.STALLING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pk5p6"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "owner.current_state == owner.States.JUMPSCARE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7hex1"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"player_takes_bait"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xvdui"]
+states/Emerge/node = SubResource("AnimationNodeAnimation_8ucdv")
+states/Emerge/position = Vector2(367, 100)
+states/Inactive/node = SubResource("AnimationNodeAnimation_ki66u")
+states/Inactive/position = Vector2(367, -5)
+states/Jumpscare/node = SubResource("AnimationNodeAnimation_6avb7")
+states/Jumpscare/position = Vector2(591, 189)
+states/Knocking/node = SubResource("AnimationNodeStateMachine_kuger")
+states/Knocking/position = Vector2(591, 100)
+states/Stall/node = SubResource("AnimationNodeAnimation_v6n44")
+states/Stall/position = Vector2(367, 189)
+transitions = ["Start", "Emerge", SubResource("AnimationNodeStateMachineTransition_34dxa"), "Inactive", "Emerge", SubResource("AnimationNodeStateMachineTransition_uucp4"), "Emerge", "Knocking", SubResource("AnimationNodeStateMachineTransition_x63gg"), "Knocking", "Emerge", SubResource("AnimationNodeStateMachineTransition_3xilk"), "Knocking", "Inactive", SubResource("AnimationNodeStateMachineTransition_fsuxp"), "Emerge", "Stall", SubResource("AnimationNodeStateMachineTransition_sm8wd"), "Stall", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_pk5p6"), "Knocking", "Jumpscare", SubResource("AnimationNodeStateMachineTransition_7hex1")]
+graph_offset = Vector2(11, -67)
+
+[node name="Windowsill2" unique_id=2080641504 instance=ExtResource("1_8ucdv")]
+script = ExtResource("2_ki66u")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=981757090]
+autoplay = &"Windowsill_Inactive"
+
+[node name="WindowsillAnimTree" type="AnimationTree" parent="." index="2" unique_id=1903393804]
+active = false
+tree_root = SubResource("AnimationNodeStateMachine_xvdui")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/player_takes_bait = false
+
+[node name="WindowsillTimer" type="Timer" parent="." index="3" unique_id=972869816]
+wait_time = 2.0
+one_shot = true
+
+[node name="JumpscareCam" type="Camera3D" parent="." index="4" unique_id=1489126575]
+
+[connection signal="animation_finished" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_finished"]
+[connection signal="animation_started" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_started"]
+[connection signal="timeout" from="WindowsillTimer" to="." method="_on_windowsill_timer_timeout"]

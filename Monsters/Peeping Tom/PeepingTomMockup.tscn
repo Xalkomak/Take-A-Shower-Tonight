@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyx361mt1s8yn"]
 
-[ext_resource type="Script" uid="uid://c7yeobugn3res" path="res://Monsters/Peeping Tom/Scripts/PeepingTom.gd" id="1_bcyqb"]
+[ext_resource type="Script" uid="uid://c7yeobugn3res" path="res://Monsters/Peeping Tom/Scripts/PeepingTomDemo.gd" id="1_bcyqb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xx25p"]
 

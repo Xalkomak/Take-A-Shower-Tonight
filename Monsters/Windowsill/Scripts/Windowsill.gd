@@ -2,6 +2,7 @@ class_name Windowsill
 extends Node3D
 
 signal state_changed(new_state: States) ## Emitted when the state is changed.
+signal bait_successful
 
 # NOTE: Set the inital wait time to 47 for release
 
@@ -17,13 +18,15 @@ enum States {
 @onready var windowsill_anim_tree: AnimationTree = $WindowsillAnimTree
 @onready var windowsill_timer: Timer = $WindowsillTimer
 
-var current_state: States:
+var current_state: States = States.INACTIVE:
 	set(value):
 		if current_state != value:
+			previous_state = current_state
 			current_state = value
 			state_changed.emit(value)
-var max_knocks: int = 3
+var previous_state: States
 var knock_count: int
+var max_knocks: int = 3
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var knock_weights: Array[int] = [3, 3, 3, 3, 3, 2, 2, 2, 1, 1]
 
@@ -79,12 +82,13 @@ func _on_windowsill_timer_timeout() -> void:
 			current_state = States.JUMPSCARE
 
 func _on_windowsill_anim_tree_animation_started(anim_name: StringName) -> void:
-	if anim_name == "Jumpscare":
+	if anim_name == "Jumpscare" or anim_name == "Windowsill_Jumpscare":
+		if previous_state == States.EMERGING:
+			bait_successful.emit()
 		current_state = States.JUMPSCARE
-	if anim_name == "Knock_End":
+	if anim_name == "Knock_End" or anim_name == "Windowsill_KnockEnd":
 		state_changed.emit(States.INACTIVE)
 
-
 func _on_windowsill_anim_tree_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Emerge":
+	if anim_name == "Emerge" or anim_name == "Windowsill_Emerge":
 		begin_wait()

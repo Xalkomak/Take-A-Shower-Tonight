@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://11vsy0wta5qe" path="res://Scenes/Scripts/Game.gd" id="1_h3lae"]
 [ext_resource type="PackedScene" uid="uid://01r7u8ga5raf" path="res://Bathroom/Bathroom.tscn" id="2_po6qj"]
 [ext_resource type="PackedScene" uid="uid://lstsmhc54ifw" path="res://Player/player.tscn" id="3_u437r"]
+[ext_resource type="PackedScene" uid="uid://cg87qy502oyo0" path="res://Monsters/Peeping Tom/PeepingTom.tscn" id="4_2irst"]
 [ext_resource type="Script" uid="uid://dry1kpkmmcxch" path="res://FPSCount.gd" id="4_3b5nw"]
-[ext_resource type="PackedScene" uid="uid://7fwvm8nnekdw" path="res://Monsters/Windowsill/Windowsill.tscn" id="5_pqkg5"]
-[ext_resource type="PackedScene" uid="uid://dyx361mt1s8yn" path="res://Monsters/Peeping Tom/PeepingTomMockup.tscn" id="6_dfut2"]
+[ext_resource type="PackedScene" uid="uid://dex6ocx7sei7b" path="res://Monsters/Windowsill2/Windowsill2.tscn" id="5_2irst"]
 [ext_resource type="PackedScene" uid="uid://vy0k3gvm1c0u" path="res://Monsters/Vapor/Vapor.tscn" id="7_ult5a"]
 [ext_resource type="PackedScene" uid="uid://cew0632kyrkcg" path="res://Monsters/Abyss/Abyss.tscn" id="7_w22cl"]
 
@@ -77,10 +77,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.377
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.607)
 size = Vector3(2.5, 0.02, 1.2)
 
-[node name="PeepingTomMockup" parent="." unique_id=277070864 instance=ExtResource("6_dfut2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+[node name="Peeping Tom" parent="." unique_id=1193186437 instance=ExtResource("4_2irst")]
 
-[node name="Windowsill" parent="." unique_id=409834343 instance=ExtResource("5_pqkg5")]
+[node name="Windowsill" parent="." unique_id=2080641504 instance=ExtResource("5_2irst")]
 
 [node name="Abyss" parent="." unique_id=1599138900 instance=ExtResource("7_w22cl")]
 
@@ -116,6 +115,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ula4m")
 max_value = 500.0
 show_percentage = false
 
+[connection signal="bait_successful" from="Windowsill" to="." method="_on_windowsill_bait_successful"]
 [connection signal="state_changed" from="Windowsill" to="." method="_on_windowsill_state_changed"]
 [connection signal="jumpscared" from="Abyss" to="." method="_on_abyss_vapor_jumpscared"]
 [connection signal="jumpscared" from="Vapor" to="." method="_on_abyss_vapor_jumpscared"]

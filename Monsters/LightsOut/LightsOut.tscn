@@ -138,7 +138,6 @@ script = ExtResource("2_8txsq")
 [node name="LOTimer" type="Timer" parent="." unique_id=755479199]
 wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="LOCanvasLayer" type="CanvasLayer" parent="." unique_id=440092248]
 

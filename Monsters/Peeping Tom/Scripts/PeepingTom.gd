@@ -1,112 +1,83 @@
 class_name PeepingTom
-extends CharacterBody3D
+extends Node3D
 
-signal phase_changed(new_phase: Phases) ## Emitted when a new phase is entered.
+signal stage_changed(new_stage: STAGES)
 
-# NOTE: Set the inital Wait Time to 21 and Autostart to "True" for release
+const POSITIONS: Array[Vector2] = [
+	Vector2(1, 0),
+	Vector2(0, 1),
+	Vector2(-1, 0),
+	Vector2(0, -1)
+]
 
-const bathroom_area: Vector2 = Vector2(1.9, 3.4)
-const bathroom_area_center: Vector3 = Vector3(0, 0, -3.3)
-const inactive_pos: Vector3 = Vector3(0, 0, -8)
-
-enum Phases {
+enum STAGES {
 	INACTIVE,
 	PEEPING,
-	RESISTING,
 	JUMPSCARE
 }
 
-@onready var p_tom_timer: Timer = $PTomTimer
 @onready var jumpscare_cam: Camera3D = $JumpscareCam
+@onready var pt_timer: Timer = $PT_Timer # NOTE: Set initial wait time to 21 for release
+@onready var pt_anim_tree: AnimationTree = $PT_AnimTree
 
-@export var jump_speed: float = 0.2
-@export var observe_time_threshold: float = 0.9
+@export var staredown_threshold: float = 5.0 ## Baseline time required to scare Peeping Tom away.
+@export var max_jumps: int = 5 ## Baseline number of times Peeping Tom jumps around to avoid eye contact (Nightmare mode only).
 
-var can_be_observed: bool
-var current_phase: Phases = Phases.INACTIVE:
-	set(new_phase):
-		if current_phase != new_phase:
-			current_phase = new_phase
-			phase_changed.emit(new_phase)
-			jumpscare_cam.current = current_phase == Phases.JUMPSCARE
-		can_be_observed = current_phase == Phases.PEEPING or current_phase == Phases.RESISTING
-var rng: VectorRNG = VectorRNG.new()
 var is_observed: bool
-var observe_time_elapsed: float
-var max_jumps: int = 5
+var staredown_elapsed: float
 var jump_count: int
+var current_stage: STAGES = STAGES.INACTIVE:
+	set(new_stage):
+		if current_stage != new_stage:
+			current_stage = new_stage
+			print(current_stage)
+			stage_changed.emit(new_stage)
+			jumpscare_cam.current = current_stage == STAGES.JUMPSCARE
 
 func _physics_process(delta: float) -> void:
-	handle_being_observed(delta)
-
-func jump_to_position() -> void:
-	var new_pos: Vector3
-	if jump_count < max_jumps:
-		new_pos = rng.rand_on_unit_plane(bathroom_area_center, bathroom_area)
-	else:
-		p_tom_timer.stop()
-		new_pos = inactive_pos
-		is_observed = false
-		current_phase = Phases.INACTIVE
-		begin_wait()
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, "position", new_pos, jump_speed)
-	tween.bind_node(self)
-
-func begin_wait() -> void:
-	match current_phase:
-		Phases.INACTIVE:
-			p_tom_timer.wait_time = rng.randf_range(22.0, 57.0)
-		Phases.PEEPING:
-			p_tom_timer.wait_time = rng.randf_range(18.0, 29.0)
-		Phases.RESISTING:
-			p_tom_timer.wait_time = 10
-	
-	p_tom_timer.start()
-
-func _on_ptom_timer_timeout() -> void:
-	match current_phase:
-		Phases.INACTIVE:
-			jump_count = 0
-			current_phase = Phases.PEEPING
-			max_jumps = rng.randi_range(3, 6)
-			jump_to_position()
-			begin_wait()
-		Phases.PEEPING:
-			current_phase = Phases.JUMPSCARE
-		Phases.RESISTING:
-			if jump_count < max_jumps:
-				current_phase = Phases.JUMPSCARE
-
-func handle_being_observed(delta: float) -> void:
-	#can_be_observed = current_phase == Phases.PEEPING or current_phase == Phases.RESISTING
-	
-	if not can_be_observed:
-		observe_time_elapsed = 0
+	if current_stage == STAGES.INACTIVE:
+		staredown_elapsed = 0
 		return
 	
 	if is_observed:
-		begin_resisting()
-		observe_time_elapsed += delta
-	else:
-		observe_time_elapsed = 0
+		staredown_elapsed += delta
 	
-	if observe_time_elapsed >= observe_time_threshold:
-		observe_time_threshold = rng.randf_range(0.6, 1.16)
-		observe_time_elapsed = 0
-		jump_to_position()
-		jump_count += 1
-
-func begin_resisting() -> void:
-	if current_phase != Phases.RESISTING and is_observed:
-		p_tom_timer.stop()
-		current_phase = Phases.RESISTING
+	if staredown_elapsed > staredown_threshold:
+		is_observed = false
+		staredown_elapsed = 0.0
+		pt_timer.stop()
+		pt_anim_tree.set("parameters/Peeping/Exit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		current_stage = STAGES.INACTIVE
 		begin_wait()
 
-func _on_face_area_entered(area: Area3D) -> void:
-	if can_be_observed:
+func begin_wait() -> void:
+	match current_stage:
+		STAGES.INACTIVE:
+			pt_timer.wait_time = randf_range(12.0, 17.0) # 22, 57
+		STAGES.PEEPING:
+			pt_timer.wait_time = randf_range(8.0, 9.0) # 18, 29
+	print(pt_timer.wait_time)
+	pt_timer.start()
+
+func force_stage_change(stage: STAGES) -> void:
+	current_stage = stage
+	if current_stage != STAGES.JUMPSCARE:
+		begin_wait()
+
+func _on_pt_timer_timeout() -> void:
+	match current_stage:
+		STAGES.INACTIVE:
+			current_stage = STAGES.PEEPING
+			var random_position: Vector2 = POSITIONS.pick_random()
+			pt_anim_tree.set("parameters/Peeping/Positions/blend_position", random_position)
+			begin_wait()
+		STAGES.PEEPING:
+			current_stage = STAGES.JUMPSCARE
+
+func _on_stare_zone_area_entered(area: Area3D) -> void:
+	if current_stage == STAGES.PEEPING:
 		is_observed = true
 
-func _on_face_area_exited(area: Area3D) -> void:
-	if can_be_observed:
+func _on_stare_zone_area_exited(area: Area3D) -> void:
+	if current_stage == STAGES.PEEPING:
 		is_observed = false

@@ -134,18 +134,18 @@ rings = 4
 script = ExtResource("2_ki66u")
 
 [node name="Skeleton3D" parent="Windowsill_Rig" parent_id_path=PackedInt32Array(864303768) index="0" unique_id=1853928252]
-bones/0/position = Vector3(0.25871772, 0.005070901, 0.45606938)
-bones/0/rotation = Quaternion(-0.0014416801, -0.9568173, 0.004746039, 0.29064772)
-bones/2/rotation = Quaternion(-4.5756565e-10, 7.45149e-09, 1.04318984e-10, 1)
-bones/3/rotation = Quaternion(9.449611e-10, 7.4524e-09, 9.60378e-11, 1)
-bones/4/rotation = Quaternion(-0.019004583, -7.2405975e-08, 2.9421489e-07, 0.9998194)
-bones/5/rotation = Quaternion(0.02396369, -6.61474e-08, -4.1601137e-07, 0.9997128)
-bones/6/rotation = Quaternion(-0.20482682, -0.02198317, -0.9755286, 0.07685438)
-bones/7/rotation = Quaternion(-0.0033717845, -0.7150996, -0.0007011015, 0.6990142)
-bones/8/rotation = Quaternion(0.6356794, 0.16422297, -0.14069882, 0.74104416)
-bones/9/rotation = Quaternion(-0.20482676, 0.021983264, 0.9755287, 0.07685437)
-bones/10/rotation = Quaternion(-0.0033718327, 0.7150996, 0.00070114434, 0.69901425)
-bones/11/rotation = Quaternion(0.6356794, -0.16422282, 0.1406987, 0.74104416)
+bones/0/position = Vector3(-0.03346816, 1.3094534, 0.57504016)
+bones/0/rotation = Quaternion(-0.20571806, -0.77678996, 0.49374777, 0.33240134)
+bones/2/rotation = Quaternion(8.381901e-09, 1.117587e-08, -1.6298152e-09, 1)
+bones/3/rotation = Quaternion(1.0360962e-08, 1.117587e-08, -1.6298152e-09, 1)
+bones/4/rotation = Quaternion(-0.3182621, -0.05361308, -0.15722482, 0.93333554)
+bones/5/rotation = Quaternion(0.023876162, 0.0020458193, -0.08535134, 0.9960627)
+bones/6/rotation = Quaternion(-0.6982112, -0.1613621, -0.61031336, -0.33761105)
+bones/7/rotation = Quaternion(-0.83014095, -0.3791188, -0.17261858, 0.37059104)
+bones/8/rotation = Quaternion(-0.0063693216, 0.9786941, 0.13364424, -0.15574498)
+bones/9/rotation = Quaternion(-0.63998616, 0.5837003, 0.045770444, 0.49761105)
+bones/10/rotation = Quaternion(-0.89908147, 0.28307784, 0.18695137, 0.27671057)
+bones/11/rotation = Quaternion(0.45092365, -0.05075727, 0.8247365, 0.33749253)
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=929115438]
 autoplay = &"Windowsill_Inactive"
@@ -159,6 +159,7 @@ parameters/conditions/player_takes_bait = false
 [node name="WindowsillTimer" type="Timer" parent="." index="3" unique_id=972869816]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="4" unique_id=1489126575]
 transform = Transform3D(-0.36380747, 0, -0.931474, 0, 1, 0, 0.931474, 0, -0.36380747, -0.547063, 1.7000933, -0.58308315)
@@ -177,16 +178,6 @@ randomness = 0.63
 visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
 process_material = SubResource("ParticleProcessMaterial_a4ptb")
 draw_pass_1 = SubResource("SphereMesh_xvdui")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="6" unique_id=4262914]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0" unique_id=621191305]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
 
 [connection signal="animation_finished" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_finished"]
 [connection signal="animation_started" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_started"]

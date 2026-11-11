@@ -26,6 +26,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	EventBus.game_curtain_toggled.emit()
 
 func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by in [
+		GlobalScript.KILLED_BY.WINDOWSILL,
+		GlobalScript.KILLED_BY.WINDOWSILL_BAIT
+	]:
+		return
 	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
 		animation_player.speed_scale = 10
 		animation_player.play("Open")

@@ -91,7 +91,7 @@ script = ExtResource("2_phj43")
 staredown_threshold = 3.0
 
 [node name="Head" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1754450542) index="0" unique_id=1955844951]
-transform = Transform3D(0.9999998, -9.721352e-07, 1.6415283e-06, 1.6415952e-06, 0.87689424, -0.480703, -9.720964e-07, 0.48070082, 0.87688506, 3.7033487e-11, 0.83307016, 0.5319469)
+transform = Transform3D(0.99999976, -0.00032153932, -0.00021060373, 0.00016039539, 0.8470152, -0.5315829, 0.0003493061, 0.5315735, 0.8470146, -0.00026140787, 1.1220121, -5.9514155)
 
 [node name="StareZone" parent="Peeping Tom Rig/Skeleton3D/Head" index="0" unique_id=1474186469]
 collision_layer = 8
@@ -104,10 +104,9 @@ shape = SubResource("BoxShape3D_xvdui")
 [node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
-transform = Transform3D(0.9965655, -0.010450308, -0.08214615, 0, 0.99200493, -0.12619893, 0.08280821, 0.1257655, 0.9885979, -0.28453183, 1.2542633, -0.24388456)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 cull_mask = 1048571
 fov = 60.0
 

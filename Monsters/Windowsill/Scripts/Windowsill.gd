@@ -103,7 +103,10 @@ func _on_windowsill_anim_tree_animation_finished(anim_name: StringName) -> void:
 		visible = false
 
 func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
-	if jumpscared_by == GlobalScript.KILLED_BY.WINDOWSILL or jumpscared_by == GlobalScript.KILLED_BY.WINDOWSILL_BAIT:
+	if jumpscared_by in [
+		GlobalScript.KILLED_BY.WINDOWSILL,
+		GlobalScript.KILLED_BY.WINDOWSILL_BAIT
+	]:
 		return
 	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
 		process_mode = Node.PROCESS_MODE_DISABLED

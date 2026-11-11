@@ -48,26 +48,32 @@ size = Vector3(0.001, 3, 5)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=555182655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000499964, -2.5)
 shape = SubResource("BoxShape3D_ritky")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=1623040038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9995, -2.5)
 shape = SubResource("BoxShape3D_m5m80")
+disabled = true
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="2" unique_id=1816068121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.000499964)
 shape = SubResource("BoxShape3D_yxfiq")
+disabled = true
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="3" unique_id=1851352781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.9995)
 shape = SubResource("BoxShape3D_bd74b")
+disabled = true
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="." index="4" unique_id=1067997127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1995, 1.5, -2.5)
 shape = SubResource("BoxShape3D_67c7j")
+disabled = true
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="." index="5" unique_id=1444486717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1995, 1.5, -2.5)
 shape = SubResource("BoxShape3D_w63wq")
+disabled = true
 
 [node name="Sink" parent="." index="6" unique_id=1479058362 instance=ExtResource("3_lxy4t")]
 

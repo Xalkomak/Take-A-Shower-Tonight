@@ -106,7 +106,21 @@ graph_offset = Vector2(11, -67)
 [node name="Windowsill2" unique_id=2080641504 instance=ExtResource("1_8ucdv")]
 script = ExtResource("2_ki66u")
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=981757090]
+[node name="Skeleton3D" parent="Windowsill_Rig" parent_id_path=PackedInt32Array(864303768) index="0" unique_id=1853928252]
+bones/0/position = Vector3(-0.03346816, 1.3094534, 0.57504016)
+bones/0/rotation = Quaternion(-0.20571806, -0.77678996, 0.49374777, 0.33240134)
+bones/2/rotation = Quaternion(0.04360325, -0.0011866032, 0.027178183, 0.9986785)
+bones/3/rotation = Quaternion(0.044289783, -0.026946867, 0.026044425, 0.9983156)
+bones/4/rotation = Quaternion(-0.19914976, 0.04245016, -0.09963726, 0.97396606)
+bones/5/rotation = Quaternion(-0.14580241, -0.041279122, -0.25667468, 0.95454484)
+bones/6/rotation = Quaternion(0.40671253, 0.3985852, -0.11051035, 0.8145565)
+bones/7/rotation = Quaternion(-0.003359812, -0.7150996, -0.00069864467, 0.6990143)
+bones/8/rotation = Quaternion(-0.3395112, 0.75889117, -0.21546903, -0.5122396)
+bones/9/rotation = Quaternion(-0.06943055, 0.967148, 0.12698445, -0.20899561)
+bones/10/rotation = Quaternion(-0.30331734, 0.6799207, 0.06307145, 0.6646266)
+bones/11/rotation = Quaternion(0.35685632, -0.5974384, 0.19757792, 0.690423)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=929115438]
 autoplay = &"Windowsill_Inactive"
 
 [node name="WindowsillAnimTree" type="AnimationTree" parent="." index="2" unique_id=1903393804]
@@ -118,8 +132,12 @@ parameters/conditions/player_takes_bait = false
 [node name="WindowsillTimer" type="Timer" parent="." index="3" unique_id=972869816]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="4" unique_id=1489126575]
+transform = Transform3D(-0.2944104, 0.08282693, -0.952083, 0, 0.9962372, 0.086668134, 0.955679, 0.025516005, -0.2933026, -0.547063, 1.7000933, -0.58308315)
+current = true
+fov = 60.0
 
 [connection signal="animation_finished" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_finished"]
 [connection signal="animation_started" from="WindowsillAnimTree" to="." method="_on_windowsill_anim_tree_animation_started"]

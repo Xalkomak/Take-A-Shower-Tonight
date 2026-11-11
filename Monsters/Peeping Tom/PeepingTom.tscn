@@ -104,7 +104,6 @@ shape = SubResource("BoxShape3D_xvdui")
 [node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
 cull_mask = 1048571

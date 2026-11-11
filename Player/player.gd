@@ -59,6 +59,8 @@ func handle_interactable(collider: Object) -> void:
 			interactable.process_interaction_event(false)
 
 func on_soap_used() -> void:
+	if not GlobalScript.game_shower_on:
+		return
 	var tween = get_tree().create_tween()
 	tween.tween_method(set_soap_amount, 0.0, 1.0, 0.2)
 

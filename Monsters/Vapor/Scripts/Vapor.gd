@@ -10,6 +10,9 @@ signal jumpscared ## Emitted when Vapor jumpscares the player.
 
 var is_inactive: bool
 
+func _ready() -> void:
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
+
 func _process(delta: float) -> void:
 	if is_inactive: return
 	
@@ -33,3 +36,9 @@ func jumpscare() -> void:
 	await get_tree().create_timer(6).timeout
 	is_inactive = false
 	fade_shader.set_shader_parameter("transparency", 0)
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		set_process(false)
+		fade_shader.set_shader_parameter("transparency", 0)
+		process_mode = Node.PROCESS_MODE_DISABLED

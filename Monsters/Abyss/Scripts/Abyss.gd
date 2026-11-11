@@ -15,6 +15,7 @@ var pulse_hz: float = 440.0
 var initial_vol: float = -80.0
 
 func _ready() -> void:
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 	abyss_audio_cue.volume_db = initial_vol
 	advance_attack()
 
@@ -28,6 +29,8 @@ func advance_attack() -> void:
 		abyss_audio_cue.volume_db = initial_vol
 
 func _process(delta: float) -> void:
+	if GlobalScript.killed_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED
 	abyss_audio_cue.volume_db += delta * approach_rate
 	if abyss_audio_cue.volume_db > 0:
 		abyss_audio_cue.volume_db = initial_vol
@@ -57,3 +60,7 @@ func jumpscare_player() -> void:
 	await get_tree().create_timer(6).timeout
 	abyss_anim.play("RESET")
 	approach_rate = 8
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED

@@ -19,11 +19,9 @@ const SHOWER_GOLD = preload("res://Bathroom/Interior/Shower/Materials/ShowerGold
 
 var is_shower_on: bool
 
-func _process(delta: float) -> void:
-	pass#shower_audio.volume_db = linear_to_db(water_particles.amount_ratio)
-	#shower_audio.volume_db = clamp(shower_audio.volume_db, -60, 0)
-
 func _ready() -> void:
+	shower_anim.speed_scale = 1
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 	if use_golden_shower:
 		shower_control.material_override = SHOWER_GOLD
 		faucet.material_override = SHOWER_GOLD
@@ -33,10 +31,10 @@ func _ready() -> void:
 func toggle_shower() -> void:
 	is_shower_on = not is_shower_on
 	shower_anim.play("Toggle") if is_shower_on else shower_anim.play_backwards("Toggle")
-	#interactable.allow_interact = false
-	#shower_audio.playing = is_shower_on
 	shower_toggled.emit(is_shower_on)
 	EventBus.game_shower_toggled.emit()
 
-func _on_shower_anim_animation_finished(anim_name: StringName) -> void:
-	pass#interactable.allow_interact = true
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		shower_anim.speed_scale = 10
+		shower_anim.play_backwards("Toggle")

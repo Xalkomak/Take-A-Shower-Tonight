@@ -37,6 +37,7 @@ var prop_elapsed: float
 
 func _ready() -> void:
 	spawn_points = get_tree().get_nodes_in_group("SpawnPoints")
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 
 func _process(delta: float) -> void:
 	if not is_active:
@@ -75,6 +76,7 @@ func _on_lo_timer_timeout() -> void:
 			global_transform = selected_point.global_transform
 		Stages.ASSAULT:
 			current_stage = Stages.JUMPSCARE
+			EventBus.player_jumpscared.emit(GlobalScript.KILLED_BY.LIGHTS_OUT)
 			lo_anim_player.play("Jumpscare")
 	
 	lo_timer.start()
@@ -95,3 +97,9 @@ func displace_prop() -> void:
 func jumpscare() -> void:
 	GlobalScript.killed_by = GlobalScript.KILLED_BY.LIGHTS_OUT
 	EventBus.player_killed.emit(GlobalScript.killed_by)
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by == GlobalScript.KILLED_BY.LIGHTS_OUT:
+		return
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED

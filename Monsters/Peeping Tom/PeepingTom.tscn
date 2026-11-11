@@ -46,7 +46,7 @@ blend_point_3/pos = Vector2(0, -1)
 blend_point_3/name = &"PT_Pos4"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wbtxi"]
-graph_offset = Vector2(-235, 51)
+graph_offset = Vector2(-392.16833, 24.406464)
 nodes/output/position = Vector2(260, 100)
 nodes/Leave/node = SubResource("AnimationNodeAnimation_t2eas")
 nodes/Leave/position = Vector2(-120, 320)
@@ -104,9 +104,12 @@ shape = SubResource("BoxShape3D_xvdui")
 [node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
+transform = Transform3D(0.9965655, -0.010450308, -0.08214615, 0, 0.99200493, -0.12619893, 0.08280821, 0.1257655, 0.9885979, -0.28453183, 1.2542633, -0.24388456)
 cull_mask = 1048571
+fov = 60.0
 
 [node name="PT_AnimTree" type="AnimationTree" parent="." index="3" unique_id=663831932]
 tree_root = SubResource("AnimationNodeStateMachine_xvdui")
@@ -123,3 +126,4 @@ playback_default_blend_time = 0.1
 [connection signal="area_entered" from="Peeping Tom Rig/Skeleton3D/Head/StareZone" to="." method="_on_stare_zone_area_entered"]
 [connection signal="area_exited" from="Peeping Tom Rig/Skeleton3D/Head/StareZone" to="." method="_on_stare_zone_area_exited"]
 [connection signal="timeout" from="PT_Timer" to="." method="_on_pt_timer_timeout"]
+[connection signal="animation_finished" from="PT_AnimTree" to="." method="_on_pt_anim_tree_animation_finished"]

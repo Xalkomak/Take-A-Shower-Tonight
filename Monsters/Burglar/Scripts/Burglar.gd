@@ -30,10 +30,13 @@ func _ready() -> void:
 	EventBus.game_light_toggled.connect(detect_player_action)
 	EventBus.game_window_toggled.connect(detect_player_action)
 	EventBus.game_curtain_toggled.connect(detect_player_action)
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 
 func _process(delta: float) -> void:
 	if GlobalScript.game_shower_on or GlobalScript.game_curtain_open:
 		jumpscare_player()
+	if GlobalScript.killed_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_burglar_timer_timeout() -> void:
 	match current_stage:
@@ -62,7 +65,14 @@ func detect_player_action():
 func jumpscare_player() -> void:
 	current_stage = Stages.JUMPSCARE
 	animation_player.play("Burglar_Jumpscare")
+	EventBus.player_jumpscared.emit(GlobalScript.KILLED_BY.BURGLAR)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Burglar_Jumpscare":
 		EventBus.player_killed.emit(GlobalScript.KILLED_BY.BURGLAR)
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by == GlobalScript.KILLED_BY.BURGLAR:
+		return
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED

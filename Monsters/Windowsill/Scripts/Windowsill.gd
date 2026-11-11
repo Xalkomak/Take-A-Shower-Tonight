@@ -17,6 +17,7 @@ enum States {
 @onready var windowsill_anim: AnimationPlayer = $AnimationPlayer
 @onready var windowsill_anim_tree: AnimationTree = $WindowsillAnimTree
 @onready var windowsill_timer: Timer = $WindowsillTimer
+@onready var blood_splatter: GPUParticles3D = $BloodSplatter
 
 var current_state: States = States.INACTIVE:
 	set(value):
@@ -33,10 +34,13 @@ var knock_weights: Array[int] = [3, 3, 3, 3, 3, 2, 2, 2, 1, 1]
 func _ready() -> void:
 	windowsill_anim_tree.active = true
 	$JumpscareCam.current = false
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 
 func _process(delta: float) -> void:
 	windowsill_anim_tree.set("parameters/conditions/player_takes_bait",
 	max_knocks < 3 and not GlobalScript.game_window_closed)
+	if GlobalScript.killed_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 func set_knock_count() -> void:
 	max_knocks = knock_weights.pick_random()
@@ -82,13 +86,24 @@ func _on_windowsill_timer_timeout() -> void:
 			current_state = States.JUMPSCARE
 
 func _on_windowsill_anim_tree_animation_started(anim_name: StringName) -> void:
+	visible = true
 	if anim_name == "Jumpscare" or anim_name == "Windowsill_Jumpscare":
 		if previous_state == States.EMERGING:
 			bait_successful.emit()
 		current_state = States.JUMPSCARE
+		await get_tree().create_timer(0.1).timeout
+		blood_splatter.emitting = true
 	if anim_name == "Knock_End" or anim_name == "Windowsill_KnockEnd":
 		state_changed.emit(States.INACTIVE)
 
 func _on_windowsill_anim_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Emerge" or anim_name == "Windowsill_Emerge":
 		begin_wait()
+	if anim_name =="Knock_End" or anim_name == "Windowsill_KnockEnd":
+		visible = false
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by == GlobalScript.KILLED_BY.WINDOWSILL or jumpscared_by == GlobalScript.KILLED_BY.WINDOWSILL_BAIT:
+		return
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED

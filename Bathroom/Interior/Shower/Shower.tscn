@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds5wermgvyg3s"]
+[gd_scene format=3 uid="uid://ds5wermgvyg3s"]
 
 [ext_resource type="PackedScene" uid="uid://bm4tmsekuy6cb" path="res://Bathroom/Interior/Shower/Shower.glb" id="1_iv45d"]
-[ext_resource type="Script" path="res://Interaction/interactable.gd" id="2_gvqao"]
-[ext_resource type="Script" path="res://Bathroom/Interior/Shower/Scripts/Shower.gd" id="2_qhtg1"]
+[ext_resource type="Script" uid="uid://sf54pkika7ml" path="res://Interaction/interactable.gd" id="2_gvqao"]
+[ext_resource type="Script" uid="uid://dexhgu0bkgju1" path="res://Bathroom/Interior/Shower/Scripts/Shower.gd" id="2_qhtg1"]
 [ext_resource type="AudioStream" uid="uid://b15vcrcwufsi4" path="res://Bathroom/Interior/Shower/Audio/Shower.wav" id="4_djmh2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfhh4"]
@@ -151,12 +151,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sdr0r"]
 _data = {
-"RESET": SubResource("Animation_8tkp2"),
-"Toggle": SubResource("Animation_q2mqc"),
-"ToggleOff": SubResource("Animation_f5gjy")
+&"RESET": SubResource("Animation_8tkp2"),
+&"Toggle": SubResource("Animation_q2mqc"),
+&"ToggleOff": SubResource("Animation_f5gjy")
 }
 
-[node name="Shower" instance=ExtResource("1_iv45d")]
+[node name="Shower" unique_id=250145704 instance=ExtResource("1_iv45d")]
 
 [node name="ShowerControl" parent="." index="0"]
 unique_name_in_owner = true
@@ -166,16 +166,16 @@ unique_name_in_owner = true
 
 [node name="ShowerKnob" parent="ShowerControl" index="1"]
 unique_name_in_owner = true
-transform = Transform3D(0.0195, 0, 0, 0, 0.0147168, 0.0127931, 0, -0.0127931, 0.0147168, 0.0381734, 0.0480136, 0)
+transform = Transform3D(0.0195, 0, 0, 0, 0.014716793, 0.012793113, 0, -0.012793113, 0.014716793, 0.0381734, 0.0480136, 0)
 
-[node name="Control" type="StaticBody3D" parent="ShowerControl" index="2" groups=["shower"]]
+[node name="Control" type="StaticBody3D" parent="ShowerControl" index="2" unique_id=1786717393 groups=["shower"]]
 script = ExtResource("2_qhtg1")
 
-[node name="ControlShape" type="CollisionShape3D" parent="ShowerControl/Control" index="0"]
+[node name="ControlShape" type="CollisionShape3D" parent="ShowerControl/Control" index="0" unique_id=1611766825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000732422, -0.00146472, 0.00012207)
 shape = SubResource("BoxShape3D_vfhh4")
 
-[node name="Interactable" type="Node" parent="ShowerControl/Control" index="1"]
+[node name="Interactable" type="Node" parent="ShowerControl/Control" index="1" unique_id=158144236]
 script = ExtResource("2_gvqao")
 interaction_mode = 1
 interact_prompt = "Turn on"
@@ -185,7 +185,7 @@ call_method = &"toggle_shower"
 [node name="ShowerHead" parent="." index="1"]
 unique_name_in_owner = true
 
-[node name="WaterParticles" type="GPUParticles3D" parent="ShowerHead" index="0"]
+[node name="WaterParticles" type="GPUParticles3D" parent="ShowerHead" index="0" unique_id=231322929]
 unique_name_in_owner = true
 amount = 4096
 amount_ratio = 0.0
@@ -194,19 +194,15 @@ visibility_aabb = AABB(-3, -2.5, -4, 6, 5, 8)
 process_material = SubResource("ParticleProcessMaterial_ffmyo")
 draw_pass_1 = SubResource("BoxMesh_iuja8")
 
-[node name="ShowerAnim" type="AnimationPlayer" parent="." index="2"]
+[node name="ShowerAnim" type="AnimationPlayer" parent="." index="2" unique_id=833900028]
 unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_sdr0r")
-}
+libraries/ = SubResource("AnimationLibrary_sdr0r")
 playback_default_blend_time = 0.2
 
-[node name="ShowerAudio" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="ShowerAudio" type="AudioStreamPlayer3D" parent="." index="3" unique_id=417409138]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.5, -0.6)
 stream = ExtResource("4_djmh2")
 volume_db = -60.0
 max_db = -3.0
 autoplay = true
-
-[connection signal="animation_finished" from="ShowerAnim" to="ShowerControl/Control" method="_on_shower_anim_animation_finished"]

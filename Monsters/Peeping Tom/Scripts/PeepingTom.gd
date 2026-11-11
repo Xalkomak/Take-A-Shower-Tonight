@@ -30,9 +30,12 @@ var current_stage: STAGES = STAGES.INACTIVE:
 	set(new_stage):
 		if current_stage != new_stage:
 			current_stage = new_stage
-			print(current_stage)
 			stage_changed.emit(new_stage)
 			jumpscare_cam.current = current_stage == STAGES.JUMPSCARE
+
+func _ready() -> void:
+	jumpscare_cam.clear_current()
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 
 func _physics_process(delta: float) -> void:
 	if current_stage == STAGES.INACTIVE:
@@ -56,7 +59,6 @@ func begin_wait() -> void:
 			pt_timer.wait_time = randf_range(12.0, 17.0) # 22, 57
 		STAGES.PEEPING:
 			pt_timer.wait_time = randf_range(8.0, 9.0) # 18, 29
-	print(pt_timer.wait_time)
 	pt_timer.start()
 
 func force_stage_change(stage: STAGES) -> void:
@@ -73,6 +75,7 @@ func _on_pt_timer_timeout() -> void:
 			begin_wait()
 		STAGES.PEEPING:
 			current_stage = STAGES.JUMPSCARE
+			EventBus.player_jumpscared.emit(GlobalScript.KILLED_BY.PEEPING_TOM)
 
 func _on_stare_zone_area_entered(area: Area3D) -> void:
 	if current_stage == STAGES.PEEPING:
@@ -81,3 +84,13 @@ func _on_stare_zone_area_entered(area: Area3D) -> void:
 func _on_stare_zone_area_exited(area: Area3D) -> void:
 	if current_stage == STAGES.PEEPING:
 		is_observed = false
+
+func _on_pt_anim_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "PT_Jumpscare":
+		EventBus.player_killed.emit(GlobalScript.KILLED_BY.PEEPING_TOM)
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by == GlobalScript.KILLED_BY.PEEPING_TOM:
+		return
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		process_mode = Node.PROCESS_MODE_DISABLED

@@ -48,4 +48,4 @@ func get_death_tip(killed_by: GlobalScript.KILLED_BY) -> String:
 			return LIGHTS_OUT_DEATH_TIPS.pick_random()
 		GlobalScript.KILLED_BY.BURGLAR:
 			return BURGLAR_DEATH_TIPS.pick_random()
-	return ""
+	return temp_label.text

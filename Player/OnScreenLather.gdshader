@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear;
 
 uniform float soap_amount : hint_range(0.0, 1.0) = 0.0;
+uniform float lather_rotation : hint_range(0.0, 6.28318) = 0.0;
 uniform float blur_strength : hint_range(0.0, 15.0) = 4.0;
 uniform float noise_scale : hint_range(1.0, 30.0) = 8.0;
 
@@ -36,7 +37,20 @@ void fragment() {
     vignette = smoothstep(0.15, 0.75, vignette);
 
     // Procedural lather.
-    float n = noise(uv * noise_scale);
+    // Rotate procedural lather coordinates around screen center.
+	vec2 centered_uv = uv - vec2(0.5);
+
+	float c = cos(lather_rotation);
+	float s = sin(lather_rotation);
+
+	mat2 rotation = mat2(
+    	vec2(c, -s),
+    	vec2(s, c)
+	);
+
+	vec2 rotated_uv = rotation * centered_uv + vec2(0.5);
+
+	float n = noise(rotated_uv * noise_scale);
     n = smoothstep(0.35, 0.7, n);
 
     float lather = n * vignette * soap_amount;

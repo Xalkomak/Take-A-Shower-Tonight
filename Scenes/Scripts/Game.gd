@@ -44,6 +44,7 @@ func _ready() -> void:
 	light.light_toggled.connect(on_light_toggled)
 	lights_out_monster.stage_changed.connect(on_lo_stage_changed)
 	EventBus.game_soap_used.connect(on_soap_used)
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 	EventBus.player_killed.connect(on_player_killed)
 	EventBus.burglar_stage_changed.connect(on_burglar_stage_changed)
 #endregion
@@ -143,3 +144,11 @@ func on_burglar_stage_changed(burglar_stage: Burglar.Stages) -> void:
 
 func _on_windowsill_bait_successful() -> void:
 	got_baited_by_windowsill = true
+
+func _on_peeping_tom_stage_changed(new_stage: PeepingTom.STAGES) -> void:
+	if new_stage == PeepingTom.STAGES.JUMPSCARE:
+		disable_player_input()
+
+func on_player_jumpscared(by: GlobalScript.KILLED_BY):
+	if by != GlobalScript.KILLED_BY.NONE:
+		world_environment.environment.sdfgi_energy = 1

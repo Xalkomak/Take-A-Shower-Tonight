@@ -31,9 +31,11 @@ var current_stage: STAGES = STAGES.INACTIVE:
 		if current_stage != new_stage:
 			current_stage = new_stage
 			stage_changed.emit(new_stage)
+			visible = current_stage != STAGES.INACTIVE
 			jumpscare_cam.current = current_stage == STAGES.JUMPSCARE
 
 func _ready() -> void:
+	current_stage = STAGES.INACTIVE
 	jumpscare_cam.clear_current()
 	EventBus.player_jumpscared.connect(on_player_jumpscared)
 

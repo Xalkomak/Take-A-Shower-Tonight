@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b47mx1bkjsch4" path="res://Monsters/Burglar/Assets/Burglar.glb" id="1_o0kn1"]
 [ext_resource type="Script" uid="uid://bluya0d3m7qch" path="res://Monsters/Burglar/Scripts/Burglar.gd" id="2_87nbl"]
+[ext_resource type="AudioStream" uid="uid://d4b1ihegnihqt" path="res://Monsters/Burglar/Assets/Audio/BurglarKnock1.wav" id="3_shq4y"]
 
 [node name="Burglar" unique_id=1391874749 instance=ExtResource("1_o0kn1")]
 script = ExtResource("2_87nbl")
@@ -77,11 +78,17 @@ fov = 60.0
 near = 0.01
 far = 10.0
 
+[node name="BurglarAudioCue" type="AudioStreamPlayer3D" parent="Burglar Rig/Skeleton3D/BoneAttachment3D/JumpscareCam" index="0" unique_id=337758735]
+unique_name_in_owner = true
+transform = Transform3D(0.82052827, 0.5625569, -0.101306796, 0.15041265, -0.041510317, 0.9877514, 0.5514611, -0.8257157, -0.11867605, -0.98201394, 5.159374, 0.24486506)
+stream = ExtResource("3_shq4y")
+bus = &"SFX"
+
 [node name="AnimationPlayer" parent="." index="1" unique_id=1206632198]
 autoplay = &"Burglar_Idle"
 
 [node name="BurglarTimer" type="Timer" parent="." index="2" unique_id=2004648011]
-wait_time = 2.0
+wait_time = 4.0
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

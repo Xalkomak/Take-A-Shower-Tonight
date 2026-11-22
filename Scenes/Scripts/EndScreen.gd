@@ -29,7 +29,7 @@ const LIGHTS_OUT_DEATH_TIPS: Array[String] = [
 const BURGLAR_DEATH_TIPS: Array[String] = [
 	"Knocking on the door is Burglar's warning before entering. Hide and stay quiet.",
 	"Turn off the shower and spread the curtain open to hide from Burglar.",
-	"Don't interact with anything while Burglar is present.",
+	"Make no noise and don't interact with anything while Burglar is at the door.",
 ]
 
 func _ready() -> void:

@@ -11,7 +11,7 @@ signal jumpscared ## Emitted when Abyss jumpscares the player.
 @export var approach_rate: float = 8.0
 
 var playback: AudioStreamGeneratorPlayback
-var pulse_hz: float = 440.0
+var pulse_hz: float = 220.0
 var initial_vol: float = -80.0
 
 func _ready() -> void:
@@ -55,8 +55,10 @@ func _on_abyss_audio_cue_finished() -> void:
 
 func jumpscare_player() -> void:
 	approach_rate = 0
-	abyss_anim.play("Jumpscare")
 	jumpscared.emit()
+	$JumpscareFace.rotation = randf_range(-360.0, 360.0)
+	$JumpscareFace.scale = Vector2.ONE * randf_range(0.9, 1.1)
+	abyss_anim.play("Jumpscare")
 	await get_tree().create_timer(6).timeout
 	abyss_anim.play("RESET")
 	approach_rate = 8

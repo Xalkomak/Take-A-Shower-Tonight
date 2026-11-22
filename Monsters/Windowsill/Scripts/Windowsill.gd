@@ -18,6 +18,7 @@ enum States {
 @onready var windowsill_anim_tree: AnimationTree = $WindowsillAnimTree
 @onready var windowsill_timer: Timer = $WindowsillTimer
 @onready var blood_splatter: GPUParticles3D = $BloodSplatter
+@onready var audio_cue: AudioStreamPlayer3D = $Windowsill_Rig/Skeleton3D/BoneAttachment3D/AudioCue
 
 var current_state: States = States.INACTIVE:
 	set(value):

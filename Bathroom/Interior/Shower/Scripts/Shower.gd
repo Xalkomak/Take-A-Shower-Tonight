@@ -35,6 +35,6 @@ func toggle_shower() -> void:
 	EventBus.game_shower_toggled.emit()
 
 func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
-	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE and is_shower_on:
 		shower_anim.speed_scale = 10
 		shower_anim.play_backwards("Toggle")

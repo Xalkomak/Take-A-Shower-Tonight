@@ -15,6 +15,7 @@ var is_on: bool = true
 
 func _ready() -> void:
 	light_emit = light_mesh.mesh.surface_get_material(1) as StandardMaterial3D
+	EventBus.player_jumpscared.connect(on_player_jumpscared)
 
 func _process(delta: float) -> void:
 	if GlobalScript.lights_out_is_ready and is_on:
@@ -40,3 +41,10 @@ func toggle_light() -> void:
 
 func flicker_light() -> void:
 	light_emit.emission_energy_multiplier = randf_range(0.2, 5.0)
+
+func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
+	if jumpscared_by != GlobalScript.KILLED_BY.NONE:
+		set_process(false)
+		is_on = true
+		guiding_light.light_energy = 0
+		light_emit.emission_energy_multiplier = 5

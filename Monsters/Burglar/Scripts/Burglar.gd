@@ -11,9 +11,15 @@ enum Stages {
 	JUMPSCARE
 }
 
+const BURGLAR_KNOCK_1 = preload("uid://d4b1ihegnihqt")
+const BURGLAR_KNOCK_2 = preload("uid://ct5e332s4ac1n")
+const DOOR_OPEN = preload("uid://po56jxgod4uc")
+const DOOR_CLOSE = preload("uid://b1cl4ucsye8fr")
+
 @onready var burglar_timer: Timer = $BurglarTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var jumpscare_cam: Camera3D = %JumpscareCam
+@onready var audio_cue: AudioStreamPlayer3D = %BurglarAudioCue
 
 var current_stage: Stages = Stages.INACTIVE:
 	set(new_stage):
@@ -43,19 +49,23 @@ func _on_burglar_timer_timeout() -> void:
 		Stages.INACTIVE:
 			current_stage = Stages.STAGE_1
 			burglar_timer.wait_time = randf_range(8.0, 9.0)
-			print("Burglar is ready.")
+			audio_cue.stream = BURGLAR_KNOCK_1
+			audio_cue.play()
 		Stages.STAGE_1:
 			current_stage = Stages.STAGE_2
 			burglar_timer.wait_time = randf_range(9.0, 10.0)
-			print("Burglar is coming.")
+			audio_cue.stream = BURGLAR_KNOCK_2
+			audio_cue.play()
 		Stages.STAGE_2:
 			current_stage = Stages.STAGE_3
 			burglar_timer.wait_time = randf_range(5.0, 6.0)
-			print("Burglar is inside.")
+			audio_cue.stream = DOOR_OPEN
+			audio_cue.play()
 		Stages.STAGE_3:
 			current_stage = Stages.INACTIVE
 			burglar_timer.wait_time = randf_range(4.0, 5.0) # 47, 65
-			print("Burglar has left.")
+			audio_cue.stream = DOOR_CLOSE
+			audio_cue.play()
 	burglar_timer.start()
 
 func detect_player_action():

@@ -62,6 +62,7 @@ func on_soap_used() -> void:
 	if not GlobalScript.game_shower_on:
 		return
 	var tween = get_tree().create_tween()
+	soap_blindness_shader.set_shader_parameter("lather_rotation",randf_range(0.0, TAU))
 	tween.tween_method(set_soap_amount, 0.0, 1.0, 0.2)
 
 func set_soap_amount(value: float) -> void:

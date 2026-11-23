@@ -63,12 +63,10 @@ func handle_interactable(collider: Object) -> void:
 func on_soap_used() -> void:
 	if not GlobalScript.game_shower_on:
 		return
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().set_parallel()
 	soap_blindness_shader.set_shader_parameter("lather_rotation",randf_range(0.0, TAU))
-	tween.tween_method(set_soap_amount, 0.0, 1.0, 0.2)
-
-func set_soap_amount(value: float) -> void:
 	soap_blindness_shader.set_shader_parameter("bubble_opacity", 0)
-	soap_blindness_shader.set_shader_parameter("soap_amount", value)
-	var tween = get_tree().create_tween()
-	tween.tween_property(soap_blindness_shader, soap_blindness_shader.get_shader_parameter("bubble_opacity"), 0.5, 0.3)
+	tween.tween_method(func(value: float):
+		soap_blindness_shader.set_shader_parameter("soap_amount", value), 0.0, 1.0, 0.2)
+	tween.tween_method(func(value):
+		soap_blindness_shader.set_shader_parameter("bubble_opacity", value), 0.0, 0.5, 0.5)

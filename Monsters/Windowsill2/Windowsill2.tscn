@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dex6ocx7sei7b"]
 
 [ext_resource type="PackedScene" uid="uid://p6o6n4igjmox" path="res://Monsters/Windowsill2/Windowsill2.glb" id="1_8ucdv"]
-[ext_resource type="Script" uid="uid://b8hxwmppidoaj" path="res://Monsters/Windowsill/Scripts/Windowsill.gd" id="2_ki66u"]
+[ext_resource type="Script" uid="uid://b8hxwmppidoaj" path="res://Monsters/Windowsill2/Scripts/Windowsill.gd" id="2_ki66u"]
 [ext_resource type="Material" uid="uid://fogpdbdj8d3t" path="res://Bathroom/Interior/Sink/Materials/HotButton.tres" id="3_6avb7"]
 [ext_resource type="AudioStream" uid="uid://cwlwh0c200jly" path="res://Monsters/Windowsill2/Audio/Knock1.wav" id="3_705io"]
 [ext_resource type="AudioStream" uid="uid://dbfchih37a5r5" path="res://Monsters/Windowsill2/Audio/Knock2.wav" id="4_quonl"]
@@ -144,22 +144,8 @@ rings = 4
 [node name="Windowsill2" unique_id=2080641504 instance=ExtResource("1_8ucdv")]
 script = ExtResource("2_ki66u")
 
-[node name="Skeleton3D" parent="Windowsill_Rig" parent_id_path=PackedInt32Array(864303768) index="0" unique_id=1853928252]
-bones/0/position = Vector3(0.07439062, 0.8307803, 0.29983371)
-bones/0/rotation = Quaternion(-0.00063992146, -0.9916309, 0.0049187243, 0.12901036)
-bones/2/rotation = Quaternion(-7.079287e-10, -3.72529e-09, -2.2554625e-11, 1)
-bones/3/rotation = Quaternion(-6.188251e-09, -0.34202015, -4.3145e-09, 0.93969274)
-bones/4/rotation = Quaternion(-0.018715914, 0.17361674, -0.003299812, 0.9846299)
-bones/5/rotation = Quaternion(0.023599695, 0.17359829, 0.004160849, 0.98452497)
-bones/6/rotation = Quaternion(-0.27350894, -0.5057452, 0.7751156, 0.261936)
-bones/7/rotation = Quaternion(-0.85046136, -0.35427737, -0.17684352, 0.3463084)
-bones/8/rotation = Quaternion(-0.007081049, 0.65607756, 0.014269619, 0.7545253)
-bones/9/rotation = Quaternion(-0.7072686, 0.5920316, -0.037890345, -0.38449192)
-bones/10/rotation = Quaternion(-0.88559616, 0.3049135, 0.18414873, 0.29805472)
-bones/11/rotation = Quaternion(0.061641093, -0.9067622, -0.34423217, -0.23555663)
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Windowsill_Rig/Skeleton3D" index="1" unique_id=2005696754]
-transform = Transform3D(-0.96674395, -0.011839411, -0.255472, -0.0055019036, 0.9996592, -0.025507456, 0.25568706, -0.023253592, -0.9664796, 0.072747156, 1.5905384, 0.29579312)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Windowsill_Rig/Skeleton3D" parent_id_path=PackedInt32Array(1001027843) index="1" unique_id=2005696754]
+transform = Transform3D(1, 2.3552194e-07, -2.3552143e-07, -2.355219e-07, 0.9999997, -5.2154064e-08, 2.3552136e-07, 5.2154064e-08, 0.9999997, -5.9604616e-08, 0.760204, -0.011400428)
 bone_name = "Head"
 bone_idx = 5
 
@@ -167,7 +153,7 @@ bone_idx = 5
 stream = SubResource("AudioStreamRandomizer_xvdui")
 bus = &"SFX"
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=929115438]
+[node name="AnimationPlayer" parent="." index="1" unique_id=505654438]
 autoplay = &"Windowsill_Inactive"
 
 [node name="WindowsillAnimTree" type="AnimationTree" parent="." index="2" unique_id=1903393804]

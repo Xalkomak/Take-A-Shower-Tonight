@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lstsmhc54ifw" path="res://Player/player.tscn" id="3_u437r"]
 [ext_resource type="PackedScene" uid="uid://cg87qy502oyo0" path="res://Monsters/Peeping Tom/PeepingTom.tscn" id="4_2irst"]
 [ext_resource type="Script" uid="uid://dry1kpkmmcxch" path="res://FPSCount.gd" id="4_3b5nw"]
-[ext_resource type="PackedScene" uid="uid://dex6ocx7sei7b" path="res://Monsters/Windowsill2/Windowsill2.tscn" id="5_2irst"]
+[ext_resource type="PackedScene" uid="uid://dex6ocx7sei7b" path="res://Monsters/Windowsill2/Windowsill.tscn" id="5_2irst"]
 [ext_resource type="PackedScene" uid="uid://vy0k3gvm1c0u" path="res://Monsters/Vapor/Vapor.tscn" id="7_ult5a"]
 [ext_resource type="PackedScene" uid="uid://cew0632kyrkcg" path="res://Monsters/Abyss/Abyss.tscn" id="7_w22cl"]
 
@@ -91,7 +91,6 @@ transform = Transform2D(1, 0, 0, 1, 0, 1.7)
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=490453005]
 
 [node name="FPSLabel" type="Label" parent="GameUI" unique_id=425449222]
-visible = false
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0

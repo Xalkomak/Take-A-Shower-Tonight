@@ -2,9 +2,40 @@
 
 [ext_resource type="PackedScene" uid="uid://c34h762s45eyj" path="res://Monsters/Peeping Tom/PeepingTom.glb" id="1_hw263"]
 [ext_resource type="Script" uid="uid://dosb3rlff5r7f" path="res://Monsters/Peeping Tom/Scripts/PeepingTom.gd" id="2_phj43"]
+[ext_resource type="Texture2D" uid="uid://crm02jix7onks" path="res://Bathroom/Interior/Toilet/Textures/SplashMask.png" id="3_aafic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvdui"]
 size = Vector3(0.26757813, 0.24414063, 0.55618286)
+
+[sub_resource type="Curve" id="Curve_aafic"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dn3ev"]
+curve = SubResource("Curve_aafic")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6cm5a"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 15.0
+angle_min = -360.0
+angle_max = 360.0
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.1
+scale_over_velocity_curve = SubResource("CurveTexture_dn3ev")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ptb"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(3.85046e-06, 0, 0.85208386, 0.19607843)
+albedo_texture = ExtResource("3_aafic")
+metallic_specular = 0.0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_xvdui"]
+material = SubResource("StandardMaterial3D_a4ptb")
+size = Vector2(2, 2)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_phj43"]
 animation = &"PT_Inactive"
@@ -46,7 +77,7 @@ blend_point_3/pos = Vector2(0, -1)
 blend_point_3/name = &"PT_Pos4"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wbtxi"]
-graph_offset = Vector2(-392.16833, 24.406464)
+graph_offset = Vector2(-400, 69)
 nodes/output/position = Vector2(260, 100)
 nodes/Leave/node = SubResource("AnimationNodeAnimation_t2eas")
 nodes/Leave/position = Vector2(-120, 320)
@@ -90,10 +121,10 @@ transitions = ["Start", "Inactive", SubResource("AnimationNodeStateMachineTransi
 script = ExtResource("2_phj43")
 staredown_threshold = 3.0
 
-[node name="Head" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1754450542) index="0" unique_id=1955844951]
+[node name="Head" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1857931379) index="0" unique_id=675883063]
 transform = Transform3D(0.9999998, -9.721352e-07, 1.6415283e-06, 1.6415952e-06, 0.87689424, -0.480703, -9.720964e-07, 0.48070082, 0.87688506, 3.7033487e-11, 0.83307016, 0.5319469)
 
-[node name="StareZone" parent="Peeping Tom Rig/Skeleton3D/Head" index="0" unique_id=1474186469]
+[node name="StareZone" parent="Peeping Tom Rig/Skeleton3D/Head" index="0" unique_id=355222956]
 collision_layer = 8
 collision_mask = 16
 
@@ -101,9 +132,24 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, 1.0000014, 0, 0, 0, 0.9999975, 0, 0, 0)
 shape = SubResource("BoxShape3D_xvdui")
 
+[node name="ParticleSpawn" type="BoneAttachment3D" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1857931379) index="2" unique_id=625150138]
+transform = Transform3D(0.9999994, -4.893954e-07, -0.0010178111, -0.0010178204, -0.0009609163, -1.0000082, -4.913163e-07, 0.9999997, -0.0009635389, 1.1920929e-07, 0.62635815, -0.127496)
+bone_name = "Spine"
+bone_idx = 7
+
+[node name="PT_Smoke" type="GPUParticles3D" parent="Peeping Tom Rig/Skeleton3D/ParticleSpawn" index="0" unique_id=843742628]
+unique_name_in_owner = true
+emitting = false
+amount = 16
+lifetime = 0.4
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_6cm5a")
+draw_pass_1 = SubResource("QuadMesh_xvdui")
+
 [node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
@@ -118,7 +164,7 @@ parameters/Peeping/Exit/active = false
 parameters/Peeping/Exit/internal_active = false
 parameters/Peeping/Exit/request = 0
 
-[node name="AnimationPlayer" parent="." index="4" unique_id=1427228393]
+[node name="AnimationPlayer" parent="." index="4" unique_id=1594302780]
 autoplay = &"PT_Inactive"
 playback_default_blend_time = 0.1
 

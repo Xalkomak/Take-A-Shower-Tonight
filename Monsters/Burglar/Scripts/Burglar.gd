@@ -25,7 +25,7 @@ var current_stage: Stages = Stages.INACTIVE:
 	set(new_stage):
 		if current_stage != new_stage:
 			current_stage = new_stage
-			visible = current_stage == Stages.STAGE_3 or Stages.JUMPSCARE
+			visible = current_stage in [Stages.STAGE_3, Stages.JUMPSCARE]
 			EventBus.burglar_stage_changed.emit(current_stage)
 			set_process(current_stage == Stages.STAGE_3)
 

@@ -19,6 +19,7 @@ enum STAGES {
 @onready var jumpscare_cam: Camera3D = $JumpscareCam
 @onready var pt_timer: Timer = $PT_Timer # NOTE: Set initial wait time to 21 for release
 @onready var pt_anim_tree: AnimationTree = $PT_AnimTree
+@onready var pt_smoke: GPUParticles3D = %PT_Smoke
 
 @export var staredown_threshold: float = 5.0 ## Baseline time required to scare Peeping Tom away.
 @export var max_jumps: int = 5 ## Baseline number of times Peeping Tom jumps around to avoid eye contact (Nightmare mode only).
@@ -31,7 +32,6 @@ var current_stage: STAGES = STAGES.INACTIVE:
 		if current_stage != new_stage:
 			current_stage = new_stage
 			stage_changed.emit(new_stage)
-			visible = current_stage != STAGES.INACTIVE
 			jumpscare_cam.current = current_stage == STAGES.JUMPSCARE
 
 func _ready() -> void:
@@ -52,6 +52,8 @@ func _physics_process(delta: float) -> void:
 		staredown_elapsed = 0.0
 		pt_timer.stop()
 		pt_anim_tree.set("parameters/Peeping/Exit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		await get_tree().create_timer(0.2).timeout
+		pt_smoke.emitting = true
 		current_stage = STAGES.INACTIVE
 		begin_wait()
 
@@ -74,6 +76,7 @@ func _on_pt_timer_timeout() -> void:
 			current_stage = STAGES.PEEPING
 			var random_position: Vector2 = POSITIONS.pick_random()
 			pt_anim_tree.set("parameters/Peeping/Positions/blend_position", random_position)
+			pt_smoke.emitting = true
 			begin_wait()
 		STAGES.PEEPING:
 			current_stage = STAGES.JUMPSCARE

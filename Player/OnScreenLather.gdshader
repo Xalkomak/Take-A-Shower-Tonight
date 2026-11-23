@@ -1,7 +1,11 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear;
+uniform sampler2D bubble_texture : repeat_enable, filter_linear;
 
+uniform float bubble_scroll : hint_range(-2.0, 2.0) = 0.0;
+uniform float bubble_opacity : hint_range(0.0, 1.0) = 0.5;
+uniform float bubble_scale : hint_range(0.1, 5.0) = 1.0;
 uniform float soap_amount : hint_range(0.0, 1.0) = 0.0;
 uniform float lather_rotation : hint_range(0.0, 6.28318) = 0.0;
 uniform float blur_strength : hint_range(0.0, 15.0) = 4.0;
@@ -71,8 +75,28 @@ void fragment() {
     // Mix blurred vision according to soap coverage.
     color.rgb = mix(texture(screen_texture, uv).rgb, color.rgb, soap_amount);
 
-    // White translucent lather.
-    color.rgb = mix(color.rgb, vec3(1.0), lather * 0.75);
+	// White translucent lather.
+	color.rgb = mix(color.rgb, vec3(1.0), lather * 0.75);
+	
+	// Bubble texture UVs.
+	vec2 bubble_uv = SCREEN_UV;
+
+	// Correct for the screen's aspect ratio.
+	bubble_uv.x *= SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
+
+	// Scale the pattern.
+	bubble_uv *= bubble_scale;
+
+	// Vertical scrolling, independent of lather rotation.
+	bubble_uv.y += bubble_scroll;
+
+	// Sample bubbles.
+	vec4 bubbles = texture(bubble_texture, bubble_uv);
+
+	// Overlay bubbles.
+	float bubble_alpha = bubbles.a * bubble_opacity * soap_amount;
+
+	color.rgb = mix(color.rgb, bubbles.rgb, bubble_alpha);
 
     COLOR = color;
 }

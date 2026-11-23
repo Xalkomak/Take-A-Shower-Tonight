@@ -13,14 +13,16 @@ extends MeshInstance3D
 
 var allow_rotate: bool = true
 var soap_effect: float = 0.0
+var bubble_scroll: float = 0.0
 
 func _ready() -> void:
 	EventBus.game_soap_used.connect(on_soap_used)
 	player_cam.current = true
 
 func _process(delta: float) -> void:
+	bubble_scroll += delta * 0.15
+	soap_blindness_shader.set_shader_parameter("bubble_scroll", bubble_scroll)
 	soap_blindness_shader.set_shader_parameter("soap_amount", clamp(GlobalScript.soap_bonus / 2.5, 0.0, 1.0))
-	
 	allow_interact = GlobalScript.soap_bonus < 0.2
 	crosshair.visible = GlobalScript.soap_bonus < 0.2
 	prompt_text.visible = GlobalScript.soap_bonus < 0.2
@@ -66,4 +68,7 @@ func on_soap_used() -> void:
 	tween.tween_method(set_soap_amount, 0.0, 1.0, 0.2)
 
 func set_soap_amount(value: float) -> void:
+	soap_blindness_shader.set_shader_parameter("bubble_opacity", 0)
 	soap_blindness_shader.set_shader_parameter("soap_amount", value)
+	var tween = get_tree().create_tween()
+	tween.tween_property(soap_blindness_shader, soap_blindness_shader.get_shader_parameter("bubble_opacity"), 0.5, 0.3)

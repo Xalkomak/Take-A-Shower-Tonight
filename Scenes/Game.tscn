@@ -91,6 +91,7 @@ transform = Transform2D(1, 0, 0, 1, 0, 1.7)
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=490453005]
 
 [node name="FPSLabel" type="Label" parent="GameUI" unique_id=425449222]
+visible = false
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0

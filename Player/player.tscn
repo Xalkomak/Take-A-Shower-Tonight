@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i5e5vur283wo" path="res://Player/player.gd" id="1_wpqhj"]
 [ext_resource type="Shader" uid="uid://brsq4u34ags5c" path="res://Player/OnScreenLather.gdshader" id="2_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://d3lljbekmt1dy" path="res://Player/SoapBubbles.png" id="3_btcbx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_to88l"]
 radius = 0.2
@@ -13,6 +14,10 @@ rings = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n62xw"]
 shader = ExtResource("2_4ntmi")
+shader_parameter/bubble_texture = ExtResource("3_btcbx")
+shader_parameter/bubble_scroll = 0.0
+shader_parameter/bubble_opacity = 0.5
+shader_parameter/bubble_scale = 1.0
 shader_parameter/soap_amount = 1.0
 shader_parameter/lather_rotation = 0.0
 shader_parameter/blur_strength = 20.0

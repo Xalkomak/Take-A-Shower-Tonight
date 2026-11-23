@@ -11,6 +11,8 @@ enum Stages {
 	JUMPSCARE
 }
 
+signal stage_changed(new_stage: Burglar.Stages)
+
 const BURGLAR_KNOCK_1 = preload("uid://d4b1ihegnihqt")
 const BURGLAR_KNOCK_2 = preload("uid://ct5e332s4ac1n")
 const DOOR_OPEN = preload("uid://po56jxgod4uc")
@@ -59,13 +61,9 @@ func _on_burglar_timer_timeout() -> void:
 		Stages.STAGE_2:
 			current_stage = Stages.STAGE_3
 			burglar_timer.wait_time = randf_range(5.0, 6.0)
-			#audio_cue.stream = DOOR_OPEN
-			#audio_cue.play()
 		Stages.STAGE_3:
 			current_stage = Stages.INACTIVE
 			burglar_timer.wait_time = randf_range(4.0, 5.0) # 47, 65
-			#audio_cue.stream = DOOR_CLOSE
-			#audio_cue.play()
 	burglar_timer.start()
 
 func detect_player_action():

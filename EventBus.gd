@@ -7,4 +7,3 @@ signal game_curtain_toggled
 signal game_soap_used
 signal player_jumpscared(by: GlobalScript.KILLED_BY)
 signal player_killed(by: GlobalScript.KILLED_BY)
-signal burglar_stage_changed(new_stage: Burglar.Stages)

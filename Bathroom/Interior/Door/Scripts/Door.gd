@@ -10,7 +10,6 @@ const DOOR_CLOSE = preload("uid://b1cl4ucsye8fr")
 func _ready() -> void:
 	animation_player.play("BackHandleSwing")
 	animation_player.play("FrontHandleSwing")
-	EventBus.burglar_stage_changed.connect(open_door)
 
 func open_door(stage: Burglar.Stages) -> void:
 	if stage == Burglar.Stages.STAGE_3:

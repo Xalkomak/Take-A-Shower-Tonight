@@ -20,6 +20,7 @@ enum STAGES {
 @onready var pt_timer: Timer = $PT_Timer # NOTE: Set initial wait time to 21 for release
 @onready var pt_anim_tree: AnimationTree = $PT_AnimTree
 @onready var pt_smoke: GPUParticles3D = %PT_Smoke
+@onready var peeping_tom_mesh: MeshInstance3D = $"Peeping Tom Rig/Skeleton3D/Peeping Tom Mesh"
 
 @export var staredown_threshold: float = 5.0 ## Baseline time required to scare Peeping Tom away.
 @export var max_jumps: int = 5 ## Baseline number of times Peeping Tom jumps around to avoid eye contact (Nightmare mode only).
@@ -53,6 +54,8 @@ func _physics_process(delta: float) -> void:
 		pt_timer.stop()
 		pt_anim_tree.set("parameters/Peeping/Exit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		await get_tree().create_timer(0.2).timeout
+		var tween := get_tree().create_tween()
+		tween.tween_property(peeping_tom_mesh, "transparency", 1.0, 1.0)
 		pt_smoke.emitting = true
 		current_stage = STAGES.INACTIVE
 		begin_wait()
@@ -73,6 +76,7 @@ func force_stage_change(stage: STAGES) -> void:
 func _on_pt_timer_timeout() -> void:
 	match current_stage:
 		STAGES.INACTIVE:
+			peeping_tom_mesh.transparency = 0.0
 			current_stage = STAGES.PEEPING
 			var random_position: Vector2 = POSITIONS.pick_random()
 			pt_anim_tree.set("parameters/Peeping/Positions/blend_position", random_position)

@@ -37,4 +37,5 @@ func toggle_shower() -> void:
 func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):
 	if jumpscared_by != GlobalScript.KILLED_BY.NONE and is_shower_on:
 		shower_anim.speed_scale = 10
+		shower_audio.volume_db = -80
 		shower_anim.play_backwards("Toggle")

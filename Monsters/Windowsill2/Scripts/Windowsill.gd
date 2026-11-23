@@ -88,19 +88,22 @@ func _on_windowsill_timer_timeout() -> void:
 
 func _on_windowsill_anim_tree_animation_started(anim_name: StringName) -> void:
 	visible = true
-	if anim_name == "Jumpscare" or anim_name == "Windowsill_Jumpscare":
+	if anim_name == "Windowsill_Jumpscare":
+		var baited: bool = false
 		if previous_state == States.EMERGING:
 			bait_successful.emit()
+			baited = true
 		current_state = States.JUMPSCARE
 		await get_tree().create_timer(0.1).timeout
 		blood_splatter.emitting = true
-	if anim_name == "Knock_End" or anim_name == "Windowsill_KnockEnd":
+		EventBus.player_jumpscared.emit(GlobalScript.KILLED_BY.WINDOWSILL_BAIT if baited else GlobalScript.KILLED_BY.WINDOWSILL)
+	if anim_name == "Windowsill_KnockEnd":
 		state_changed.emit(States.INACTIVE)
 
 func _on_windowsill_anim_tree_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Emerge" or anim_name == "Windowsill_Emerge":
+	if anim_name == "Windowsill_Emerge":
 		begin_wait()
-	if anim_name =="Knock_End" or anim_name == "Windowsill_KnockEnd":
+	if anim_name == "Windowsill_KnockEnd":
 		visible = false
 
 func on_player_jumpscared(jumpscared_by: GlobalScript.KILLED_BY):

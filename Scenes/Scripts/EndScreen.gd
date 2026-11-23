@@ -27,8 +27,8 @@ const LIGHTS_OUT_DEATH_TIPS: Array[String] = [
 ]
 
 const BURGLAR_DEATH_TIPS: Array[String] = [
-	"Knocking on the door is Burglar's warning before entering. Hide and stay quiet.",
-	"Turn off the shower and spread the curtain open to hide from Burglar.",
+	"Knocking on the door is Burglar's warning before entering. Hide behind the curtain and stay quiet.",
+	"Turn off the shower, spread the curtain open and stay still to hide from Burglar.",
 	"Make no noise and don't interact with anything while Burglar is at the door.",
 ]
 

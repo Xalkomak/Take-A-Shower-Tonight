@@ -158,6 +158,9 @@ bones/9/rotation = Quaternion(-0.63998616, 0.5837003, 0.045770444, 0.49761105)
 bones/10/rotation = Quaternion(-0.89908147, 0.28307784, 0.18695137, 0.27671057)
 bones/11/rotation = Quaternion(0.45092365, -0.05075727, 0.8247365, 0.33749253)
 
+[node name="Windowsill_Body" parent="Windowsill_Rig/Skeleton3D" index="0" unique_id=1230265830]
+layers = 8
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Windowsill_Rig/Skeleton3D" index="1" unique_id=2005696754]
 transform = Transform3D(-0.8123464, 0.015667304, -0.5829642, 0.21918039, 0.9345523, -0.28030574, 0.5404193, -0.35547984, -0.7626142, -0.020716064, 1.6821078, -0.06103087)
 bone_name = "Head"

@@ -20,6 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Logic here when the player wins or loses.
 
-This is a placeholder scene BTW."
+This is a placeholder scene BTW. The code can change depending on the actual implementation."
 horizontal_alignment = 1
 vertical_alignment = 1

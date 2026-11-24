@@ -22,4 +22,3 @@ stream = ExtResource("3_jln0v")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
-[connection signal="stage_changed" from="Burglar" to="." method="open_door"]

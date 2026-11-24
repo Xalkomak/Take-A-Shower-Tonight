@@ -76,10 +76,8 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_packed(END_SCREEN)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-		get_tree().quit()
 	if event.is_action_pressed("pause"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().quit()
 
 func on_window_shut(is_shut: bool) -> void:
 	window_closed = is_shut

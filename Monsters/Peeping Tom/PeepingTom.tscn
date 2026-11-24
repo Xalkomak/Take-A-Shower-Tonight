@@ -121,10 +121,10 @@ transitions = ["Start", "Inactive", SubResource("AnimationNodeStateMachineTransi
 script = ExtResource("2_phj43")
 staredown_threshold = 3.0
 
-[node name="Head" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1857931379) index="0" unique_id=675883063]
+[node name="Head" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(710647774) index="0" unique_id=568564785]
 transform = Transform3D(0.9999998, -9.721352e-07, 1.6415283e-06, 1.6415952e-06, 0.87689424, -0.480703, -9.720964e-07, 0.48070082, 0.87688506, 3.7033487e-11, 0.83307016, 0.5319469)
 
-[node name="StareZone" parent="Peeping Tom Rig/Skeleton3D/Head" index="0" unique_id=355222956]
+[node name="StareZone" parent="Peeping Tom Rig/Skeleton3D/Head" index="0" unique_id=1807413232]
 collision_layer = 8
 collision_mask = 16
 
@@ -132,10 +132,7 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, 1.0000014, 0, 0, 0, 0.9999975, 0, 0, 0)
 shape = SubResource("BoxShape3D_xvdui")
 
-[node name="Peeping Tom Mesh" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1857931379) index="1" unique_id=1977989111]
-transparency = 1.0
-
-[node name="ParticleSpawn" type="BoneAttachment3D" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(1857931379) index="2" unique_id=625150138]
+[node name="ParticleSpawn" type="BoneAttachment3D" parent="Peeping Tom Rig/Skeleton3D" parent_id_path=PackedInt32Array(710647774) index="2" unique_id=625150138]
 transform = Transform3D(0.9999994, -4.893954e-07, -0.0010178111, -0.0010178204, -0.0009609163, -1.0000082, -4.913163e-07, 0.9999997, -0.0009635389, 1.1920929e-07, 0.62635815, -0.127496)
 bone_name = "Spine"
 bone_idx = 7
@@ -152,9 +149,10 @@ draw_pass_1 = SubResource("QuadMesh_xvdui")
 [node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.9995336, 0.008545564, -0.029318495, 0, 0.96004975, 0.27982908, 0.030538514, -0.27969855, 0.95960206, -0.28453183, 1.6607375, -0.516803)
 cull_mask = 1048571
 fov = 60.0
 
@@ -166,7 +164,7 @@ parameters/Peeping/Exit/active = false
 parameters/Peeping/Exit/internal_active = false
 parameters/Peeping/Exit/request = 0
 
-[node name="AnimationPlayer" parent="." index="4" unique_id=1594302780]
+[node name="AnimationPlayer" parent="." index="4" unique_id=1758519540]
 autoplay = &"PT_Inactive"
 playback_default_blend_time = 0.1
 

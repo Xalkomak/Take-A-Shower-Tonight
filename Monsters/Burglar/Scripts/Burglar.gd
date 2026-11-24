@@ -11,8 +11,6 @@ enum Stages {
 	JUMPSCARE
 }
 
-signal stage_changed(new_stage: Burglar.Stages)
-
 const BURGLAR_KNOCK_1 = preload("uid://d4b1ihegnihqt")
 const BURGLAR_KNOCK_2 = preload("uid://ct5e332s4ac1n")
 const DOOR_OPEN = preload("uid://po56jxgod4uc")
@@ -24,7 +22,7 @@ const DOOR_CLOSE = preload("uid://b1cl4ucsye8fr")
 @onready var audio_cue: AudioStreamPlayer3D = %BurglarAudioCue
 
 var current_stage: Stages = Stages.INACTIVE:
-	set(new_stage):
+	set(new_stage):	
 		if current_stage != new_stage:
 			current_stage = new_stage
 			visible = current_stage in [Stages.STAGE_3, Stages.JUMPSCARE]

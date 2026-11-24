@@ -22,8 +22,8 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="Xalkomak/TAST"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://bjaeje5bwyehh"
-config/macos_native_icon="res://icon_macos.icns"
-config/windows_native_icon="res://icon_win.ico"
+config/macos_native_icon="res://Branding/icon_macos.icns"
+config/windows_native_icon="res://Branding/icon_win.ico"
 
 [audio]
 

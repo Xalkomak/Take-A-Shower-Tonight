@@ -17,10 +17,10 @@ shader = ExtResource("2_4ntmi")
 shader_parameter/bubble_texture = ExtResource("3_btcbx")
 shader_parameter/bubble_scroll = 0.0
 shader_parameter/bubble_opacity = 0.5
-shader_parameter/bubble_scale = 0.40000001574012
+shader_parameter/bubble_scale = 1.0
 shader_parameter/soap_amount = 1.0
 shader_parameter/lather_rotation = 0.0
-shader_parameter/blur_strength = 20.0
+shader_parameter/blur_strength = 15.0
 shader_parameter/noise_scale = 15.000000665
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ej0l8"]

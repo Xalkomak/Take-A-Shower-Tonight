@@ -65,6 +65,7 @@ func on_soap_used() -> void:
 		return
 	var tween = get_tree().create_tween().set_parallel()
 	soap_blindness_shader.set_shader_parameter("lather_rotation",randf_range(0.0, TAU))
+	soap_blindness_shader.set_shader_parameter("noise_scale", randf_range(10.0, 20.0))
 	soap_blindness_shader.set_shader_parameter("bubble_opacity", 0)
 	tween.tween_method(func(value: float):
 		soap_blindness_shader.set_shader_parameter("soap_amount", value), 0.0, 1.0, 0.2)

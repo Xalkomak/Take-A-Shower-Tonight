@@ -36,6 +36,7 @@ var current_stage: STAGES = STAGES.INACTIVE:
 			jumpscare_cam.current = current_stage == STAGES.JUMPSCARE
 
 func _ready() -> void:
+	peeping_tom_mesh.transparency = 1.0
 	current_stage = STAGES.INACTIVE
 	jumpscare_cam.clear_current()
 	EventBus.player_jumpscared.connect(on_player_jumpscared)

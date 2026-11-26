@@ -67,10 +67,10 @@ func _on_lo_timer_timeout() -> void:
 				lights_off_threshold = rng.randf_range(4, 8)
 				current_stage = Stages.SUBTLE
 		Stages.SUBTLE:
-			lo_timer.wait_time = rng.randf_range(18, 29)
+			lo_timer.wait_time = rng.randf_range(8, 9) # 18, 29
 			current_stage = Stages.ANNOUNCEMENT
 		Stages.ANNOUNCEMENT:
-			lo_timer.wait_time = rng.randf_range(16, 27)
+			lo_timer.wait_time = rng.randf_range(6, 7) # 16, 27
 			current_stage = Stages.ASSAULT
 			var selected_point: Marker3D = spawn_points.pick_random() as Marker3D
 			global_transform = selected_point.global_transform

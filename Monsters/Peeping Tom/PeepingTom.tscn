@@ -149,10 +149,9 @@ draw_pass_1 = SubResource("QuadMesh_xvdui")
 [node name="PT_Timer" type="Timer" parent="." index="1" unique_id=342735992]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="JumpscareCam" type="Camera3D" parent="." index="2" unique_id=1872059668]
-transform = Transform3D(0.9995336, 0.008545564, -0.029318495, 0, 0.96004975, 0.27982908, 0.030538514, -0.27969855, 0.95960206, -0.28453183, 1.6607375, -0.516803)
+transform = Transform3D(0.9995336, 0.008545564, -0.029318495, 0, 0.9600497, 0.27982908, 0.030538514, -0.27969855, 0.95960206, -0.28453183, 1.6607375, -0.516803)
 cull_mask = 1048571
 fov = 60.0
 

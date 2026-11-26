@@ -19,12 +19,14 @@ enum States {
 @onready var windowsill_timer: Timer = $WindowsillTimer
 @onready var blood_splatter: GPUParticles3D = $BloodSplatter
 @onready var audio_cue: AudioStreamPlayer3D = $Windowsill_Rig/Skeleton3D/BoneAttachment3D/AudioCue
+@onready var jumpscare_cam: Camera3D = $JumpscareCam
 
 var current_state: States = States.INACTIVE:
 	set(value):
 		if current_state != value:
 			previous_state = current_state
 			current_state = value
+			jumpscare_cam.current = current_state == States.JUMPSCARE
 			state_changed.emit(value)
 var previous_state: States
 var knock_count: int
@@ -34,7 +36,7 @@ var knock_weights: Array[int] = [3, 3, 3, 3, 3, 2, 2, 2, 1, 1]
 
 func _ready() -> void:
 	windowsill_anim_tree.active = true
-	$JumpscareCam.current = false
+	jumpscare_cam.current = false
 	EventBus.player_jumpscared.connect(on_player_jumpscared)
 
 func _process(delta: float) -> void:

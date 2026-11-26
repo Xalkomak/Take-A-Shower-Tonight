@@ -27,6 +27,7 @@ var current_stage: Stages = Stages.INACTIVE:
 			current_stage = new_stage
 			visible = current_stage in [Stages.STAGE_3, Stages.JUMPSCARE]
 			EventBus.burglar_stage_changed.emit(current_stage)
+			jumpscare_cam.current = current_stage == Stages.JUMPSCARE
 			set_process(current_stage == Stages.STAGE_3)
 
 func _ready() -> void:

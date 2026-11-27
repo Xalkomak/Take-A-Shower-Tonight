@@ -1,7 +1,7 @@
 class_name Burglar
 extends Node3D
 
-# NOTE: Set the initial wait time to 94 for release.
+# NOTE: Set the initial wait time to 95 for release.
 
 enum Stages {
 	INACTIVE,

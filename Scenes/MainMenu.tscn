@@ -1,0 +1,361 @@
+[gd_scene format=3 uid="uid://cdeg4e8w0qqka"]
+
+[ext_resource type="Script" uid="uid://d06k7nwxlu4nk" path="res://Scenes/Scripts/MainMenu.gd" id="1_7v4os"]
+[ext_resource type="PackedScene" uid="uid://ds5wermgvyg3s" path="res://Bathroom/Interior/Shower/Shower.tscn" id="1_riqfo"]
+[ext_resource type="ArrayMesh" uid="uid://bof38qita2brf" path="res://Curtain/Meshes/Curtain_curtainBar.res" id="2_yxkem"]
+[ext_resource type="ArrayMesh" uid="uid://yqum2q0u2taj" path="res://Curtain/Meshes/Curtain_curtainSimulated.res" id="3_7v4os"]
+[ext_resource type="Animation" uid="uid://dyohe7i6a7of3" path="res://Curtain/Animations/Open.res" id="4_pjscj"]
+[ext_resource type="Animation" uid="uid://bc6td703qy0gj" path="res://Curtain/Animations/OpenCurtain.res" id="5_m7n2d"]
+[ext_resource type="ArrayMesh" uid="uid://cfef3nbujbi4o" path="res://LightSource/Meshes/LightSource_light.res" id="6_65hh5"]
+[ext_resource type="ArrayMesh" uid="uid://baa1wxlwc6k4k" path="res://Window/Meshes/Window_WindowFrane.res" id="7_6byu3"]
+[ext_resource type="ArrayMesh" uid="uid://cx0mygq78b3bq" path="res://Window/Meshes/Window_Window_R.res" id="8_leunp"]
+[ext_resource type="ArrayMesh" uid="uid://yoqmi61afmnb" path="res://Window/Meshes/Window_Handle.res" id="9_h1v62"]
+[ext_resource type="PackedScene" uid="uid://80x1rwsuff8f" path="res://Bathroom/Interior/Toilet/Toilet.tscn" id="10_5hdia"]
+[ext_resource type="PackedScene" uid="uid://cgoa0sk3hsgf6" path="res://Bathroom/Interior/ToiletPaperRolled/ToiletPaperRolled.glb" id="11_iqn0u"]
+[ext_resource type="ArrayMesh" uid="uid://cxdr3qlvxcart" path="res://Bathroom/Interior/GlassShelves/Meshes/GlassShelves_glassShelf.res" id="12_3u44c"]
+[ext_resource type="PackedScene" uid="uid://nxb8khsdibkn" path="res://Bathroom/Interior/SoapDish/SoapDish.glb" id="13_bxv1r"]
+[ext_resource type="PackedScene" uid="uid://c81jy5iubugjl" path="res://Bathroom/Props/ToiletPapers/ToiletPapers.glb" id="14_ux20s"]
+[ext_resource type="ArrayMesh" uid="uid://bt6556uql6i8b" path="res://Bathroom/Props/Soap/Meshes/Soap_soap.res" id="16_311ux"]
+[ext_resource type="ArrayMesh" uid="uid://c1ogo5n5jiqkb" path="res://Bathroom/Mesh/Bathroom_bathroom.res" id="17_pnils"]
+[ext_resource type="Texture2D" uid="uid://73g2oiivyy0y" path="res://Branding/TAST_Title.png" id="17_riqfo"]
+[ext_resource type="FontFile" uid="uid://d2v0r80k43xj" path="res://Fonts/requiem/Requiem/Requiem.ttf" id="18_yxkem"]
+[ext_resource type="Script" uid="uid://du16w5saphbgt" path="res://Scenes/Scripts/MenuButton.gd" id="20_pjscj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6eo4"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_pjjjg"]
+sky_material = SubResource("ProceduralSkyMaterial_a6eo4")
+
+[sub_resource type="Environment" id="Environment_ow4wq"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_pjjjg")
+ambient_light_source = 3
+reflected_light_source = 2
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+sdfgi_cascades = 1
+sdfgi_y_scale = 0
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rd77m"]
+_data = {
+&"Open": ExtResource("4_pjscj"),
+&"OpenCurtain": ExtResource("5_m7n2d")
+}
+
+[sub_resource type="Animation" id="Animation_2x1g0"]
+resource_name = "CameraBob"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuCam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5520636, 1.4001002, -3.844519), Vector3(0.5520636, 1.3657075, -3.844519)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuCam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.06459261, 2.5891957, 0), Vector3(0.09077255, 2.5891957, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_riqfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5520636, 1.3657075, -3.844519)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.09077255, 2.5891957, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxkem"]
+_data = {
+&"CameraBob": SubResource("Animation_2x1g0"),
+&"RESET": SubResource("Animation_riqfo")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7v4os"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[node name="MainMenu" type="Node3D" unique_id=1509867695]
+script = ExtResource("1_7v4os")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1122294386]
+environment = SubResource("Environment_ow4wq")
+
+[node name="Bathroom" type="Node3D" parent="." unique_id=1765083197]
+
+[node name="Shower" parent="Bathroom" unique_id=1887877342 instance=ExtResource("1_riqfo")]
+
+[node name="Curtain" type="Node3D" parent="Bathroom" unique_id=1445246446 groups=["curtain"]]
+
+[node name="CurtainBar" type="MeshInstance3D" parent="Bathroom/Curtain" unique_id=1288230083]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 2.1199994, -1.24)
+gi_mode = 2
+mesh = ExtResource("2_yxkem")
+skeleton = NodePath("")
+
+[node name="CurtainControl" type="Node3D" parent="Bathroom/Curtain/CurtainBar" unique_id=1498097247]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0199996, 1, 0)
+
+[node name="CurtainSimulated" type="MeshInstance3D" parent="Bathroom/Curtain/CurtainBar/CurtainControl" unique_id=1099375569]
+ignore_occlusion_culling = true
+gi_mode = 2
+mesh = ExtResource("3_7v4os")
+skeleton = NodePath("")
+blend_shapes/override = 0.0
+
+[node name="CurtainAnim" type="AnimationPlayer" parent="Bathroom/Curtain" unique_id=1630073690]
+libraries/ = SubResource("AnimationLibrary_rd77m")
+speed_scale = 1.5
+
+[node name="LightSource" type="Node3D" parent="Bathroom" unique_id=1859837522 groups=["Light"]]
+
+[node name="Light" type="MeshInstance3D" parent="Bathroom/LightSource" unique_id=413085575]
+transform = Transform3D(0.5, 0, 0, 0, 0.100000024, 0, 0, 0, 0.5, 0, 3, -2.5)
+extra_cull_margin = 20.0
+mesh = ExtResource("6_65hh5")
+skeleton = NodePath("")
+
+[node name="Window" type="Node3D" parent="Bathroom" unique_id=104910592 groups=["window"]]
+
+[node name="Window_Group" type="Node3D" parent="Bathroom/Window" unique_id=681185552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, -0.06)
+
+[node name="WindowFrame" type="MeshInstance3D" parent="Bathroom/Window/Window_Group" unique_id=1326119784]
+mesh = ExtResource("7_6byu3")
+skeleton = NodePath("")
+
+[node name="Window_R" type="MeshInstance3D" parent="Bathroom/Window/Window_Group/WindowFrame" unique_id=481498291]
+transform = Transform3D(0.8309848, 0, 0.55629545, 0, 1, 0, -0.55629545, 0, 0.8309848, 0.324, 0.052, 0.1)
+mesh = ExtResource("8_leunp")
+skeleton = NodePath("")
+
+[node name="Handle" type="MeshInstance3D" parent="Bathroom/Window/Window_Group/WindowFrame/Window_R" unique_id=1697065833]
+transform = Transform3D(1, -3.55271e-15, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.623, 0.323, -0.0492816)
+mesh = ExtResource("9_h1v62")
+skeleton = NodePath("")
+
+[node name="Toilet" parent="Bathroom" unique_id=538815893 instance=ExtResource("10_5hdia")]
+
+[node name="ToiletPaperRolled2" parent="Bathroom" unique_id=930476035 instance=ExtResource("11_iqn0u")]
+
+[node name="GlassShelves" type="Node3D" parent="Bathroom" unique_id=558024061]
+
+[node name="GlassShelf_001" type="MeshInstance3D" parent="Bathroom/GlassShelves" unique_id=1485840401]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.06, 1.625, -2.08)
+mesh = ExtResource("12_3u44c")
+skeleton = NodePath("")
+
+[node name="SoapDish" parent="Bathroom" unique_id=779965782 instance=ExtResource("13_bxv1r")]
+
+[node name="ToiletPapers" parent="Bathroom" unique_id=1446211606 instance=ExtResource("14_ux20s")]
+
+[node name="ToiletPaper" parent="Bathroom/ToiletPapers" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, -1.08373, 1.74, -1.95148)
+
+[node name="TP_Wrap" parent="Bathroom/ToiletPapers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06846, 1.84, -2.34342)
+
+[node name="Soap" type="Node3D" parent="Bathroom" unique_id=175936544]
+
+[node name="Soap" type="MeshInstance3D" parent="Bathroom/Soap" unique_id=140624931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.080051, 1.1407192, -0.40860346)
+mesh = ExtResource("16_311ux")
+skeleton = NodePath("")
+
+[node name="Bathroom" type="MeshInstance3D" parent="Bathroom" unique_id=472979075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
+mesh = ExtResource("17_pnils")
+skeleton = NodePath("")
+
+[node name="MenuCam" type="Camera3D" parent="." unique_id=285041088]
+transform = Transform3D(-0.85126925, 0.047565617, 0.5225688, 0, 0.995883, -0.09064794, -0.52472913, -0.077165805, -0.84776455, 0.5520636, 1.3657075, -3.844519)
+current = true
+far = 10.0
+
+[node name="MenuAnim" type="AnimationPlayer" parent="." unique_id=1208056949]
+libraries/ = SubResource("AnimationLibrary_yxkem")
+autoplay = &"CameraBob"
+speed_scale = 0.5
+
+[node name="MainMenuUI" type="Control" parent="." unique_id=285427748]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenuUI" unique_id=1375889837]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 737.0
+offset_bottom = 417.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/CenterContainer" unique_id=421422898]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI/CenterContainer/VBoxContainer" unique_id=1184029215]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.5, 1.5)
+mouse_filter = 2
+texture = ExtResource("17_riqfo")
+
+[node name="Author" type="Label" parent="MainMenuUI/CenterContainer/VBoxContainer" unique_id=1299554604]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, 1.2)
+theme_override_fonts/font = ExtResource("18_yxkem")
+theme_override_font_sizes/font_size = 32
+text = "A game by Xalkomak"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Buttons" type="VBoxContainer" parent="MainMenuUI" unique_id=1922529697]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -480.0
+offset_right = 395.0
+offset_bottom = -100.0
+grow_vertical = 0
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="MainMenuUI/Buttons" unique_id=2131498941 groups=["Menu Buttons"]]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_pivot_ratio = Vector2(0, 0.5)
+offset_transform_visual_only = false
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_yxkem")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7v4os")
+text = "Play"
+alignment = 0
+script = ExtResource("20_pjscj")
+
+[node name="Settings" type="Button" parent="MainMenuUI/Buttons" unique_id=750939014 groups=["Menu Buttons"]]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_pivot_ratio = Vector2(0, 0.5)
+offset_transform_visual_only = false
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_yxkem")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7v4os")
+text = "Settings"
+alignment = 0
+script = ExtResource("20_pjscj")
+
+[node name="Extras" type="Button" parent="MainMenuUI/Buttons" unique_id=123455036 groups=["Menu Buttons"]]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_pivot_ratio = Vector2(0, 0.5)
+offset_transform_visual_only = false
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_yxkem")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7v4os")
+text = "Extras"
+alignment = 0
+script = ExtResource("20_pjscj")
+
+[node name="Quit" type="Button" parent="MainMenuUI/Buttons" unique_id=682662070 groups=["Menu Buttons"]]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_pivot_ratio = Vector2(0, 0.5)
+offset_transform_visual_only = false
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_yxkem")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7v4os")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7v4os")
+text = "Quit"
+alignment = 0
+script = ExtResource("20_pjscj")
+
+[connection signal="mouse_entered" from="MainMenuUI/Buttons/Play" to="MainMenuUI/Buttons/Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuUI/Buttons/Play" to="MainMenuUI/Buttons/Play" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenuUI/Buttons/Settings" to="MainMenuUI/Buttons/Settings" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuUI/Buttons/Settings" to="MainMenuUI/Buttons/Settings" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenuUI/Buttons/Extras" to="MainMenuUI/Buttons/Extras" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuUI/Buttons/Extras" to="MainMenuUI/Buttons/Extras" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenuUI/Buttons/Quit" to="MainMenuUI/Buttons/Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuUI/Buttons/Quit" to="MainMenuUI/Buttons/Quit" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenuUI/Buttons/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="Bathroom/ToiletPapers"]

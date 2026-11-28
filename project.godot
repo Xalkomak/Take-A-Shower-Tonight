@@ -18,7 +18,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Take A Shower Tonight"
 config/description="A mundane task of taking a shower at night turns into a life and death situation, as various monsters try to attack you at your most vulnerable point."
 config/version="1.0.0"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="uid://cdeg4e8w0qqka"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Xalkomak/TAST"
 config/features=PackedStringArray("4.7", "Forward Plus")
@@ -34,6 +34,7 @@ buses/default_bus_layout="uid://dwaem8l8ikyfk"
 
 GlobalScript="*res://GlobalScript.gd"
 EventBus="*res://EventBus.gd"
+SceneSwitcher="*uid://bbpxhx0m65cud"
 
 [debug]
 
@@ -68,6 +69,10 @@ folder_colors={
 "res://SnowDawg/": "gray",
 "res://Window/": "pink"
 }
+
+[global_group]
+
+"Scene Switcher"=""
 
 [gui]
 

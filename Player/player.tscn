@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i5e5vur283wo" path="res://Player/player.gd" id="1_wpqhj"]
 [ext_resource type="Shader" uid="uid://brsq4u34ags5c" path="res://Player/OnScreenLather.gdshader" id="2_4ntmi"]
+[ext_resource type="FontFile" uid="uid://bubu0sobpsv1n" path="res://Fonts/evil-of-frankenstein/EvilOfFrankenstein.ttf" id="2_gwnis"]
 [ext_resource type="Texture2D" uid="uid://d3lljbekmt1dy" path="res://Player/SoapBubbles.png" id="3_btcbx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_to88l"]
@@ -34,13 +35,21 @@ gi_mode = 0
 mesh = SubResource("CapsuleMesh_to88l")
 script = ExtResource("1_wpqhj")
 
-[node name="PlayerUI" type="CanvasLayer" parent="." unique_id=47285480 groups=["player_ui"]]
+[node name="PlayerUI" type="Control" parent="." unique_id=1150875154 groups=["player_ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PromptText" type="RichTextLabel" parent="PlayerUI" unique_id=716515257]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.02
 anchor_top = 0.694
-anchor_right = 1.0
+anchor_right = 0.98
 anchor_bottom = 0.738
 offset_top = 0.287994
 offset_bottom = -0.223999
@@ -50,6 +59,7 @@ pivot_offset = Vector2(576, 14)
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("2_gwnis")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
@@ -63,6 +73,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Crosshair" type="ColorRect" parent="PlayerUI" unique_id=118064772]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,6 +92,7 @@ mouse_filter = 2
 
 [node name="SoapBlindness" type="ColorRect" parent="PlayerUI" unique_id=1286962277]
 material = SubResource("ShaderMaterial_n62xw")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

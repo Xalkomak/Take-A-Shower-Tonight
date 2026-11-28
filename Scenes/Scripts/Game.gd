@@ -101,7 +101,7 @@ func _on_windowsill_state_changed(new_state: Windowsill.States) -> void:
 
 func disable_player_input() -> void:
 	player.allow_interact = false
-	var player_ui = get_tree().get_first_node_in_group("player_ui") as CanvasLayer
+	var player_ui = get_tree().get_first_node_in_group("player_ui") as Control
 	player_ui.hide()
 
 func on_window_animation_finished(anim_name: StringName) -> void:

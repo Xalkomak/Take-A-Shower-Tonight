@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://bfqgd3rdjmdki"]
+
+[ext_resource type="Script" uid="uid://cdltybfamf8st" path="res://Scenes/Scripts/Prologue.gd" id="1_nlywn"]
+
+[sub_resource type="Animation" id="Animation_nlywn"]
+resource_name = "Prologue"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrologueText2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 5, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrologueText1:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_munh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrologueText2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrologueText1:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86wtw"]
+_data = {
+&"Prologue": SubResource("Animation_nlywn"),
+&"RESET": SubResource("Animation_munh3")
+}
+
+[node name="Prologue" type="ColorRect" unique_id=804143768]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_nlywn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=631698648]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="PrologueText1" type="Label" parent="VBoxContainer" unique_id=1558419888]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "I have a meeting tomorrow and I feel like a dumpster..."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="PrologueText2" type="Label" parent="VBoxContainer" unique_id=1734497138]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "I'll take a shower before going to sleep."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="PrologueAnimator" type="AnimationPlayer" parent="VBoxContainer" unique_id=183941125]
+libraries/ = SubResource("AnimationLibrary_86wtw")
+autoplay = &"RESET"
+
+[connection signal="animation_finished" from="VBoxContainer/PrologueAnimator" to="." method="_on_prologue_animator_animation_finished"]

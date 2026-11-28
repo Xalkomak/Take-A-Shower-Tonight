@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d06k7nwxlu4nk" path="res://Scenes/Scripts/MainMenu.gd" id="1_7v4os"]
 [ext_resource type="PackedScene" uid="uid://ds5wermgvyg3s" path="res://Bathroom/Interior/Shower/Shower.tscn" id="1_riqfo"]
-[ext_resource type="PackedScene" uid="uid://bcwey6fe7pb8i" path="res://Scenes/Game.tscn" id="2_65hh5"]
 [ext_resource type="ArrayMesh" uid="uid://bof38qita2brf" path="res://Curtain/Meshes/Curtain_curtainBar.res" id="2_yxkem"]
 [ext_resource type="ArrayMesh" uid="uid://yqum2q0u2taj" path="res://Curtain/Meshes/Curtain_curtainSimulated.res" id="3_7v4os"]
 [ext_resource type="Animation" uid="uid://dyohe7i6a7of3" path="res://Curtain/Animations/Open.res" id="4_pjscj"]
@@ -125,7 +124,6 @@ content_margin_bottom = 10.0
 
 [node name="MainMenu" type="Node3D" unique_id=1509867695]
 script = ExtResource("1_7v4os")
-prologue_scene = ExtResource("2_65hh5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1122294386]
 environment = SubResource("Environment_ow4wq")

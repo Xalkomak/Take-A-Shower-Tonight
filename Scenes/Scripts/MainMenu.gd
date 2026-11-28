@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var prologue_scene: PackedScene
+const PROLOGUE: PackedScene = preload("uid://bfqgd3rdjmdki")
+
 var scene_switcher: Control
 
 func _on_quit_pressed() -> void:
@@ -15,5 +16,4 @@ func _on_play_pressed() -> void:
 
 func _on_curtain_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Open":
-		var scene_switcher_script := scene_switcher.get_script() as SceneSwitcherScript
-		scene_switcher.change_scene(prologue_scene)
+		scene_switcher.change_scene(PROLOGUE)

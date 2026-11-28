@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://73g2oiivyy0y" path="res://Branding/TAST_Title.png" id="17_riqfo"]
 [ext_resource type="FontFile" uid="uid://d2v0r80k43xj" path="res://Fonts/requiem/Requiem/Requiem.ttf" id="18_yxkem"]
 [ext_resource type="Script" uid="uid://du16w5saphbgt" path="res://Scenes/Scripts/MenuButton.gd" id="20_pjscj"]
+[ext_resource type="FontFile" uid="uid://nudqon83n76p" path="res://Fonts/evil-of-frankenstein/EvilOfFrankenstein-UltraBlack.ttf" id="21_m7n2d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6eo4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -150,6 +151,7 @@ skeleton = NodePath("")
 blend_shapes/override = 0.0
 
 [node name="CurtainAnim" type="AnimationPlayer" parent="Bathroom/Curtain" unique_id=1630073690]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rd77m")
 speed_scale = 1.5
 
@@ -214,7 +216,7 @@ mesh = ExtResource("17_pnils")
 skeleton = NodePath("")
 
 [node name="MenuCam" type="Camera3D" parent="." unique_id=285041088]
-transform = Transform3D(-0.85126925, 0.047565617, 0.5225688, 0, 0.995883, -0.09064794, -0.52472913, -0.077165805, -0.84776455, 0.5520636, 1.3657075, -3.844519)
+transform = Transform3D(-0.85126925, 0.047565613, 0.5225688, 0, 0.9958829, -0.09064794, -0.52472913, -0.0771658, -0.84776455, 0.5520636, 1.3657075, -3.844519)
 current = true
 far = 10.0
 
@@ -348,8 +350,28 @@ text = "Quit"
 alignment = 0
 script = ExtResource("20_pjscj")
 
+[node name="VersionNumber" type="Label" parent="MainMenuUI" unique_id=1911282447]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -33.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("21_m7n2d")
+theme_override_font_sizes/font_size = 32
+text = "v0.0.0"
+
+[connection signal="animation_finished" from="Bathroom/Curtain/CurtainAnim" to="." method="_on_curtain_anim_animation_finished"]
 [connection signal="mouse_entered" from="MainMenuUI/Buttons/Play" to="MainMenuUI/Buttons/Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenuUI/Buttons/Play" to="MainMenuUI/Buttons/Play" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenuUI/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="mouse_entered" from="MainMenuUI/Buttons/Settings" to="MainMenuUI/Buttons/Settings" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenuUI/Buttons/Settings" to="MainMenuUI/Buttons/Settings" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MainMenuUI/Buttons/Extras" to="MainMenuUI/Buttons/Extras" method="_on_mouse_entered"]

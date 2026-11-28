@@ -46,7 +46,6 @@ func _ready() -> void:
 	EventBus.game_soap_used.connect(on_soap_used)
 	EventBus.player_jumpscared.connect(on_player_jumpscared)
 	EventBus.player_killed.connect(on_player_killed)
-	EventBus.burglar_stage_changed.connect(on_burglar_stage_changed)
 #endregion
 	
 	shower_progress.value = 0
@@ -98,7 +97,6 @@ func _on_windowsill_state_changed(new_state: Windowsill.States) -> void:
 		Windowsill.States.KNOCKING, Windowsill.States.STALLING:
 			window.interactable.allow_interact = false
 		Windowsill.States.JUMPSCARE:
-			disable_player_input()
 			window.window_anim.play("Jumpscare")
 
 func disable_player_input() -> void:
@@ -136,17 +134,11 @@ func on_player_killed(killed_by: GlobalScript.KILLED_BY) -> void:
 	GlobalScript.killed_by = killed_by
 	get_tree().change_scene_to_packed(END_SCREEN)
 
-func on_burglar_stage_changed(burglar_stage: Burglar.Stages) -> void:
-	if burglar_stage == Burglar.Stages.JUMPSCARE:
-		disable_player_input()
-
 func _on_windowsill_bait_successful() -> void:
 	got_baited_by_windowsill = true
 
-func _on_peeping_tom_stage_changed(new_stage: PeepingTom.STAGES) -> void:
-	if new_stage == PeepingTom.STAGES.JUMPSCARE:
-		disable_player_input()
-
 func on_player_jumpscared(by: GlobalScript.KILLED_BY):
 	if by != GlobalScript.KILLED_BY.NONE:
+		disable_player_input()
+		%GameUI.hide()
 		world_environment.environment.sdfgi_energy = 1

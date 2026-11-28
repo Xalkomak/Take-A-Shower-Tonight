@@ -3,8 +3,8 @@ extends StaticBody3D
 
 signal shower_toggled(toggled: bool)
 
-const SHOWER = preload("res://Bathroom/Interior/Shower/Materials/Shower.tres")
-const SHOWER_GOLD = preload("res://Bathroom/Interior/Shower/Materials/ShowerGold.tres")
+const SHOWER = preload("uid://lgawow18jnms")
+const SHOWER_GOLD = preload("uid://tud46pwlog2s")
 
 @onready var interactable: Interactable = $Interactable
 @onready var shower_control: MeshInstance3D = %ShowerControl

@@ -36,8 +36,26 @@ glow_blend_mode = 4
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4vhir"]
+noise_type = 4
+seed = 7
+frequency = 0.0133
+fractal_type = 2
+fractal_weighted_strength = 0.14
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 32.17
+domain_warp_frequency = 1.05
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_05ue6"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_4vhir")
+
 [sub_resource type="FogMaterial" id="FogMaterial_upng8"]
-density = -1.0
+edge_fade = 0.05
+density_texture = SubResource("NoiseTexture3D_05ue6")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypmj7"]
 
@@ -62,9 +80,7 @@ environment = SubResource("Environment_raswh")
 
 [node name="Bathroom" parent="." unique_id=130465409 instance=ExtResource("2_po6qj")]
 
-[node name="ShowerSteam" type="Node3D" parent="." unique_id=433747679]
-
-[node name="Steam" type="FogVolume" parent="ShowerSteam" unique_id=27366492]
+[node name="Steam" type="FogVolume" parent="." unique_id=27366492]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031543016, 1.5, -2.0983586)
 layers = 16
@@ -73,10 +89,6 @@ material = SubResource("FogMaterial_upng8")
 
 [node name="Player" parent="." unique_id=2134517391 instance=ExtResource("3_u437r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.377842, 0.9, -0.65401)
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1361303860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.607)
-size = Vector3(2.5, 0.02, 1.2)
 
 [node name="Peeping Tom" parent="." unique_id=1193186437 instance=ExtResource("4_2irst")]
 
@@ -89,6 +101,7 @@ offset = Vector2(0, 1.7)
 transform = Transform2D(1, 0, 0, 1, 0, 1.7)
 
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=490453005]
+unique_name_in_owner = true
 
 [node name="FPSLabel" type="Label" parent="GameUI" unique_id=425449222]
 visible = false
@@ -117,7 +130,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ula4m")
 max_value = 500.0
 show_percentage = false
 
-[connection signal="stage_changed" from="Peeping Tom" to="." method="_on_peeping_tom_stage_changed"]
 [connection signal="bait_successful" from="Windowsill" to="." method="_on_windowsill_bait_successful"]
 [connection signal="state_changed" from="Windowsill" to="." method="_on_windowsill_state_changed"]
 [connection signal="jumpscared" from="Abyss" to="." method="_on_abyss_vapor_jumpscared"]
